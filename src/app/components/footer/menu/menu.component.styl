@@ -1,0 +1,46 @@
+.npf-footer-menu
+  make-row()
+
+  &__list
+    display flex
+    flex-direction column
+    flex-wrap wrap
+    justify-content space-between
+
+    @media screen and (min-width: $screen-sm-min)
+      flex-direction row
+
+
+  &__item
+    make-sm-column(6)
+    make-lg-column(4)
+    text-align center
+    margin-bottom 30px
+
+    @media screen and (min-width: $screen-sm-min)
+      text-align left
+      margin-bottom 70px
+
+  &__title
+    display block
+    font-size 18px
+    font-weight: 500
+    letter-spacing -.025em
+    line-height (30/18)
+
+  &__icon
+    padding-left 10px
+
+    svg
+      height 15px
+      stroke $colors-ops
+      stroke-width 2px
+      width 10px
+
+
+  &__link
+    display block
+    font-size 14px
+    line-height (24/14)
+    margin-top 12px
+    letter-spacing .02em

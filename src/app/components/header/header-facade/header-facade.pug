@@ -1,0 +1,6 @@
+mixin header-facade(title, subtitle, image, link)
+  +b.header-facade(style="background-image: url(/local/templates/npfsb/images/"+image+")")
+    +e.subtitle= subtitle
+    +e.title= title
+    +e.button
+      +button("a", "Оформить", "_theme_dark-green _s_l", true, false, "ic_arrow_next")(href="#fakelink")

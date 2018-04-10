@@ -1,0 +1,52 @@
+.npf-page-not-found
+  height 100vh
+  max-height 768px
+  position relative
+  background-color: $colors-background
+  background-image url(/local/templates/npfsb/images/404-bg.png)
+  background-repeat no-repeat
+  background-size cover
+  background-position center 150px
+
+  &__container
+    text-align left
+
+    @media screen and (min-width: $screen-sm-min)
+      text-align center
+
+  &__content
+    padding-top 148px
+
+  &__cloud
+    position absolute
+    width 250px
+    top 0
+    right -50px
+
+    img
+      width 100%
+
+    @media screen and (min-width: $screen-sm-min)
+      width auto
+      right -150px
+      top -130px
+
+  &__title
+    font-size 12px
+    opacity .5
+    letter-spacing .1em
+    text-transform uppercase
+    margin-bottom 10px
+
+  &__description
+    color #000
+    font-size 34px
+    font-weight 200
+    letter-spacing -.010em
+    margin-bottom 40px
+
+    @media screen and (min-width: $screen-sm-min)
+      font-family 'SeroPro-Extrathin', Arial, sans-serif
+      font-size 68px
+      letter-spacing -.015em
+      margin-bottom 82px

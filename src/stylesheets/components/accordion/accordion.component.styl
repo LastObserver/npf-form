@@ -1,0 +1,251 @@
+$accordion = '.npf-accordion'
+
+{$accordion}
+  @media screen and (min-width: $screen-sm-min)
+    padding-bottom 62px
+
+  &._theme_info
+    padding-bottom 0
+    {$accordion}
+      &__body
+        color #000
+        border-top 1px solid $colors-line-lighter
+        padding-top 60px
+        padding-bottom 30px
+
+        p
+          padding-bottom 42px
+
+        ul
+          padding-bottom 42px
+
+        h3
+          color $colors-text
+          margin-bottom 30px
+
+        li
+          color #000
+          font-size 16px
+          font-weight 300
+          line-height (26/16)
+          margin-bottom 15px
+          padding-left 30px
+          position relative
+
+          &::before
+            content ''
+            background-color $colors-ops
+            display block
+            width 10px
+            height 4px
+            border-radius 2px
+            position absolute
+            left 0
+            top 14px
+            transform translateY(-50%)
+
+          @media screen and (min-width:$screen-sm-min)
+            font-size 18px
+            line-height (30/18)
+
+      &__item
+        border-radius 6px
+        box-shadow none
+        padding-right 30px
+
+        @media screen and (min-iwidth:$screen-sm-min)
+          padding-left 50px
+
+        h2
+          padding-right 10px
+          margin 0
+
+          @media screen and (min-width:$screen-sm-min)
+            padding-right 100px
+
+        &._hidden
+          {$accordion}
+            &__body
+              border-top 0
+      &__header
+        @media screen and (min-width:$screen-sm-min)
+          padding 0
+          height 120px
+          display flex
+          flex-direction column
+          flex-wrap wrap
+          justify-content center
+      &__icon
+        @media screen and (min-width:$screen-sm-min)
+          top 46px
+          right 30px
+
+  &__item
+    background #fff
+    box-shadow 0 20px 81px rgba(0,0,0,.15)
+    margin 0 0 35px
+    border-radius 10px
+    overflow hidden
+    padding-left 20px
+    padding-right 20px
+
+    @media screen and (min-width: $screen-sm-min)
+      padding-left 30px
+      padding-right 30px
+
+    &._hidden
+      {$accordion}
+        &__body
+          height 0
+          padding 0
+
+        &__icon
+          transform rotate(0)
+
+  &__body
+    padding 0 0 40px
+
+  &__header
+    padding 30px 0
+    position relative
+    cursor pointer
+
+  &__title
+    font-size 18px
+    line-height 1.7
+    font-weight 500
+
+  &__icon
+    position absolute
+    top 27px
+    right -10px
+    width 34px
+    height 34px
+    transition transform .3s ease-out 0s
+    transform rotate(180deg)
+    text-align center
+
+    svg
+      width 14px
+      stroke-width 2px
+      fill #1a981a
+      position absolute
+      left 50%
+      top 50%
+      transform translate(-50%, -50%)
+
+  &__icons
+    text-align right
+    position relative
+    right -10px
+
+  &__link
+    display inline-block
+    vertical-align middle
+    padding 10px
+
+    &._download
+      svg
+        height 25px
+        width 25px
+        fill #cfd3d6
+        stroke-width 2px
+
+    &._print
+      svg
+        height 25px
+        width 25px
+        fill #cfd3d6
+
+.npf-property
+  border-top 1px solid $colors-line-lighter
+
+  @media screen and (min-width: $screen-sm-min)
+    padding-left 70px
+    padding-right 70px
+
+  &:first-child
+    border-top none
+
+  &__list
+    &._line
+      padding 45px 0 0
+
+      .npf-property
+        &__item
+          display inline-block
+          margin-bottom 0
+
+          @media screen and (min-width: $screen-sm-min)
+            padding 0 0 40px
+
+          &::after
+            content ','
+            position relative
+            left -3px
+
+          &:last-child
+            &::after
+              display none
+
+        &__label
+          position relative
+          left auto
+          top auto
+          display inline-block
+
+          &::after
+            content '—'
+
+        &__text
+          display inline-block
+          position relative
+
+  &__item
+    position relative
+    margin-bottom 20px
+
+    @media screen and (min-width:$screen-sm-min)
+      padding 0 0 45px 230px
+
+
+  &__label
+    font-size 18px
+    line-height 1.7
+    color rgba(0,0,0,.4)
+    font-weight 300
+
+    @media screen and (min-width:$screen-sm-min)
+      position absolute
+      left 0
+      top 0
+
+  &__text
+    font-size 18px
+    line-height 1.7
+    font-weight 300
+
+._js-accordion
+  &__header
+    cursor pointer
+  &__body
+    overflow hidden
+  &__icon
+    display inline-block
+    vertical-align middle
+    margin-left 10px
+    transform rotate(180deg)
+    transition transform .3s ease-out
+    .ic_arrow_down
+      color $colors-ops
+      width 14px
+    @media screen and (min-width: $screen-sm-min)
+      display none
+  &._hidden
+    ._js-accordion
+        &__body
+          height 0
+          padding-top 0
+          padding-bottom 0
+        &__icon
+          transform rotate(0)

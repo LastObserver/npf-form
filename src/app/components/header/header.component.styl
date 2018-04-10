@@ -1,0 +1,256 @@
+@import "~stylesheets/_variables.styl";
+.head
+  position relative
+  border-bottom 1px solid $colors-line-lighter
+  background-color #fff
+
+  @media screen and (max-width:$screen-xs-max)
+    height 141px
+
+  &__content
+    position relative
+    background-color #fff
+
+    &._fixed
+      position fixed
+      left 0
+      top 0
+      right 0
+      box-shadow 0px 12px 40px 0px rgba(0, 0, 0, 0.1)
+      z-index 2000
+      
+      @media screen and (max-height: 400px)
+        display none
+
+  &._theme_kpp
+    .head__top
+      background-color $colors-kpp
+    .npf-button
+      background-color $colors-kpp
+    .head-bottom_contacts-icon
+      svg
+        fill $colors-kpp
+    .top-menu-drop-col__icon
+      svg
+        stroke $colors-kpp
+
+
+.head__top
+  background-color $colors-ops
+  position relative
+
+.head-top__select-city
+  float left
+  padding 12px 0
+
+.npf-select-administrative-area
+  display flex
+  align-items center
+  color #fff
+  font-weight 500
+  font-size 14px
+  line-height unit(24 / @font-size, '')
+  margin-right 30px
+
+  &::after
+    content ''
+    margin-left 8px
+    background url(/local/templates/npfsb/images/city-arr.png) no-repeat
+    width 12px
+    height 8px
+    background-size 100%
+
+.head-top__menu
+  display none
+
+  @media screen and (min-width: $screen-sm-min)
+    display block
+    float left
+    // padding-left 30px
+    // background url(/local/templates/npfsb/images/menu-border.png) no-repeat left center
+    height 48px
+
+.top-menu__li
+  list-style none
+  float left
+  height 48px
+  margin-right 20px
+
+  @media screen and (min-width: $screen-lg-min)
+    margin-right 30px
+
+.top-menu__li:hover
+  .top-menu__link::before
+    content ' '
+    position absolute
+    left 50%
+    bottom -1px
+    background url(/local/templates/npfsb/images/drop-arr-t.png) no-repeat
+    width 20px
+    height 12px
+    margin-left -10px
+
+.top-menu__link
+  text-decoration none
+  color #fff
+  font-size 14px
+  font-weight 500
+  display inline-block
+  height 48px
+  line-height 48px
+  position relative
+  z-index 2
+  cursor pointer
+.top-menu__link:hover
+  text-decoration underline
+
+.head-top__search
+  display none
+  float right
+
+  @media screen and (min-width: $screen-sm-min)
+    display block
+
+
+.head-top__hotline
+  float right
+  padding-top 12px
+  padding-bottom 12px
+  color #fff
+  font-weight 500
+  font-size 14px
+  line-height unit(24 / @font-size, '')
+
+  @media screen and (min-width: $screen-sm-min)
+    display none
+
+.search-link
+  display block
+  background url(/local/templates/npfsb/images/search-icon.png) no-repeat center
+  width 24px
+  height 48px
+.search-link:hover
+  opacity 0.8
+.head-bottom
+  display flex
+  flex-flow row
+  flex-wrap nowrap
+  padding-bottom 24px
+  padding-top 24px
+  justify-content space-between
+  align-items center
+  background-color #fff
+
+  @media screen and (min-width: $screen-lg-min)
+    justify-content flex-start
+
+.head-bottom__open-menu
+  @media screen and (min-width: $screen-lg-min)
+    margin-right 117px
+.open-menu
+  display block
+  width 20px
+  height 18px
+  background url(/local/templates/npfsb/images/open-menu.png) no-repeat
+  &:hover
+    opacity 0.8
+  &._toggled
+    background-image url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDI0IDI0Ij4KCTxwYXRoIGZpbGw9IiMxQTk5MUEiIGQ9Ik0yNCwyLjRMMjEuNiwwTDEyLDkuNkwyLjQsMEwwLDIuNEw5LjYsMTJMMCwyMS42TDIuNCwyNGw5LjYtOS42bDkuNiw5LjZsMi40LTIuNEwxNC40LDEyTDI0LDIuNHoiLz4KPC9zdmc+')
+.head-bottom__logo
+  padding-left 30px
+  padding-right 30px
+  width 240px
+  img
+    display block
+    width 100%
+
+  @media screen and (min-width: $screen-sm-min)
+    padding-left 0
+    padding-right 0
+
+  @media screen and (min-width: $screen-lg-min)
+    margin-right 109px
+
+.head-bottom_cabinet_link
+  display none
+
+  @media screen and (min-width: $screen-sm-min)
+    display block
+
+    .npf-button
+      height 45px
+      width 45px
+      padding-left 0
+      padding-right 0
+      background-image url('/local/templates/npfsb/images/header__login.png')
+      background-repeat no-repeat
+      background-position center center
+
+    .npf-button__text
+      display none
+
+  @media screen and (min-width: $screen-lg-min)
+    display block
+    margin-left auto
+
+    .npf-button
+      height 60px
+      width auto
+      padding-left 60px
+      padding-right 60px
+      background-image none
+
+    .npf-button__text
+      display block
+
+
+.head-bottom_contacts-icon
+  display inline-block
+  vertical-align top
+  svg
+    fill $colors-ops
+    height 44px
+    width 32px
+
+  @media screen and (min-width: $screen-sm-min)
+    svg
+      width 20px
+      height 20px
+
+
+.head-contacts-link
+  display none
+  height 20px
+  line-height 20px
+  text-decoration none
+  font-size 18px
+  font-weight 500
+  color #3d4349
+  vertical-align middle
+  &:hover
+      text-decoration underline
+  @media screen and (min-width: $screen-sm-min)
+    display inline-block
+.head-bottom__phone
+  display none
+  @media screen and (min-width: $screen-sm-min)
+    display block
+  @media screen and (min-width: $screen-lg-min)
+    margin-right 81px
+.head-phone__name
+  font-size 14px
+  color $colors-text-lighter
+  line-height (30/14)
+.head-phone__content
+  font-size 20px
+  color #3d4349
+  font-family 'SeroPro'
+  font-weight 700
+
+@import './header-banner/header-banner.component.styl'
+@import './header-drop-down/header-drop-down.styl'
+@import './header-facade/header-facade.styl'
+@import './header-menu/header-menu.styl'
+@import './header-navigation/header-navigation.component.styl'
+@import './header-search/header-search.component.styl'
+@import './header-slider/header-slider.component.styl'

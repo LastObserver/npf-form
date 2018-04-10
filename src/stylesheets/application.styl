@@ -1,0 +1,802 @@
+@import './../../node_modules/slick-carousel/slick/slick.css'
+@import './../../node_modules/qtip2/dist/jquery.qtip.css'
+@import './../../node_modules/select2/dist/css/select2.css'
+@import './../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css'
+@import './../../node_modules/jquery-ui/themes/base/core.css'
+// @import './../../node_modules/ng-dialog/css/ngDialog.min.css'
+@import './../../node_modules/bootstrap-daterangepicker/daterangepicker.css'
+@import './../../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.css'
+
+// Grid and utilities bootstrap 
+@import './../../node_modules/bootstrap-styl/bootstrap/variables.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/mixins/clearfix.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/mixins/responsive-visibility.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/mixins/grid.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/mixins/grid-framework.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/grid.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/responsive-utilities.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/utilities.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/utilities.styl'
+@import './../../node_modules/bootstrap-styl/bootstrap/tables.styl'
+
+// @import '../vendorjs/daterangepicker/daterangepicker.css'
+
+// Variables and mixins
+@import '_variables.styl'
+@import '_helpers.styl'
+
+// Resets and dependencies
+@import '_fonts.styl'
+@import '_reset.styl'
+@import '_sprite.styl'
+@import '_scaffolding.styl'
+@import '_type.styl'
+@import '_animations.styl'
+
+// Pages
+@import 'pages/_management.styl'
+@import 'pages/_ipp.styl'
+@import 'pages/_fund-numbers.styl'
+@import 'pages/_contacts.styl'
+@import 'pages/_kpp.styl'
+@import 'pages/_disclosure.styl'
+@import 'pages/_jobs.styl'
+
+.center-block
+  center-block()
+
+.text-left
+  text-align left
+
+.text-right
+  text-align right
+
+.text-center
+  text-align center
+
+.text-justify
+  text-align justify
+
+.text-nowrap
+  white-space nowrap
+
+.npf-container
+  container-fixed()
+
+  @media (max-width $screen-xs-max)
+    padding-left 10px
+    padding-right 10px
+
+  @media (min-width $screen-sm-min)
+    width 768px
+
+  @media (min-width $screen-lg-min)
+    width $container-lg
+
+  &__content
+    h4
+      font-size 18px
+      font-weight 500
+      line-height (30/18)
+      color $colors-text
+      margin-bottom 15px
+
+.g-clear
+  clear both
+
+.g-table-cell
+  display table-cell
+
+.g-link
+  text-decoration none
+
+.g-link:hover
+  text-decoration underline
+
+.g-page-navigation-anchor
+  position relative
+  top -110px
+
+.g-col370
+  width 370px 
+  float left
+
+.g-col370+.g-col370
+  margin-left 30px
+
+.text-opacity
+  opacity 0.6
+
+@require './components/404/404.component.styl'
+@require './components/accordion/accordion.component.styl'
+@require './components/button/button.component.styl'
+@require './components/forms/forms.component.styl'
+@require './components/forms/form-bone.component.styl'
+@require './components/modal/modal.component.styl'
+@require './components/select/select.component.styl'
+@require './components/to-up/to-up.styl'
+@require './components/tooltip/tooltip.component.styl'
+
+
+// @require '../angular/business/components/ipp-corp-form/form.styl'
+// @require '../angular/business/components/calculator/calculator.styl'
+// @require '../angular/ipp/components/calculator/calculator.styl'
+// @require '../angular/ipp/components/form/form.styl'
+// @require '../angular/investments/components/stack/stack.styl'
+// @require '../angular/components/loading/index.styl'
+
+.link
+  text-decoration underline
+  
+  &:hover
+    text-decoration none
+
+._margin-bottom_100
+  margin-bottom 100px
+
+._margin-bottom_90
+  margin-bottom 90px
+
+._margin-bottom_60
+  margin-bottom 60px
+
+._margin-bottom_50
+  @media screen and (min-width:$screen-sm-min)
+    margin-bottom 50px
+
+._margin-bottom_40
+    margin-bottom 40px
+
+._margin-bottom_30
+  margin-bottom 40px
+
+._margin-bottom_20
+  margin-bottom 20px
+
+._padding_50
+  padding-top 25px
+  padding-bottom 25px
+
+  @media screen and (min-width:$screen-sm-min)
+    padding-top 50px
+    padding-bottom 50px
+
+.npf-text-highlight
+  background-color $colors-ops-acid
+
+
+.ui-menu.ui-autocomplete
+  border-radius 8px
+  background-color rgb(255, 255, 255)
+  box-shadow 0px 12px 40px 0px rgba(0, 0, 0, 0.1)
+  max-height unit(48 * 5, 'px')
+  overflow-x hidden
+  overflow-y auto
+
+  .ui-menu-item-wrapper
+    font-size 18px
+    line-height unit(48 / @font-size, '')
+    padding 0 20px
+    cursor pointer
+
+    &.ui-state-active
+      background #f5f6f7
+
+@keyframes npf-loader
+  0%
+    opacity 0
+    transform scale(0) translate3d(-50%, -50%, 0)
+
+  100%
+    opacity 1
+    transform sclae(1) translate3d(-50%, -50%, 0)
+
+.npf-loader
+  &__root
+    position relative
+
+  &__transclude
+
+    ~/_active &
+      opacity (1/3)
+
+  &__promise
+    display none
+    position absolute
+    left 50%
+    top 50%
+    transform translate3d(-50%, -50%, 0)
+    animation 1s npf-loader $transition-timing-function
+
+    ~/_active &
+      display block
+
+.npf-office-map
+  &__canvas
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+
+.npf-map-balloon
+  position absolute
+  background #fff
+  border-radius 6px
+
+  &__close
+    position absolute
+    left 28px
+    top 28px
+    background-image url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCAzOS4xICgzMTcyMCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+Q29tYmluZWQgU2hhcGU8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iU3ltYm9scyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IkNvbWJpbmVkLVNoYXBlIiBmaWxsPSIjQ0VEM0Q5Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTcuOTk5OTk5NzMsOC43Nzc3Nzc3NiBMMi4xNjY2NjY2NCwxNC42MTExMTA2IEwxLjc3Nzc3Nzc1LDE0Ljk5OTk5OTUgTDEsMTQuMjIyMjIxNyBMMS4zODg4ODg4OSwxMy44MzMzMzI4IEw3LjIyMjIyMTk4LDcuOTk5OTk5OTggTDEuMzg4ODg4ODcsMi4xNjY2NjY2NCBMMSwxLjc3Nzc3Nzc1IEwxLjc3Nzc3Nzc4LDEgTDIuMTY2NjY2NjUsMS4zODg4ODg4OSBMNy45OTk5OTk3Niw3LjIyMjIyMjI0IEwxMy44MzMzMzM0LDEuMzg4ODg4ODcgTDE0LjIyMjIyMjMsMSBMMTUsMS43Nzc3Nzc3OCBMMTQuNjExMTExMSwyLjE2NjY2NjY1IEw4Ljc3Nzc3NzUxLDguMDAwMDAwMDIgTDE0LjYxMTExMDYsMTMuODMzMzMzNCBMMTQuOTk5OTk5NSwxNC4yMjIyMjIzIEwxNC4yMjIyMjE3LDE1IEwxMy44MzMzMzI4LDE0LjYxMTExMTEgTDcuOTk5OTk5NzMsOC43Nzc3Nzc3NiBaIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=')
+    width 16px
+    height 16px
+
+  &::after
+    content ''
+    position absolute
+    top 50%
+    right 0
+    margin -16px -16px 0 0
+    width 0
+    height 0
+    border-style solid
+    border-width 16px 0 16px 16px
+    border-color transparent transparent transparent #fff
+
+  &__container
+    width 430px
+    margin 0 auto
+
+
+.npf-map-geolocation
+  &__title
+    font-size 20px
+    font-weight 500
+
+  &__id
+    font-size 14px
+    opacity .5
+
+  &__row
+    display flex
+    align-items baseline
+    padding 35px 0
+
+    & + &
+      border-top 1px solid #dfe2e5
+
+  &__col
+    &:first-child
+      flex 1 0
+
+  &__text
+    color #5b6065
+    font-size 14px
+    line-height unit(25 / @font-size, '')
+
+
+.npf-cluster
+  font-family 'SeroPro'
+  font-size 18px
+  color #fff
+  line-height 64px
+
+.npf-typography
+  &-subtitle
+    font-size 12px
+    line-height unit(16 / @font-size, '')
+    letter-spacing .1em
+    font-weight normal
+    text-transform uppercase
+
+
+.npf-candle-graph-pie
+  position relative
+
+  &__legends
+    position absolute
+    left 50%
+    top 50%
+    width 172px
+    pointer-events none
+    height 172px
+    transform translate3d(-50%, -50%, 0)
+
+  &__legend
+    position absolute
+    top 50%
+    left 8px
+    right 8px
+    transform translate3d(0, -50%, 0)
+    display none
+    text-align center
+
+  &__value
+    margin 4px 0 0
+    padding 4px 0 0
+    position relative
+    font-size 50px
+    font-weight 200
+
+    &::before
+      content ''
+      position absolute
+      top 0
+      left 0
+      right 0
+      height 1px
+      background #dfe2e5
+
+
+.npf-graphics
+  &__row
+    display flex
+
+  &__col
+    &_left
+      width percentage(370 / 770)
+
+    &_right
+      padding-top 60px
+      width percentage(400 / 770)
+
+.npf-graphics-legends
+  &__list
+    display flex
+    flex-wrap wrap
+    margin -12px
+
+  &__item
+    width percentage(1/2)
+    padding 12px
+
+.npf-graphics-legend
+  position relative
+  color default
+  padding-left 24px
+
+  &__icon
+    position absolute
+    left 0
+    top 2px
+    width 16px
+    height 16px
+    border-radius 50%
+    margin-right 12px
+
+  &__title
+    font-size 14px
+    line-height unit(20 / @font-size, '')
+
+.npf-investments
+  &__area
+    margin-top 50px
+    margin-bottom 50px
+
+    @media screen and (min-width:$screen-sm-min)
+      margin 97px 0
+
+  &__container
+
+    @media screen and (min-width:$screen-lg-min)
+      width 800px
+      padding 0 15px
+      margin 0 auto
+
+    &._table-view
+      .npf-investments__sections
+        display none
+      .npf-investments__sections._table
+        display block
+
+  &__section
+    padding 25px 0
+
+    &-title
+      font-size 18px
+      line-height 30px
+      font-weight 500
+      margin-bottom 30px
+
+  &__top-columns
+    position relative
+
+  &__top-column
+    &._right
+      position absolute
+      right 0
+      top -6px
+
+    &._left
+      padding-right 120px
+
+  &__top-btns
+    margin-top 30px
+
+    .npf-button
+      margin-right .5em
+      margin-bottom 1em
+
+      &._is_active
+        color #fff
+        border-color #1a991a
+        background #1a991a
+
+  &__sections
+    &._table
+      display none
+
+  &__tab
+    display none
+
+    &._is_active
+      display block
+
+.npf-dialog
+  background #fff
+  margin 0 auto
+  border-radius 6px
+  box-shadow 0px 20px 80px 0px rgba(0, 0, 0, 0.15)
+
+  &._s_m
+    width 970px
+    padding 50px 70px
+
+
+.npf-administrative-areas
+  &__row
+    display flex
+    margin 0 -15px
+
+  &__section._top
+    margin-bottom 48px
+
+  &__title
+    font-size 34px
+    font-weight 200
+    line-height unit(60 / @font-size, '')
+
+  &__col
+    width percentage(1/3)
+    padding 0 15px
+
+  &__group
+    position relative
+    margin-top 14px
+
+    &:first-child
+      margin-top 0
+
+  &__letter
+    position absolute
+    left 0
+    top 0
+    font-size 20px
+    font-weight 500
+    color #1a991a
+
+  &__list
+    padding-left 30px
+
+  &__item
+    display block
+    font-size 14px
+    padding 3px 0 11px
+    line-height unit(16 / @font-size, '')
+    transition color .25s $transition-timing-function
+
+    &:hover
+      color #1a991a
+
+.ngdialog
+  padding 48px 0
+
+.ngdialog-content
+  margin 0 auto
+
+  .ngdialog-theme-default &
+    position relative
+    border-radius 6px
+
+  .ngdialog-s-m &
+    width 970px
+    padding 50px 70px
+
+
+.ngdialog-close
+  .ngdialog-theme-default &
+    position absolute
+    cursor pointer
+    top 20px
+    right 20px
+    width 32px
+    height 32px
+    background-image url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iLTEgLTEgMTYgMTYiPiAgPHBhdGggZD0iTTE0LjI1NywwLjE2NSBMMC4yMDQsMTQuMjA2IiBzdHJva2U9IiMxYTk5MWEiIHN0cm9rZS13aWR0aD0iMSIgZmlsbC1ydWxlPSJldmVub2RkIi8+ICA8cGF0aCBkPSJNMTQuMjU3LDAuMTY1IEwwLjIwNCwxNC4yMDYiIHN0cm9rZT0iIzFhOTkxYSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDcuMjMwNTAwLCA3LjE4NTUwMCkgc2NhbGUoLTEsIDEpIHRyYW5zbGF0ZSgtNy4yMzA1MDAsIC03LjE4NTUwMCkgIi8+PC9zdmc+')
+    background-size 100%
+
+    &::before
+      display none
+
+
+.rzslider
+  margin 14px 0 14px 0
+
+  .rz-bubble
+    display none
+
+  .rz-bar
+    background #e5e5e5
+
+    &.rz-selection
+      background #1b9919
+
+  .rz-pointer
+    background #fff
+    cursor ew-resize
+    box-shadow: 0 1px 3px rgba(0,0,0, .1)
+
+    &::after
+      display none
+
+    &::before
+      content ''
+      position absolute
+      left 50%
+      top 50%
+      margin -8px 0 0 -8px
+      width 16px
+      height 16px
+      background #1b9919
+      border-radius 50%
+
+.rzslider
+  &_theme_2
+    .rz-bar.rz-selection
+    .rz-pointer::before
+      background #f7941d
+
+
+.npf-radio-group
+  display inline-block
+  vertical-align top
+  height 50px
+  border-radius 25px
+  border 2px solid #dfe2e5
+
+  &__control
+    display inline-flex
+    align-items center
+    height 50px
+    font-size 18px
+    padding 0 16px
+    cursor pointer
+    margin -2px
+
+    &:first-child
+      padding-left 24px
+      border-top-left-radius 25px
+      border-bottom-left-radius 25px
+
+    &:last-child
+      padding-right 24px
+      border-top-right-radius 25px
+      border-bottom-right-radius 25px
+
+    &_is_active
+      color #fff
+      background #1a991a
+
+    input
+      display none
+
+@keyframes cpp-wizard
+  0%
+    opacity 0
+
+  100%
+    opacity 1
+
+.npf-cpp-wizard
+  margin 60px -40px
+  padding 40px
+  background #fff
+  box-shadow 0 3px 40px rgba(0, 0, 0, .1)
+  border-radius 6px
+  overflow hidden
+  animation cpp-wizard .5s ease
+
+  &__title
+    margin-bottom 12px
+
+  &__actions
+    margin-top 24px
+
+    &-columns
+      display flex
+      align-items center
+      flex-wrap wrap
+
+    &-column
+      +mobile()
+        width 100%
+
+.npf-feedback-btn
+  position fixed
+  top 50%
+  right 0
+  width 200px
+  height 30px
+  text-align center
+  color white
+  padding-top 8px
+  margin-right -85px
+  -webkit-transform rotate(90deg)
+  -ms-transform rotate(90deg)
+  transform rotate(-90deg)
+  background-color #1a991a;
+  border-top-left-radius 5px
+  border-top-right-radius 5px
+  z-index 5000
+  cursor pointer
+
+html._ajax-loading
+  &:after
+    content ''
+    position fixed
+    left 0
+    right 0
+    top 0
+    bottom 0
+    z-index 100000
+    background-color rgba(255,255,255, 0.7)
+    // background-image url('../images/toggle-forever.gif')
+    background-position 50% 50%
+    background-repeat no-repeat
+
+.sbnpf_esia_link
+  display block
+  padding 4px 0 0 90px
+  text-decoration none
+  color #000
+  margin 32px auto 24px
+  width 432px
+  min-height 76px
+  line-height 1.4
+  // background url('../images/sbnpf-esia.png') 0 0 no-repeat
+
+  span
+    display block
+    font-size 20px
+    text-decoration underline
+  
+  +mobile()
+    width 275px
+    font-size 12px
+    span
+      font-size 16px
+
+
+
+.npf-page
+  overflow hidden
+
+  &__block
+    @media screen and (min-width:$screen-sm-min)
+      padding-top 50px
+      padding-bottom 50px
+
+  &__body
+    z-index 0
+    padding-top 25px
+    padding-bottom 25px
+
+    @media screen and (min-width: $screen-sm-min)
+      padding-bottom 100px
+      padding-top 100px
+
+    &._theme
+      &_a
+        background-color $colors-background
+
+      &_news-page
+        padding-bottom 85px
+
+      &_no-padding
+        background-color $colors-background
+        padding-bottom 0
+        padding-top 0
+
+      &_padding-50
+        padding-top 50px
+        padding-bottom 50px
+
+      &_background-image
+        background-repeat no-repeat
+        background-size 700px
+        background-position -160px 660px
+
+        @media screen and (min-width:$screen-sm-min)
+          background-size cover
+          background-position center 490px
+          min-height 1400px
+
+        @media screen and (min-width:$screen-lg-min)
+          background-size 100%
+
+.npf-bg-container
+  &._maps
+    background-image url('/local/templates/npfsb/images/bg__map.png')
+    background-repeat no-repeat
+    background-position right bottom
+    padding-top 50px
+
+    @media screen and (min-width: $screen-sm-min)
+      background-size contain
+      background-position center center
+
+    @media screen and (min-width: $screen-lg-min)
+      background-position center bottom
+      height 700px
+
+.npf-content
+  display flex
+  background #fff
+  box-shadow 0 12px 40px rgba(0,0,0,.1)
+  border-radius 5px
+  flex-direction column
+  flex-wrap nowrap
+  padding-left 20px
+  padding-right 20px
+  padding-top 30px
+  margin-top 25px
+  margin-bottom 25px
+
+  @media screen and (min-width: $screen-sm-min)
+    flex-direction row
+    height 438px
+    justify-content space-between
+    align-items center
+    margin-left -15px
+    margin-right -15px
+    margin-top 0
+    margin-bottom 0
+
+  @media screen and (min-width: $screen-lg-min)
+    padding-left 100px
+    padding-right 100px
+    margin-left 0
+    margin-right 0
+    margin-top 50px
+
+  &__title
+    font-size 30px
+    font-weight 200
+    line-height (35/30)
+    letter-spacing -.01em
+    margin-bottom 30px
+    position relative
+
+    @media screen and (min-width: $screen-sm-min)
+      font-size 40px
+      line-height 1.2
+      font-weight 300
+      margin-bottom 30px
+
+  &__description
+    font-size 16px
+    line-height 1.5
+    letter-spacing .02em
+    font-weight 300
+    margin 0 0 35px
+
+  &__item
+    &._text
+      margin-bottom 30px
+      @media screen and (min-width: $screen-sm-min)
+        width 320px
+    &._img
+      img
+        width 100%
+
+// @require './page-list/page-list.component.styl'

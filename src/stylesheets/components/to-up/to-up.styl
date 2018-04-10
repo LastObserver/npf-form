@@ -1,0 +1,31 @@
+@keyframes up
+  0%
+    opacity 0
+    transform translate3d(0, 50%, 0)
+
+  100%
+    opacity 1
+    transform translate3d(0, 0, 0)
+
+
+.npf-up
+  position fixed
+  right 0
+  bottom 30px
+  width 55px
+  cursor pointer
+  padding-top 40px
+  text-align center
+  background url(/local/templates/npfsb/images/to-up2.png) no-repeat center top
+  font-size 14px
+  color #666
+  font-weight normal
+  z-index 1500
+  animation up 1s $transition-timing-function
+  display none
+
+  @media screen and (max-width:$screen-xs-max)
+    font-size 0
+
+  &_is_visible
+    display block

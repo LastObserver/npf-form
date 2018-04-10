@@ -1,0 +1,69 @@
+@import "~stylesheets/_variables.styl";
+
+$navigation = '.npf-header-navigation'
+
+{$navigation}
+  height 90px
+  position relative
+  display none
+
+  @media screen and (min-width: $screen-lg-min)
+    display block
+
+  &__wrapper
+    position relative
+    border-bottom 1px solid $colors-line-lighter
+    z-index 2000
+    height 90px
+
+    &._fixed
+      position fixed
+      left 0
+      top 0
+      right 0
+      background #fff
+
+  &__container
+    position relative
+    display flex
+    justify-content flex-start
+
+  &__item
+    padding-right 30px
+    position relative
+    &:first-of-type
+      {$navigation}
+        &__bar
+          border-bottom-left-radius 4px
+    &:last-of-type
+      {$navigation}
+        &__bar
+          border-bottom-right-radius 4px
+      flex-grow 1
+      padding-right 0
+
+  &__cta-btn
+    position absolute
+    right 0
+    top 50%
+    transform translateY(-50%)
+    z-index 100
+
+  &__link
+    display block
+    height 90px
+    line-height 90px
+    text-decoration none
+    font-size 16px
+    color $colors-text
+    font-weight 500
+
+    &:hover
+      text-decoration underline
+
+  &__bar
+    position absolute
+    left 0
+    bottom -4px
+    background #ffa715
+    height 4px

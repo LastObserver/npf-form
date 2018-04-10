@@ -1,0 +1,41 @@
+$ipp = '.npf-ipp'
+
+{ $ipp}
+
+  &-features
+    background-image url('/local/templates/npfsb/images/ipp-about-next-bg.jpg')
+    background-repeat no-repeat
+    background-position center
+    background-size cover
+    padding-bottom 130px
+
+    &__row
+      make-row()
+
+      @media screen and (min-width:$screen-sm-min)
+        & + .npf-button
+          margin-top 125px
+
+    &__feature
+      make-xs-column(12)
+      make-sm-column(6)
+      make-lg-column(4)
+      text-align center
+      margin-bottom 50px
+
+      @media screen and (min-width:$screen-sm-min)
+        text-align left
+        margin-bottom 30px
+
+    &__icon
+      margin-bottom 18px
+      height 60px
+
+      img
+        height 100%
+
+    &__text
+      color $colors-text
+      font-size 18px
+      font-weight 300
+      line-height ( 30/18 )

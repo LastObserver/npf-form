@@ -1,0 +1,167 @@
+$map = '.npf-map'
+
+{ $map }
+  position relative
+
+  &__container
+    height 1295px
+    width 100%
+
+    @media screen and (min-width:$screen-lg-min)
+      height 1000px
+
+  &-controller
+    background #fff
+    box-shadow 0 20px 81px rgba(0, 0, 0, 0.15)
+    border-radius 10px
+    position absolute
+    left 10px
+    right 10px
+    top 10px
+    padding-left 20px
+    padding-right 20px
+
+    @media screen and (min-width:$screen-lg-min)
+      width 575px
+      top 100px
+      left 135px
+      padding-left 70px
+      padding-right 70px
+
+
+    .npf-tabs__switchers
+      background #fff
+      border-radius 10px
+
+    .npf-tabs__containers
+      padding-bottom 20px
+
+    .npf-tabs__container
+      background #fff
+      border-radius 10px
+
+    .npf-tabs__switcher
+      display inline-block
+      font-size 20px
+      font-weight 500
+      letter-spacing .010em
+      padding-top 40px
+      padding-bottom 34px
+      padding-left 20px
+      padding-right 20px
+      position relative
+
+      &._current
+        &::after
+          background-color $colors-ipp
+          border-radius 3px 3px 0 0
+          bottom -1px
+          content ''
+          display block
+          height 4px
+          left 0
+          position absolute
+          width 100%
+
+    .npf-tabs__label
+      font-size 14px
+      font-weight 400
+      line-height ( 30/14 )
+
+    .npf-input
+      margin-bottom 38px
+
+    &__block
+      padding-top 32px
+      padding-bottom 32px
+      border-top 1px solid $colors-line-lighter
+
+    &__title
+      color #000
+      font-size 18px
+      letter-spacing .02em
+      line-height ( 30/18 )
+      margin-bottom 16px
+
+      @media screen and (min-width:$screen-sm-min)
+        margin-bottom 26px
+
+    &__text
+      color $colors-text-lighter
+      font-family 'Open Sans', Arial, sans-serif
+      font-size 14px
+      line-height ( 25/14 )
+      letter-spacing -.025em
+
+    &__offices
+      height 467px
+      position relative
+
+      .npf-map-controller__title
+        margin-bottom 0
+
+    a
+      color $colors-ops
+
+
+  &__zoom
+    background-color #fff
+    border-radius 50%
+    color $colors-ops
+    cursor pointer
+    font-size 50px
+    line-height 65px
+    height 65px
+    text-align center
+    width 65px
+    box-shadow 0px 10px 30px 0px rgba(0, 0, 0, 0.1)
+    position relative
+
+    &._theme_plus
+      &::after,
+      &::before
+        position absolute
+        content ''
+        display block
+        background-color $colors-ops
+        border-radius 1px
+        top 50%
+        left 50%
+        transform translate3d( -50%, -50%, 0)
+
+      &::after
+        width 2px
+        height 24px
+
+      &::before
+        width 24px
+        height 2px
+
+    &._theme_minus
+      margin-bottom 20px
+      &::after
+        position absolute
+        content ''
+        display block
+        background-color $colors-ops
+        border-radius 1px
+        top 50%
+        left 50%
+        transform translate3d( -50%, -50%, 0)
+        width 24px
+        height 2px
+
+  &__geolocationBtn
+    background-color #fff
+    // background-image url(../images/ic_geolocation.png)
+    background-repeat no-repeat
+    background-position 50% 50%
+    border-radius 50%
+    color $colors-ops
+    cursor pointer
+    font-size 50px
+    line-height 65px
+    height 65px
+    text-align center
+    width 65px
+    box-shadow 0px 10px 30px 0px rgba(0, 0, 0, 0.1)

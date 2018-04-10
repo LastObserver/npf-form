@@ -1,0 +1,1360 @@
+.npf-form-top
+  text-align center
+  margin-bottom 60px
+
+  &__title
+    font-size 12px
+    color #5b6065
+    margin-bottom 50px
+    text-transform uppercase
+
+  &__requires
+    font-weight 300
+    color #3d4349
+
+.npf-form-stages
+  margin-bottom 50px
+  display flex
+  justify-content center
+  align-items center
+
+  &__item
+    width 40px
+    height 40px
+    position relative
+    margin 0 13px
+
+    &._helper
+      background $colors-ops
+      border-radius 50%
+      color #fff
+      line-height 41px
+      font-weight 500
+
+    svg
+      width 100%
+      height 100%
+      stroke-width 2px
+      display block
+
+      #progress
+        stroke-dasharray 0 1
+
+    &[data-stage]
+      &::before
+        display block
+        position absolute
+        content attr(data-stage)
+        left 0
+        top 0
+        right 0
+        bottom 0
+        line-height 41px
+
+        font-weight 500
+
+      &first-child
+        &::after
+          display none
+
+      &::after
+        display block
+        position absolute
+        content ''
+        width 26px
+        height 2px
+        background #dfe2e5
+        left 0
+        top 50%
+        transform translate(-100%,-50%)
+
+  &__icon
+    &._complete
+      position absolute
+      width 17px
+      height 12px
+      left 50%
+      top 50%
+      transform translate(-50%,-50%)
+
+      svg
+        fill #5b6065
+
+.npf-form-body
+  &__title
+    margin-bottom 40px
+    text-align center
+    font-size 26px
+    font-weight 500
+    color #3d4349
+
+  &__plate
+    position relative
+    z-index 1
+    padding 50px
+
+    &._hide
+      display none
+
+  &__row
+    &._right
+      text-align right
+      margin-left 0
+      margin-right 0
+
+  &__reset-link
+    display inline-block
+    vertical-align middle
+    font-weight 500
+    font-size 18px
+    color #000
+    margin-right 1.5em
+
+  &._feedback-modal
+    position relative
+    padding-top 50px
+    padding-bottom 50px
+    background-image url('/local/templates/npfsb/images/leaves_top.png')
+    background-position top left
+    background-repeat no-repeat
+
+    &:before
+      content ''
+      position absolute
+      left 0
+      right 0
+      bottom 0
+      height 187px
+      background-image url('/local/templates/npfsb/images/leaves_bottom.png')
+      background-position bottom left
+
+  &__thanks
+    display none
+    position relative
+    margin 100px auto
+    max-width 600px
+
+    &._show
+      display block
+
+  &._ipp-form
+    max-width 770px
+    margin-left auto
+    margin-right auto
+
+.npf-input-group
+  position relative
+
+  &__submit
+    position absolute
+    right 20px
+    top 50%
+    transform translate3d(0, -50%, 0)
+    border-radius 50%
+    cursor pointer
+    width 36px
+    text-align center
+    height 36px
+    margin 0
+    padding 0
+    border 0
+    outline 0
+
+    svg
+      stroke #fff
+      fill #fff
+      stroke-width 2px
+
+    ~/._theme_kpp &
+      background-color $colors-kpp
+
+  &._theme_border-bottom
+    .npf-input-group
+      &__input
+        border 0
+        border-bottom 1px solid $colors-line-lighter
+        border-radius 0
+        padding 0
+        padding-bottom 6px
+        &:focus
+          border-color $colors-ops
+      &__label
+        padding 0
+
+  &._theme_range-picker
+    background none
+    color $colors-text
+    border 2px solid $colors-line-lighter
+    border-radius 30px
+    height 45px
+
+    .npf-input-group__input
+      background none
+      border 0
+      padding 0 30px
+      line-height 45px
+
+  &._small-offset
+    margin-bottom 20px
+  
+  &._medium-offset
+    margin-bottom 36px
+
+  &._none
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__none-text
+      display block
+
+  &._error-text
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__error-text
+    .npf-input-group__kladr-error
+      display block
+
+    .select2.select2-container
+      border 1px solid #ed1c24 !important
+
+  &__find
+    color $colors-ops
+
+    position absolute
+    top 23px
+    right 20px
+    vertical-align middle
+    z-index 2
+
+    img
+      margin-left 8px
+
+    svg
+      width 12px
+      height 12px
+      stroke $colors-ops !important
+      stroke-width 2px
+      vertical-align -1px
+      margin-left 8px
+      display inline-block
+
+  &__datepicker
+    position absolute
+    top 50%
+    right 20px
+    cursor pointer
+    transform translateY(-50%)
+
+    svg
+      width 16px
+      height 17px
+
+      rect
+        stroke $colors-ops !important
+
+      path
+        fill $colors-ops !important
+
+  &__helper
+    font-size 14px
+    line-height unit(20 / @font-size, '')
+    font-weight 300
+    margin-top 5px
+    opacity (1/3)
+    
+    a
+      font-weight bold
+      cursor pointer
+  
+  &__static-helper
+    font-size 14px
+    line-height unit(20 / @font-size, '')
+    font-weight 300
+    margin-top 5px
+    opacity (1/3)
+    
+    a
+      font-weight bold
+      text-decoration underline
+      cursor pointer
+
+  &__input
+    font-size 18px
+    padding 0 20px
+    line-height normal
+    height 60px
+    margin 0
+    border 1px solid #cfd3d6
+    border-radius 4px
+    outline none
+    width 100%
+    position relative
+    z-index 1
+    background none
+    
+    &[disabled]
+      background-color #f8f8f8
+      color #b4b4b4
+
+    &::-ms-clear
+      display none
+
+    &:focus, &._highlighted
+      border-color $colors-ops
+
+
+      ~/._theme_kpp &
+        border-color $colors-kpp
+
+    &._theme_ipp
+      font-size 16px
+
+  &__label
+    white-space nowrap
+    max-width 90%
+    overflow hidden
+    text-overflow ellipsis
+    position absolute
+    top 2px
+    left 0
+    transform translate3d(20px, 18px, 0)
+    pointer-events none
+    line-height 1.5
+    transition transform, color
+    transform-origin top left
+    color #afafb1
+
+    ~/._has-value &
+    ~/__input:focus + &
+      transform translate3d(0, -100%, 0) scale(14/16)
+      color #4c4c4c
+
+    &._ellipsis
+      white-space nowrap
+      max-width 100%
+      overflow hidden
+      text-overflow ellipsis
+
+  &__link
+    display block
+    position absolute
+    top 50%
+    transform translateY(-50%)
+    right 0
+    height 10px
+
+  &__none-text
+    display none
+    color red
+    position absolute
+    top 100%
+    font-size 14px
+    margin-top 5px
+
+  &__error-text
+  &__kladr-error
+    display none
+    color red
+    // position absolute
+    top 100%
+    font-size 14px
+    margin-top 5px
+
+  &__kladr
+    margin-bottom 0
+
+  &__kladr-area
+    font-size 10px
+    line-height 1.2
+    padding-bottom 10px
+
+  &__kladr-title
+    font-size 16px
+    line-height 1.2
+    margin-bottom 5px
+    padding-top 10px
+    
+    &._no-parent
+      padding-top 20px
+      padding-bottom 15px
+  
+  &._kladr-loading
+    &:after
+      content '';
+      position absolute
+      left 0
+      right 10px
+      top 0
+      bottom 0
+      // background-image url('../images/toggle-forever.gif')
+      background-repeat no-repeat
+      background-position 100% 11px
+      background-size 40px 40px
+      z-index 2
+
+  .ui-menu.ui-autocomplete
+    max-height 580px
+  
+  &__address-parents
+    position absolute
+    top 40px
+    left 20px
+    font-size 70%
+    
+  &._error-text
+    .npf-input-group
+      &__address-parents
+        display none
+    
+.npf-checkbox-group
+  position relative
+  cursor pointer
+  display flex
+  align-items center
+  margin-bottom 40px
+  user-select none
+
+  a
+    text-decoration underline
+
+  &__checkbox
+    margin-right 16px
+    position relative
+    top -2px
+
+    input
+      display none
+
+      &:checked + .npf-checkbox-group__styler::after
+        transform scale(1)
+        opacity 1
+
+  &._none
+    .npf-checkbox-group__styler
+      border-color red
+  
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__none-text
+      display block
+
+  &._error-text
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__error-text
+    .npf-input-group__kladr-text
+      display block
+      
+  &__styler
+    display block
+    width 24px
+    height 24px
+    border-radius 2px
+    border 1px solid #cfd3d6
+    pointer-events none
+
+    &::after
+      opacity 0
+      transform scale(0)
+      transition transform, opacity
+      transform-origin center
+      border-radius 2px
+      content ''
+      width 12px
+      height 12px
+      position absolute
+      top 6px
+      left 6px
+      background-color $colors-ops
+
+  &__label
+    line-height 1.5
+    color #787878
+
+  &__field-label
+    margin-bottom 20px
+
+  &__item
+    margin-right 20px
+    margin-top 10px
+    margin-bottom 10px
+
+    &:last-child
+      margin-right 0
+
+  &._simple
+    display block
+    margin-bottom 0
+    margin-right 20px
+
+    > label
+      display inline-flex
+      cursor pointer
+
+.npf-file-group
+  cursor pointer
+  display flex
+  flex-direction column
+
+  &__file
+    padding-top 6px
+    input
+      display none
+
+  &__styler
+    display block
+    width 100%
+    border-bottom 1px solid $colors-line-lighter
+
+  &__label
+    display block
+    width 100%
+    color $colors-text-lighter
+
+    line-height (30/18)
+    opacity .7
+    position relative
+
+  &__note
+    opacity 0.7
+    color #000
+    font-size 14px
+    font-weight 300
+    line-height (25/14)
+
+  &__attach
+    display block
+    position absolute
+    top 50%
+    transform translateY(-50%)
+    right 0
+    height 21px
+    width 19px
+
+.npf-select-group
+  position relative
+  line-height 30px
+  font-size 18px
+  outline none
+  width 100%
+  
+  &._error-text
+    .select2.select2-container
+      border 1px solid #ed1c24 !important
+
+  &._theme_kpp
+    .select2.select2-container--focus
+      border-color $colors-kpp
+    .npf-select-group__icon
+      svg
+        fill $colors-kpp
+
+  &._theme_tags_below
+    .select2-selection__choice
+      display none
+
+  &._theme_default
+    .select2
+      border 1px solid $colors-line
+      border-radius 4px
+      padding-left 20px
+    .select2.select2-container--focus
+      border-color $colors-ops
+
+    .npf-select-group__icon
+      right 20px
+
+  &._theme_white
+    .select2
+      border-bottom 1px solid rgba(255, 255, 255, 0.6)
+      padding-bottom 0
+      padding-top 0
+    .npf-select-group__icon
+      svg
+        fill #fff
+
+  &._theme_green
+    .select2
+      border-bottom 1px solid $colors-line
+      padding-bottom 0
+      padding-top 0
+    .npf-select-group__icon
+      svg
+        fill $colors-ops
+
+  &._theme_question
+    select
+      height 60px
+      visibility hidden
+
+    .select2-container
+      min-width 100%
+      max-width 100%
+
+    .select2
+      border 1px solid $colors-line
+      border-radius 4px
+      padding-left 20px
+
+    .select2.select2-container--focus
+      border-color $colors-kpp
+
+    .npf-select-group__icon
+      right 14px
+
+      svg
+        fill $colors-kpp
+
+    .npf-select-group__select-container
+      background-color #fff
+  &._theme_division
+    @extend .npf-select-group._theme_question
+    
+    .select2
+      // padding-right 30px
+      padding 0 30px 0 0
+
+    .select2-container 
+      .select2-selection--single
+        padding 10px 0 10px 10px
+        height 56px
+        line-height 1.1
+        // line-height 48px
+        vertical-align middle
+        .select2-selection__rendered
+          vertical-align middle
+          white-space normal
+          &[title]
+            line-height 36px
+        .select2-selection__arrow
+          top 15px
+       .select2-selection__placeholder
+        font-size 14px
+
+  .select2-container--open + .npf-select-group__icon
+    transform translateY(-50%) rotate(180deg)
+
+  &__select-container
+    position relative
+
+    .select2
+      padding-top 16px
+      padding-bottom 10px
+
+  &__icon
+    height 9px
+    position absolute
+    right 0
+    top 50%
+    width 16px
+    transform translateY(-50%)
+    transition transform .3s ease-in
+    pointer-events none
+    svg
+      display block
+      fill $colors-ops
+
+  &__label
+    position absolute
+    bottom 100%
+    left 0
+    font-size 14px
+
+  &__select-tags
+    margin-top 15px
+    margin-bottom 30px
+    clearfix()
+
+  &__tag-selected
+    float left
+    background-color $colors-kpp
+    border-radius 12px
+    padding-left 10px
+    padding-right 25px
+    position relative
+    margin-right 5px
+    margin-bottom 10px
+    // height 25px
+    div
+      color #fff
+      font-family "Open Sans"
+      font-size 12px
+      font-weight 600
+      line-height 25px
+      text-transform uppercase
+      letter-spacing .050em
+
+
+  &__destroy-tag-selected
+    color #fff
+    cursor pointer
+    font-size 18px
+    position absolute
+    line-height 25px
+    right 10px
+    top 0
+    &:hover
+      text-decoration none
+
+  select
+    width 100%
+  
+  &._error-text
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__error-text
+      display block
+      
+  &__floating-label
+    @extend .npf-input-group__label
+    font-size 16px
+
+    ~/._has-value &
+      transform translate3d(0, -100%, 0) scale(14/16)
+      color #4c4c4c
+      &_multiline
+        @media screen and (min-width 768px)
+          max-width none
+          width 114%
+    &_multiline
+      @media screen and (min-width 768px)
+        line-height 1
+        white-space initial
+        top -4px
+      
+.npf-textarea-group
+  position relative
+
+  &._has-value
+    .npf-textarea-group__label
+      top -34px
+      font-size 14px
+      line-height 14px
+      padding 10px 0
+      color #787878
+
+  &._none
+    .npf-textarea-group__input
+      border 1px solid #ed1c24
+
+    .npf-textarea-group__helper
+      color #ed1c24
+
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__none-text
+      display block
+
+  &._error-text
+    .npf-input-group__input
+      border 1px solid #ed1c24
+
+    .npf-input-group__helper
+      display none
+      color #ed1c24
+
+    .npf-input-group__error-text
+      display block
+
+  &__find
+    color $colors-ops
+
+    position absolute
+    top 21px
+    right 21px
+    vertical-align middle
+    z-index 2
+
+    img
+      margin-left 10px
+
+    svg
+      width 12px
+      height 13px
+      stroke $colors-ops !important
+      stroke-width 2px
+      position relative
+      top -1px
+      margin-left 10px
+      display inline-block
+
+  &__datepicker
+    position absolute
+    top 50%
+    right 20px
+    cursor pointer
+    transform translateY(-50%)
+
+    svg
+      width 16px
+      height 17px
+
+      rect
+        stroke $colors-ops !important
+
+      path
+        fill $colors-ops !important
+
+  &__helper
+    font-size 14px
+    font-weight 300
+    margin-top 12px
+    color #7c7c7c
+    line-height 1.5
+
+  &__input
+    font-size 18px
+    padding 14px 20px
+    line-height 30px
+    border 1px solid #cfd3d6
+    border-radius 4px
+    outline none
+    width 100%
+    resize none
+
+    &:focus
+      border-color $colors-ops
+
+      & + .npf-textarea-group__label
+        top -34px
+        font-size 14px
+        line-height 14px
+        padding 10px 0
+
+    &._theme_ipp
+      font-size 16px
+
+  &__label
+    position absolute
+    pointer-events none
+    color #afafb1
+    transition top 0.2s ease-out
+    top 1px
+    line-height 30px
+    padding 14px 20px
+
+  &__link
+    display block
+    position absolute
+    top 50%
+    transform translateY(-50%)
+    right 0
+    height 10px
+
+.npf-captcha-group
+  clearfix()
+
+  &__image-group
+    position relative
+    float right
+    width 300px
+    min-height 60px
+
+    img
+      width 166px
+      height 59px
+      
+    input
+      position absolute
+      left 0
+      top 0
+      width 1px
+      height 1px
+      overflow hidden
+      visibility hidden
+
+  &__input-group
+    margin-right 330px
+
+  &__update
+    position absolute
+    top 50%
+    margin-left 15px
+    margin-top -9px
+    font-size 14px
+    color #a3a3a3
+    border-bottom 1px dashed #a3a3a3
+
+    &:before
+      content ''
+      position absolute
+      left 100%
+      top 50%
+      margin-left 5px
+      margin-top -7px
+      width 14px
+      height 14px
+      background-image url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAOCAMAAAAsYw3eAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAA4VBMVEUAAAAamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoamRoAAABoR1UIAAAASXRSTlMAVNO84enrwGgHGf72j1ZViu3QIhzKLBbJ2gkUBi6HKxLoetRh0k1E+fdLUvjLgV3FbBp4tU4DBMchpeK6omlr+vUQAUqjzJvyqNGF0QAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAACKSURBVAjXY2BgYGRiQABmFmZWNnYOThCbi5uHl49fQFBIGMgREfIUFWNgEJeQlGKQlmGQlZMHCiooKjEoq8D0KqkycKvBOOoaDJpaMI62DoOuHoyjb8BgKGgEZBibmJoxmDGYWzBZMjCIWWlYi4CMtNG0tbO3cnB0Aql1dnF1E7VVdEdyoYcsAwMATgUMfvy6XrMAAAAASUVORK5CYII=')
+      background-repeat no-repeat
+      background-position 50% 50%
+
+    &._loading
+      &:before
+        animation .5s rotate360 infinite linear
+  @media (max-width 560px)
+    &__image-group
+      float left
+      margin-bottom 16px
+    &__input-group
+      float left 
+      width 100%
+  
+.npf-form-bone._ipp-form
+  @media (max-width: 768px)
+    .npf-captcha-group
+      &__image-group
+        float none
+      
+      &__input-group
+        margin-top 30px
+        margin-right 0
+
+.npf-radio-group
+  cursor pointer
+  display flex
+  align-items center
+  margin-bottom 40px
+  user-select none
+  border none
+
+  a
+    text-decoration underline
+
+  &__radio
+    margin-right 20px
+    position relative
+
+    input
+      display none
+
+      &:checked + .npf-radio-group__styler::after
+        opacity 1
+
+  &__styler
+    display block
+    width 28px
+    height 28px
+    border-radius 50%
+    border 1px solid #cfd3d6
+    pointer-events none
+
+    &::after
+      border-radius 50%
+      content ''
+      width 12px
+      height 12px
+      position absolute
+      top 8px
+      left 8px
+      opacity 0
+      background-color $colors-ops
+
+  &__label
+    line-height 1.5
+    color #787878
+
+  &._simple
+    height auto
+    border none
+    cursor default
+    margin-bottom 0
+
+    .npf-radio-group
+      &__field-label
+        margin-bottom 20px
+
+      &__item
+        position relative
+        padding-left 40px
+        margin-bottom 10px
+        margin-top 10px
+        display inline-block
+        margin-right 1.5em
+        cursor pointer
+
+      &__radio
+        position absolute
+        left 0
+        top -3px
+        margin 0
+        
+      &__items
+        margin-top -10px
+        margin-bottom -10px
+
+  &._theme_chart
+    height 45px
+
+    .npf-radio-group
+      &__control
+        height 45px
+        padding 0 15px
+        color #1a991a
+
+        &:first-child
+          padding-left 15px
+
+        &:last-child
+          padding-right 15px
+
+        svg
+          width 20px
+          height 20px
+
+        &._is_active
+          color #fff
+          background #1a991a
+
+  &._left-labeled
+    position relative
+    height auto
+    border none
+    padding-left 120px
+    border none
+    cursor default
+
+    .npf-radio-group
+      &__field-label
+        position absolute
+        left 0
+        top 3px
+
+      &__item
+        position relative
+        padding-left 40px
+        display table
+        margin-right 2em
+        cursor pointer
+        margin-bottom 15px
+
+        &:last-child
+          margin-bottom 0
+
+      &__radio
+        position absolute
+        left 0
+        top 0
+        margin 0
+
+.npf-form-title
+  font-weight bold
+  margin-bottom 40px
+  margin-top 60px
+  line-height 1.2
+
+.npf-form-content
+  background #fff
+  box-shadow 0 20px 81px rgba(0,0,0,.15)
+  border-radius 10px
+  margin 0 -100px 40px
+  padding 20px 15px
+  position relative
+
+  &__submit
+    margin-top 60px
+    text-align center
+
+  .js-scrollbar
+    overflow hidden
+    max-height 500px
+    position relative
+    padding 20px 85px
+
+  p
+    font-size 14px
+    line-height 1.5
+    margin-bottom 30px
+
+    &last-child
+      margin-bottom 0
+  
+  ul
+    font-weight 300
+    font-size 14px
+    line-height 1.5
+    margin-bottom 30px
+    
+    &last-child
+      margin-bottom 0
+
+  &._theme_b
+    font-size 18px
+    font-weight 200
+    margin 0
+    padding 90px 90px 60px
+    max-width 100%
+    
+    @media (max-width: 1010px)
+      padding 30px
+
+    p
+      font-size 18px
+      font-weight 200
+      @media (max-width: 1010px)
+        font-size 14px
+    
+    ul
+      font-size 18px
+      font-weight 200
+      @media (max-width: 1010px)
+        font-size 14px
+        
+    em
+      font-style normal
+      text-decoration underline
+
+.npf-form-complete
+  &._offset_top
+    padding-top 60px
+
+  &._centred
+    text-align center
+
+  &__title
+    font-size 26px
+    line-height 1.4
+    font-weight 500
+    margin-bottom 20px
+
+    &-icon
+      margin-bottom 30px
+
+      svg
+        display inline-block
+        width 110px
+        .form-complete-icon__line
+          fill $colors-ipp
+        .form-complete-icon__circle
+          fill $colors-ipp-lighter
+        .form-complete-icon__check
+          stroke $colors-ipp
+
+  &__content
+    a
+      border-bottom 1px solid
+
+  &__social
+    display inline-block
+    width 32px
+    height 32px
+    margin 0 4px
+    border none !important
+
+    svg
+      width 100%
+
+  &__icons
+    padding 40px 0 50px
+
+  &__icons-item
+    padding 0 10px
+    display inline-block
+
+    &._download
+      svg
+        fill none
+        stroke #cfd3d6
+
+    &._print
+      svg
+        fill #cfd3d6
+        stroke none
+
+  &__btns
+    margin-top 60px
+    margin-bottom 40px
+
+  &__contacts
+    font-size 18px
+    line-height 1.5
+    font-weight 300
+
+  &__contacts-text
+    margin-bottom 30px
+  
+  &__links-holder
+    margin-top 30px
+    margin-bottom -20px
+    text-align center
+  
+  &__download-link
+    display inline-block
+    width 24px
+    height 24px
+    background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkVEMzZBQjdEMjlBRTExRTdBN0VFQzZFNjU4Rjk2NzRCIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkVEMzZBQjdFMjlBRTExRTdBN0VFQzZFNjU4Rjk2NzRCIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RUQzNkFCN0IyOUFFMTFFN0E3RUVDNkU2NThGOTY3NEIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RUQzNkFCN0MyOUFFMTFFN0E3RUVDNkU2NThGOTY3NEIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6EWOhyAAABBUlEQVR42mL8//8/AzHgwpXrIOowlGtroKNJlD4WBtKADYnqGZgYaAxGLRgBFjAi5wNoWscHYIoZ8SlCziMDFkQHQB4CYhkizJAE4rNAfIwUC0A5XB9aNCjjMVwBqsYIiFlJscAX6iKYATpY1GggOeAMEHuQYsF7IHYD4j3QIDgIxGZI8oZQMVAQHgJiZyB+S2oy/QrEPkC8EYiFoJbBwD4gFgPibUDsCcSfcCbT85evEVPiLgDiaCD+h+SwlUAcB8S/KM1of6AGzYCqB+G5UAt/EeO621C2Kh51IJdnAvEHIOYA4iKkTIcL3IYFEVG5kwzwf7Q0JbnS/08rH3ykoQc+AgQYAGxwOyF1M4IFAAAAAElFTkSuQmCC')
+    background-repeat no-repeat
+    background-position 50% 50%
+    cursor pointer
+    
+.npf-steps-line
+  &._centred
+    text-align center
+
+  &__steps-holder
+    position relative
+    display inline-block
+    vertical-align middle
+
+  &__progress-bar
+    position absolute
+    left 0
+    right 0
+    top 50%
+    height 2px
+    margin-top -1px
+    background #e0e3e6
+
+  &__progress-line
+    position absolute
+    left 0
+    top 0
+    bottom 0
+    background-color #1a991a
+
+  &__steps
+    list-style none
+    &:after
+      content ''
+      display block
+      clear both
+
+  &__step
+    position relative
+    float left
+    font-weight 500
+    width 40px
+    height 40px
+    margin-left 40px
+    border-radius 50%
+    background #fff
+    border 2px solid #e0e3e6
+
+    &:first-child
+      margin-left 0
+
+    canvas
+      position absolute
+      left -2px
+      top -2px
+
+    &._complete
+      background-position 50% 50%
+      background-size: 15px 15px
+      background-repeat no-repeat
+      background-image url('data:image/svg+xml;base64,ICAgICAgICAgICAgICAgICAgICAgICAgICA8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE3LjY5IiBoZWlnaHQ9IjEyLjUiIHZpZXdCb3g9IjAgMCAxNy42ODggMTIuNSI+PHBhdGggZD0iTTI3MS44MiA0NDAuMzJhMSAxIDAgMCAxIDEuNDEgMGw0Ljk1IDQuOTVhMSAxIDAgMSAxLTEuNDEgMS40MWwtNC45NS00Ljk1YTEgMSAwIDAgMSAwLTEuNDF6bTE3LjEtNS4zYTEgMSAwIDAgMSAuMDEgMS40MWwtMTAuNDQgMTAuNTNhMSAxIDAgMSAxLTEuNDMtMS40bDEwLjQ0LTEwLjUzYTEgMSAwIDAgMSAxLjQyIDB6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjcxLjUzIC00MzQuNzUpIj48L3BhdGg+PC9zdmc+')
+
+      .npf-steps-line__step-text
+        display none
+
+    &._success
+      background-position 50% 50%
+      background-size: 15px 15px
+      background-repeat no-repeat
+      border-color #1a991a
+      background-image url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNy42OSIgaGVpZ2h0PSIxMi41IiB2aWV3Qm94PSIwIDAgMTcuNjg4IDEyLjUiPiAgPHBhdGggZD0iTTI3MS44MiA0NDAuMzJhMSAxIDAgMCAxIDEuNDEgMGw0Ljk1IDQuOTVhMSAxIDAgMSAxLTEuNDEgMS40MWwtNC45NS00Ljk1YTEgMSAwIDAgMSAwLTEuNDF6bTE3LjEtNS4zYTEgMSAwIDAgMSAuMDEgMS40MWwtMTAuNDQgMTAuNTNhMSAxIDAgMSAxLTEuNDMtMS40bDEwLjQ0LTEwLjUzYTEgMSAwIDAgMSAxLjQyIDB6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjcxLjUzIC00MzQuNzUpIiBmaWxsPSIjMWE5OTFhIj48L3BhdGg+PC9zdmc+')
+      .npf-steps-line__step-text
+        display none
+
+  &__step-text
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+    margin auto
+    line-height 40px
+    text-align center
+
+  &__help-holder
+    display inline-block
+    vertical-align middle
+    margin-left 40px
+
+  &__help
+    display block
+    line-height 40px
+    text-align center
+    font-weight 500
+    width 40px
+    height 40px
+    background-color rgb(26, 153, 26);
+    border-radius 50%
+    color white
+  @media (max-width 480px)
+    &__steps-holder
+      margin-bottom 16px
+    &__help-holder
+      margin-left 0
+
+.npf-form-bone._ipp-form
+  @media (max-width: 768px)
+    .npf-steps-line__step
+      margin-left 15px
+      
+      &:first-child
+        margin-left 0
+    
+    .npf-steps-line__help-holder
+      margin-left 15px
+      
+.js-ajax-form
+  &__hide
+    &._hide
+      display none
+
+  &__show
+    display none
+    &._show
+      display block
+
+.npf-form-success
+  &__title
+    font-weight 500
+    font-size 26px
+    margin-bottom 40px
+
+  &__body
+    position relative
+    min-height 40px
+
+  &__text
+    margin-left 60px
+
+  &__icon
+    width 40px
+    height 40px
+    position absolute
+    top -15px
+
+    svg
+      width 100%
+      height auto
+    
+
+

@@ -1,0 +1,28 @@
+clearfix()
+  &::after
+  &::before
+    display table
+    content ''
+
+  &::after
+    clear both
+
+transition()
+  transition-timing-function $transition-timing-function
+  transition-duration $transition-duration
+  transition-property arguments
+
+center-block()
+  display block
+  float none !important
+  margin-left auto
+  margin-right auto
+
+make-row()
+  margin-left -10px
+  margin-right -10px
+  clearfix()
+
+  @media screen and (min-width:$screen-sm-min)
+    margin-left -15px
+    margin-right -15px

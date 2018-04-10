@@ -1,0 +1,8 @@
+mixin header-navigation(...text)
+  +b.header-navigation&attributes(attributes)
+    +e.wrapper
+      +e.container.container
+        each item, val in text
+          +e.item
+            +e.A.link(href="#anchor" + val)=item
+            +e.bar

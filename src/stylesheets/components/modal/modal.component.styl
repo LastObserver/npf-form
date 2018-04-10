@@ -1,0 +1,54 @@
+html
+  &._open-modal
+    overflow hidden
+
+  &._modal-blur
+    .npf-page
+      filter blur(5px)
+
+.npf-modal-overlay
+  position fixed
+  left 0
+  right 0
+  top 0
+  bottom 0
+  overflow-x hidden
+  background rgba(0,0,0,.3)
+  display none
+  opacity 0
+  z-index 9999
+
+.npf-modal-content
+  background #fff
+  margin 100px auto
+  position relative
+  border-radius 4px
+  max-width 970px
+
+  &._wide
+    max-width 1170px
+
+  &__close
+    position absolute
+    cursor pointer
+    bottom -40px
+    left 50%
+    transform translateX(-50%)
+  
+    path
+      fill #fff
+
+    +above('lg')
+      left auto
+      margin-right -12px
+      top -40px
+      right -40px
+      transform translate(0)
+
+    &._inner
+      top 60px
+      right 60px
+
+    svg
+      width 25px
+      height 25px

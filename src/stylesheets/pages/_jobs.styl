@@ -1,0 +1,559 @@
+$jobs = '.npf-jobs'
+
+{$jobs}
+
+  &-list
+    margin-bottom 111px
+    position relative
+
+    &__wrapper
+
+      @media screen and (min-width: $screen-lg-min)
+        margin-left auto
+        margin-right auto
+        width 970px
+
+    &__item
+      background #fff
+      border-radius 6px
+      margin-bottom 15px
+      &._hidden
+        {$jobs}
+          &-list
+            &__job-info-container
+              height 0
+
+    &__label
+      cursor pointer
+      text-align center
+      padding 50px 10px
+      display flex
+      flex-direction column
+      justify-content space-between
+
+      @media screen and (min-width: $screen-sm-min)
+        flex-direction row
+        text-align left
+        padding 45px 40px
+
+    &__job-name
+      display inline-block
+      font-size 26px
+      font-weight 500
+      letter-spacing -0.015em
+      line-height (30/26)
+      margin-bottom 20px
+
+      @media screen and (min-width: $screen-sm-min)
+        margin-bottom 0
+
+    &__job-salary
+      color $colors-text-lighter
+      font-size 18px
+      font-weight 300
+      line-height (30/18)
+
+      @media screen and (min-width: $screen-sm-min)
+        text-align right
+        flex-basis 125px
+        flex-shrink 0
+
+
+    &__job-info-container
+      overflow hidden
+
+
+    &__job-info
+      padding 30px 20px 20px 20px
+
+      @media screen and (min-width: $screen-sm-min)
+        padding 55px 40px 11px 40px
+
+      h4
+        color $colors-text
+        font-size 20px
+        font-weight 500
+        line-height (30/20)
+        letter-spacing -.015em
+        margin-bottom 22px
+
+      ul
+        list-style-image url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIgdmlld2JveD0nMCAwIDUgNSc+PGNpcmNsZSByPScyLjUnIGN4PSc1JyBjeT0iNSIgZmlsbD0iIzFhOTkxYSIvPjwvc3ZnPg0K')
+        margin-bottom 46px
+        margin-left 16px
+
+        @media screen and (min-width: $screen-sm-min)
+          margin-left 36px
+
+      li
+        font-size 14px
+        font-weight 300
+        line-height (25/14)
+        letter-spacing .02em
+
+    &__job-info-wrapper
+      position relative
+
+      &::before
+        background-color $colors-line-lighter
+        content ''
+        display block
+        height 1px
+        position absolute
+        left 0
+        top -30px
+        width 100%
+
+        @media screen and (min-width: $screen-sm-min)
+          top -55px
+
+
+    &__controls
+      padding-left 20px
+      padding-right 20px
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-left  40px
+        padding-right 40px
+
+    &__buttons
+      border-top 1px solid $colors-line-lighter
+      clearfix()
+      padding 40px 0
+
+    &__positioner
+
+      @media screen and (min-width:$screen-sm-min)
+        float right
+
+      .npf-button
+        margin-bottom 30px
+        @media screen and (min-width: $screen-sm-min)
+          margin-left 20px
+
+  &-testimonials
+    position relative
+    z-index 0
+    padding-top 50px
+
+    @media screen and (min-width:$screen-sm-min)
+      padding-top 0
+
+    &::after
+      background $colors-ipp
+      border-radius 50%
+      content ''
+      display block;
+      height 410px
+      position absolute
+      width 410px
+      z-index -2
+      bottom -100px
+      right -250px
+
+      @media screen and (min-width: $screen-lg-min)
+        bottom -150px
+
+
+    &__wrapper
+      display flex
+      justify-content space-between
+      // margin 0 -15px
+      flex-direction column
+
+      @media screen and (min-width: $screen-lg-min)
+        flex-direction row
+
+    &__author
+      background-color #fff
+      border-radius 6px
+      position relative
+      width 100%
+      height 320px
+      margin-bottom 15px
+
+      &::before
+        position absolute
+        content ''
+        display block
+        left 0
+        top 0
+        width 100%
+        height 100%
+        box-shadow 0 12px 40px rgba(0, 0, 0, 0.1)
+        z-index -1
+
+      @media screen and (min-width: $screen-sm-min)
+        display none
+
+      @media screen and (min-width: $screen-lg-min)
+        display block
+        width percentage(4/12)
+        margin-right 30px
+        height auto
+        margin-bottom 0
+        background-size auto
+
+      &-text
+        position absolute
+        right 20px
+        top 30px
+        width 115px
+
+      &-name
+        font-size 20px
+        font-weight 500
+        line-height ( 24/20 )
+        margin-bottom 12px
+
+      &-position
+        font-size 14px
+        line-height ( 20/14 )
+        font-weight 300
+
+    &__content
+      overflow hidden
+      width 100%
+      height 100%
+      position relative
+      border-radius 6px
+
+    &__author-img
+      position absolute
+      left 0
+      bottom 0
+      z-index 0
+      top 50px
+
+      img
+        height 100%
+
+      &::before
+        content ''
+        display block
+        position absolute
+        background-color $colors-ops
+        width 236px
+        height 236px
+        left -50px
+        bottom -75px
+        border-radius 50%
+        z-index -1
+
+        @media screen and (min-width:$screen-sm-min)
+          width 338px
+          height 338px
+          left -85px
+          bottom -110px
+
+    &__text
+      background #FFF
+      border-radius 6px
+      padding 50px 20px 30px 20px
+      position relative
+
+      &::before
+        position absolute
+        content ''
+        display block
+        left 0
+        top 0
+        width 100%
+        height 100%
+        box-shadow 0 12px 40px rgba(0, 0, 0, 0.1)
+        z-index -1
+
+      @media screen and (min-width: $screen-sm-min)
+        padding 61px 50px 68px 50px
+
+      @media screen and (min-width: $screen-lg-min)
+        width percentage(8/12)
+
+      &-quote
+        margin-bottom 23px
+        z-index 0
+        position relative
+        font-size 20px
+        line-height (30/20)
+        font-weight 500
+
+        @media screen and (min-width: $screen-sm-min)
+          font-size 26px
+          line-height ( 34/26 )
+
+      &-testimonial
+        font-weight 300
+        opacity .7
+        font-size 16px
+        line-height (26/16)
+
+        @media screen and (min-width: $screen-sm-min)
+          font-size 18px
+          line-height ( 30/18 )
+
+
+      &-icon
+        position absolute
+        left 20px
+        top 30px
+        width 65px
+        height 42px
+
+        svg
+          fill $colors-line-lighter
+
+        @media screen and (min-width: $screen-sm-min)
+          left 30px
+          top 40px
+
+  &-search
+    position relative
+    z-index 0
+    margin-bottom 40px
+
+    &::before,
+    &::after
+      content ''
+      background-color $colors-ipp
+      border-radius 50%
+      display block
+      position absolute
+      z-index -1
+
+    &::before
+      bottom -10%
+      height 141px
+      left -80px
+      top 190px
+      width 141px
+
+    &::after
+      top -130px
+      height 270px
+      right -200px
+      opacity .8
+      width 270px
+
+
+
+    &__wrapper
+      background-color $colors-ops
+      border-radius 6px
+      color #fff
+      padding-bottom 30px
+      padding-top 44px
+      padding-left 20px
+      padding-right 20px
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-left 0
+        padding-right 0
+        padding-bottom 50px
+
+      @media screen and (min-width: $screen-lg-min)
+        height 250px
+        overflow hidden
+
+
+
+    &__container
+      width 100%
+
+      @media screen and (min-width: $screen-sm-min)
+        margin-left auto
+        margin-right auto
+        width percentage(6/8)
+
+      @media screen and (min-width: $screen-lg-min)
+        width percentage(10/12)
+
+    &__form
+      display flex
+      flex-direction column
+
+      @media screen and (min-width: $screen-lg-min)
+        align-items flex-end
+        flex-direction row
+        flex-wrap nowrap
+
+
+    &__title
+      font-size 30px
+      font-weight 200
+      text-align center
+      letter-spacing -.01em
+      margin-bottom 46px
+
+      @media screen and (min-width: $screen-sm-min)
+        font-size 40px
+        font-weight 200
+        text-align left
+        margin-bottom 80px
+
+      @media screen and (min-width: $screen-lg-min)
+        margin-bottom 56px
+
+
+    &__search-field
+      width 100%
+      margin-bottom 30px
+
+      @media screen and (min-width: $screen-sm-min)
+        margin-bottom 50px
+
+      @media screen and (min-width: $screen-lg-min)
+        width percentage( 4/10 )
+        padding-right 30px
+        margin-bottom 0
+
+    &__select-field
+      position relative
+      width 100%
+      margin-bottom 50px
+
+      @media screen and (min-width: $screen-lg-min)
+        width percentage( 4/10 )
+        padding-right 30px
+        margin-bottom 0
+
+
+    &__label
+      font-size 14px
+      letter-spacing .020em
+      line-height( 30/14 )
+      opacity .5
+      position absolute
+      top -30px
+      left 15
+
+    &__submit
+      width 100%
+
+      @media screen and (min-width: $screen-sm-min)
+        width 170px
+        align-self flex-end
+
+      @media screen and (min-width: $screen-lg-min)
+        width percentage( 2/10 )
+
+  &-application-form
+
+    &__body
+      padding-left 70px
+      padding-right 70px
+      padding-bottom 60px
+      padding-top 50px
+
+    &__header
+      padding-left 70px
+      padding-right 70px
+      padding-top 50px
+      border-bottom 1px solid $colors-line-lighter
+      padding-bottom 45px
+
+    &__job-name
+      display inline-block
+      font-size 26px
+      font-weight 500
+      letter-spacing -0.015em
+      line-height (30/26)
+
+    &__job-salary
+      color $colors-text-lighter
+      float right
+      font-size 18px
+      font-weight 300
+      line-height (30/18)
+      text-align right
+
+    &__row
+      clearfix()
+
+    &__col
+      width 50%
+      float left
+      padding-right 30px
+      &:last-child
+        padding-right 0
+
+    &__test-text
+      color $colors-text-lighter
+      font-family "Open Sans"
+      font-size 14px
+      line-height (25/14)
+      letter-spacing -.025em
+
+    &__test-icon
+      width 22px
+      height 30px
+      margin-right 20px
+      display inline-block
+      vertical-align top
+
+    &__test-title
+      color $colors-ops
+      font-size 18px
+      font-weight 500
+      margin-bottom 10px
+      letter-spacing -.015em
+
+    &__test-properties
+      opacity 0.5
+      color #000
+      font-size 12px
+      text-transform uppercase
+      letter-spacing .1em
+
+    &__test-descr
+      display inline-block
+      vertical-align top
+
+    &__form-title
+      color $colors-text-lighter
+      font-size 18px
+      font-weight 700
+      line-height (30/18)
+
+    &__submit
+      text-align center
+
+  &-application-thx
+    height 349px
+    position relative
+    overflow hidden
+    &::before
+      background-color #f5f5f5
+      border-radius 50%
+      content ''
+      height 300px
+      position absolute
+      left -150px
+      top -130px
+      width 300px
+
+    &__check
+      position absolute
+      top 50px
+      left 34px
+      width 52px
+      height 44px
+      svg
+        fill $colors-ops
+        width 52px
+        height 44px
+
+    &__content
+      padding-top 120px
+      text-align center
+
+    &__title
+      color #000
+      font-size 40px
+      font-weight 200
+      line-height (50/40)
+      margin-bottom 30px
+
+    &__subtitle
+      font-size 20px
+      font-weight 300
+      line-height (36/20)

@@ -1,0 +1,161 @@
+@import "~stylesheets/_variables.styl";
+
+$slide = '.npf-header-slide'
+
+{$slide}
+  color #fff
+  position relative
+  overflow hidden
+  z-index 0
+  height 274px
+
+  @media screen and (min-width: $screen-sm-min)
+    height 510px
+
+
+  .slick-track,
+  .slick-list
+    height 100%
+
+
+  &__circle
+    border-radius 50%
+    display block
+    opacity .8
+    position absolute
+    z-index 0
+
+    &._theme
+      &_orange
+        background $colors-ipp
+        left 40px
+        top -100px
+
+      &_green
+        background $colors-ops
+        bottom 20px
+        right 100px
+
+    &._s
+      &_l
+        width 200px
+        height 200px
+        @media screen and (min-width: $screen-lg-min)
+          width 430px
+          height 430px
+      &_m
+        width 89px
+        height 89px
+        
+        @media screen and (min-width: $screen-lg-min)
+          width 178px
+          height 178px
+
+    &._p
+      &_left-top
+        left 40px
+        top -100px
+
+      &_right-bottom
+        right 0
+        bottom 0
+
+  &__item
+    background-position center
+    background-repeat no-repeat
+    background-size cover
+    height 100%
+    position relative
+    overflow hidden
+    display flex
+    align-items center
+
+    @media screen and (min-width: $screen-sm-min)
+      height 510px
+      flex-direction column
+
+  &__text
+    padding-top 50px
+    padding-bottom 20px
+    text-align center
+    position relative
+    z-index 1
+
+  &__title
+    display none
+
+    @media screen and (min-width: $screen-sm-min)
+      display block
+      font-size 16px
+      font-weight 500
+      letter-spacing .1em
+      margin-bottom 70px
+      text-transform uppercase
+
+    @media screen and (min-width:$screen-lg-min)
+      margin-bottom 100px
+
+  &__slogan
+    font-size 34px
+    font-weight 200
+    line-height (44/34)
+
+    @media screen and (min-width: $screen-sm-min)
+      font-size 68px
+      line-height 1.2
+      margin-top 0
+
+  &__button
+    display none
+    text-align center
+
+    @media screen and (min-width:$screen-sm-min)
+      display block
+
+  .slick-dots
+    position absolute
+    left 0
+    right 0
+    bottom 80px
+    text-align center
+
+    @media screen and (min-width:$screen-sm-min)
+      bottom 117px
+
+    li
+      display inline-block
+      padding 3px
+      cursor pointer
+
+      &.slick-active
+        button
+          background #fff
+
+    button
+      display block
+      padding 0
+      margin 0
+      text-indent -9999px
+      width 8px
+      height 8px
+      border-radius 50%
+      border 2px solid #fff
+      background none
+      cursor pointer
+
+      &:focus
+        outline none
+
+  &._middle
+    {$slide}
+      &__text
+        padding-top 50px
+
+        @media screen and (min-width:$screen-sm-min)
+          padding-top 100px
+
+        @media screen and (min-width:$screen-lg-min)
+          height 100%
+          display flex
+          align-items center
+          justify-content center

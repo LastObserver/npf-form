@@ -1,0 +1,243 @@
+$manage = '.npf-management'
+
+{$manage}
+
+  &-page
+    .npf-fold-btn
+      border-bottom 1px solid $colors-line-lighter
+
+  &-greeting
+    padding-top 44px
+    padding-bottom 26px
+
+
+  &-manager
+    make-row()
+
+    &__container
+      make-lg-column(10)
+
+      @media screen and (min-width: $screen-sm-min)
+        margin-left -15px
+        margin-right -15px
+        margin-top -50px
+
+      @media screen and (min-width: $screen-lg-min)
+        center-block()
+
+    &__wrapper
+      padding-bottom 50px
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-top 100px
+
+    &__content
+      background-color $colors-background
+      background-repeat no-repeat
+      border-radius 6px
+      position relative
+      padding-top 30px
+      padding-left 20px
+      padding-right 20px
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-left 25px
+        padding-bottom 70px
+        padding-top 50px
+        min-height 300px
+
+      @media screen and (min-width: $screen-lg-min)
+        padding 45px 0 55px 100px
+
+    &._ivanov
+      img
+        @media screen and (min-width: $screen-sm-min)
+          width auto
+          bottom 0
+          position absolute
+          right -70px
+        @media screen and (min-width: $screen-lg-min)
+          right 20px
+
+    &__image
+      width 100%
+
+      @media screen and (min-width: $screen-sm-min)
+        width auto
+        bottom 0
+        position absolute
+        right 10px
+
+      @media screen and (min-width: $screen-lg-min)
+        right 100px
+
+    h2
+      margin-bottom 28px
+
+      @media screen and (min-width: $screen-sm-min)
+        width 60%
+
+    &__position
+      font-size 16px
+      line-height (26/16)
+      letter-spacing .02em
+      font-weight 300
+      color #000
+      margin-bottom 30px
+
+      @media screen and (min-width: $screen-sm-min)
+        font-size 18px
+        line-height (30/18)
+        width 60%
+        margin-bottom 0
+
+  &-content
+    make-row()
+
+    &__container
+      margin 0 auto
+      padding 0 15px
+
+      a
+        color #1a991a
+
+      +above('lg')
+        width percentage(2/3)
+
+    p
+      margin-bottom 30px
+
+    blockquote
+      border-bottom 1px solid $colors-line-lighter
+      border-top 1px solid $colors-line-lighter
+      font-size 25px
+      font-weight 500
+      letter-spacing -.015em
+      line-height (34/25)
+      padding 64px 0 62px 0
+      text-align center
+      position relative
+      margin-bottom 61px
+
+    &__icon
+      left 50%
+      top 15%
+      position absolute
+      transform translateX(-50%)
+      width 65px
+      z-index -1
+
+      svg
+        fill $colors-background
+
+  &-stuff
+    make-row()
+
+    &__container
+      make-lg-column(8)
+      center-block()
+
+    h2
+      text-align center
+
+      @media screen and (min-width: $screen-sm-min)
+        text-align left
+
+    &__wrapper
+      display flex
+      flex-direction column
+      flex-wrap wrap
+      justify-content center
+      // align-items center
+      margin-left -15px
+      margin-right -15px
+      font-size 0
+      // align-content flex-start
+
+      @media screen and (min-width: $screen-sm-min)
+        flex-direction row
+        justify-content flex-start
+
+    &__person
+      display flex
+      vertical-align top
+      align-items center
+      flex-direction column
+      flex-wrap wrap
+      width 100%
+      padding-left 10px
+      padding-right 10px
+      padding-top 10px
+      padding-bottom 10px
+      flex-wrap nowrap
+
+      @media screen and (min-width:$screen-sm-min)
+        padding 30px 15px
+
+      li
+        color #000
+        font-size 18px
+        font-weight 300
+        line-height (30/18)
+        margin-bottom 20px
+        padding-left 30px
+        position relative
+
+        &::before
+          content ''
+          background-color $colors-ops
+          display block
+          width 10px
+          height 4px
+          border-radius 2px
+          position absolute
+          left 0
+          top 50%
+          transform translateY(-50%)
+
+      @media screen and (min-width: $screen-sm-min)
+        width 50%
+        flex-direction row
+        align-items flex-start
+
+
+    &__img-container
+      border-radius 50%
+      background-color $colors-background
+      height 100px
+      width 100px
+      position relative
+      margin-bottom 15px
+
+      img
+        position absolute
+        bottom 0
+        left 50%
+        transform translateX(-50%)
+
+      @media screen and (min-width: $screen-sm-min)
+        margin-right 20px
+        margin-bottom 0
+
+    &__text
+      text-align center
+
+      @media screen and (min-width: $screen-sm-min)
+        text-align left
+
+    &__name
+      color #5b6065
+      font-size 20px
+      font-weight 500
+      letter-spacing -.015em
+      line-height (24/20)
+      margin-bottom 10px
+
+    &__position
+      font-size 12px
+      font-weight 300
+      letter-spacing .02em
+      line-height (22/12)
+
+      a[data-tooltip]
+        border-bottom 1px dashed #3d4349

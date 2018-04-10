@@ -1,0 +1,550 @@
+$kpp = '.npf-kpp'
+
+{$kpp}
+  &-calc
+    &__title
+      font-size 26px
+      font-weight 500
+      line-height ( 34/26 )
+      text-align left
+
+      @media screen and (min-width:$screen-sm-min)
+        text-align center
+
+    &__btn
+      text-align center
+
+  &-programs
+    &__list
+      padding-top 5px
+      display flex
+      margin-left -15px
+      margin-right -15px
+      margin-bottom 10px
+      flex-wrap wrap
+
+      @media screen and (min-width:$screen-sm-min)
+        width 600px
+        margin-left auto
+        margin-right auto
+        margin-bottom 20px
+
+      @media screen and (min-width:$screen-lg-min)
+        margin-left -15px
+        margin-right -15px
+        margin-bottom 60px
+        width auto
+
+    input
+      display none
+
+    &__item
+      width 165px
+      padding 15px
+
+      @media screen and (min-width:$screen-sm-min)
+        width 200px
+
+
+    &-wizard
+      make-row()
+      margin-bottom -30px
+
+      &__item
+        make-lg-column(4)
+        margin-bottom 30px
+
+        &._hidden
+          display none
+
+
+
+    &__content
+      position relative
+
+    &__icon
+     width 52px
+     height 61px
+     position absolute
+     top 50%
+     left 50%
+     transform translate(-50%, -50%)
+     pointer-events none
+     svg
+       fill #fff
+
+    &__program
+      cursor pointer
+      &:hover
+        {$kpp}
+          &-programs
+            &__img-container
+              &::after
+                content ''
+                background-color #fff
+                background-image url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHBhdGggZmlsbD0nIzAwNzAzYycgZD0iTTMwLjUgMTRIMThWMmExLjUgMS41IDAgMCAwLTMgMHYxMkgyLjVhMS41IDEuNSAwIDAgMCAwIDNIMTV2MTJhMS41IDEuNSAwIDAgMCAzIDBWMTdoMTIuNWExLjUgMS41IDAgMCAwIDAtM3oiLz4KPC9zdmc+Cg==')
+                background-position center center
+                background-repeat no-repeat
+                background-size 30px 30px
+                border-radius 2px
+                display block
+                opacity 0.85
+                position absolute
+                left 0
+                top 0
+                right 0
+                bottom 0
+
+    &__choose-all
+      cursor pointer
+      &:hover
+        {$kpp}
+          &-programs
+            &__img-container
+              &::after
+                content ''
+                background-color #fff
+                background-position center center
+                background-repeat no-repeat
+                background-size 30px 30px
+                border-radius 2px
+                display block
+                opacity 0.85
+                position absolute
+                left 0
+                top 0
+                right 0
+                bottom 0
+
+    &__img-container
+      background-color $colors-background
+      border-radius 2px
+      display block
+      height 100%
+      width 100%
+      margin-bottom 22px
+      position relative
+
+      img
+        width 100%
+
+    &__title
+      display block
+      font-size 20px
+      font-weight 500
+      line-height (24/20)
+      text-align center
+
+    &__btn
+      padding-bottom 50px
+      text-align center
+
+      @media screen and (min-width:$screen-sm-min)
+        padding-bottom 100px
+
+  &-news
+    padding-top 25px
+
+    @media screen and (min-width:$screen-sm-min)
+      padding-top 50px
+
+  &-fund-numbers
+    padding-top 50px
+
+    @media screen and (max-width:$screen-xs-max)
+      background-image none !important
+
+    @media screen and (min-width:$screen-sm-min)
+      background-color #fff
+      background-repeat no-repeat
+      background-position 250px center
+      box-shadow 0 12px 40px rgba(0, 0, 0, 0.1)
+      border-radius 6px
+      padding-top 60px
+      padding-left 30px
+      margin-left -15px
+      margin-right -15px
+      padding-bottom 50px
+
+    @media screen and (min-width:$screen-lg-min)
+      background-position right center
+      padding-left 80px
+      padding-top 76px
+      height 590px
+
+    &__item
+      padding-top 20px
+      padding-bottom 20px
+      display flex
+      flex-direction column
+
+      @media screen and (min-width:$screen-sm-min)
+        text-align left
+        flex-direction row
+
+    &__icon
+      margin-bottom 10px
+      width 60px
+      height 60px
+
+      svg
+        fill $colors-ops
+        width 60px
+
+      @media screen and (min-width:$screen-sm-min)
+        margin-right 30px
+
+    &__title
+      font-size 20px
+      font-weight 500
+      line-height (24/20)
+      margin-bottom 10px
+
+    &__descr
+      font-size 14px
+      font-weight 300
+      line-height (20/14)
+
+
+  &-faq
+    position relative
+    padding-top 50px
+
+    @media screen and (min-width:$screen-sm-min)
+      padding-top 0
+
+  &-cloud
+    display none
+
+    @media screen and (min-width:$screen-lg-min)
+      display block
+      position absolute
+
+      &._position_left
+        bottom 50px
+        left -130px
+
+      &._position_right
+        bottom -150px
+        right -130px
+
+  &-wizard-controller
+    padding-top 30px
+    padding-bottom 30px
+
+    &__title
+      font-size 20px
+      font-weight 500
+      line-height (30/20)
+      text-align center
+      margin-bottom 25px
+
+      @media screen and (min-width:$screen-sm-min)
+        font-size 26px
+        line-height (34/26)
+        margin-bottom 40px
+
+    &__content
+      box-shadow 0 16px 46px rgba(0, 0, 0, 0.1)
+      border-radius 6px
+      padding-top 40px
+      margin-bottom 60px
+      margin-left -10px
+      margin-right -10px
+
+      @media screen and (min-width:$screen-sm-min)
+        padding-bottom 50px
+        margin-left auto
+        margin-right auto
+
+
+    &__positioner
+      padding-left 10px
+      padding-right 10px
+
+      @media screen and (min-width:$screen-sm-min)
+        width 570px
+        margin-left auto
+        margin-right auto
+        padding-left 0
+        padding-right 0
+
+      @media screen and (min-width:$screen-lg-min)
+        width percentage(10/12)
+
+    &__inputs
+      display flex
+      flex-direction column
+      flex-wrap nowrap
+
+      @media screen and (min-width:$screen-lg-min)
+        flex-direction row
+      //
+      // .npf-input-group
+      //   margin-bottom 14px
+
+    &__goals
+      @media screen and (min-width:$screen-lg-min)
+        width 50%
+        margin-right 30px
+
+    &__category
+      @media screen and (min-width:$screen-lg-min)
+        width 50%
+
+    &__submit
+      text-align center
+
+    &__tags
+      &._theme_kpp
+        {$kpp}
+          &-wizard-controller
+            &__tag
+              display inline-block
+              vertical-align top
+              background-color $colors-kpp
+              color #fff
+              border-radius 12px
+              font-family "Open Sans"
+              font-size 12px
+              font-weight 600
+              letter-spacing .050em
+              padding-left 10px
+              padding-right 30px
+              text-transform uppercase
+              position relative
+              margin-bottom 10px
+              line-height (25/12)
+              &::before
+                content ''
+                background-color #fff
+                display block
+                width 2px
+                height 10px
+                position absolute
+                right 13px
+                top 8px
+                transform rotate(45deg)
+              &::after
+                content ''
+                background-color #fff
+                display block
+                width 2px
+                height 10px
+                position absolute
+                right 13px
+                top 8px
+                transform rotate(-45deg)
+
+  &-stuff
+    padding-bottom 25px
+
+    @media screen and (min-width:$screen-sm-min)
+      padding-bottom 100px
+
+  &-comparison-slider
+    position relative
+    font-size 14px
+    line-height (23/14)
+    letter-spacing .020em
+    &::before
+      content ''
+      position absolute
+      left 0
+      top 0
+      width 100%
+      height 225px
+      background-color $colors-background
+      z-index -1
+
+    &__positioner
+      width 1200px
+      margin-left auto
+      margin-right auto
+      padding-left 15px
+      padding-right 15px
+
+    &__content
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+    &__characteristics
+      width percentage(3/12)
+      color $colors-text-lighter
+
+    &__filter
+      color #000
+      font-size 18px
+      font-weight 300
+      line-height (30/18)
+
+    &__percent-number
+      line-height (30/23)
+      font-size 30px
+      font-weight 200
+
+    &__title
+      color $colors-text-lighter
+      font-size 14px
+      font-weight 500
+      line-height (23/14)
+
+    &__icon
+      display inline-block
+      vertical-align bottom
+      svg
+        fill $colors-ops
+        width 14px
+        height 8px
+
+    &__item
+      padding-top 36px
+      padding-bottom 36px
+      padding-left 20px
+      padding-right 20px
+      border-bottom 1px solid $colors-line-lighter
+      position relative
+      .npf-button
+        display none
+        position absolute
+        left 50%
+        top 40%
+        transform translate(-50%, -50%)
+        width 160px
+      &:last-child
+        border-bottom none
+
+    &__programs
+      width percentage(9/12)
+      position relative
+      color #000
+      margin-left -40px
+      &::before
+        background-image linear-gradient(to right, rgba(243, 246, 249, 0) 0%, #f3f6f9 100%)
+        content ''
+        display block
+        height 225px
+        position absolute
+        right 0
+        top 0
+        width 70px
+        z-index 100
+      &::after
+        background-image linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #fff 100%)
+        content ''
+        display block
+        height 1375px
+        position absolute
+        right 0
+        top 225px
+        width 70px
+
+    &__head
+      height 225px
+      display flex
+      flex-direction column
+      flex-wrap nowrap
+      justify-content flex-end
+      padding-bottom 32px
+      padding-left 20px
+
+    &__pic
+      height 115px
+      width 100px
+      margin-bottom 12px
+
+    &__slider-control
+      position absolute
+      top 225px
+      z-index 100
+      transform translateY(-50%)
+      background-color #fff
+      width 32px
+      height 32px
+      cursor pointer
+      border-radius 50%
+      border 1px solid $colors-line-lighter
+      &-icon
+        display block
+        position absolute
+        left 50%
+        top 50%
+        width 8px
+        svg
+          stroke $colors-ops
+          stroke-width 2px
+      &._left
+        left 0
+        .npf-kpp-comparison-slider__slider-control-icon
+            transform translate(-50%, -50%) rotate(180deg)
+
+      &._right
+        right -50px
+        .npf-kpp-comparison-slider__slider-control-icon
+            transform translate(-50%, -50%)
+
+
+    &__program
+      visibility hidden
+      width 200px
+      cursor pointer
+      &:hover
+        box-shadow 0 12px 40px rgba(0, 0, 0, 0.1)
+        border-radius 6px
+        {$kpp}
+            &-comparison-slider
+              &__item
+                .npf-button
+                  display inline-flex
+
+    .slick-active
+      {$kpp}
+        &-comparison-slider
+          &__program
+            visibility visible
+
+    .slick-list
+      padding-left 40px
+      padding-right 40px
+      padding-bottom 40px
+
+  &-wizard-form
+    text-align center
+
+    @media screen and (min-width:$screen-sm-min)
+      make-sm-column(10)
+      make-lg-column(6)
+      center-block()
+
+    &__icon
+      margin-left auto
+      margin-right auto
+      height 120px
+      width 104px
+      svg
+        .form-complete-icon__line
+          fill #787e7f
+        .form-complete-icon__circle
+          fill #c2c9cf
+        .form-complete-icon__check
+          stroke #787e7f
+    &__contact-info
+      font-size 14px
+      font-weight 300
+      line-height (25/14)
+
+.npf-kpp-programs__content input:checked + .npf-kpp-programs__program .npf-kpp-programs__img-container::after
+  content ''
+  background-color $colors-kpp
+  background-image url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHBhdGggZmlsbD0nd2hpdGUnIGQ9Ik0xMyAyNy42MkwuNDMgMTUuMDhBMS40NSAxLjQ1IDAgMSAxIDIuNDggMTNMMTMgMjMuNTEgMjkuNTIgN2ExLjQ1IDEuNDUgMCAwIDEgMi4wNSAyeiIvPgo8L3N2Zz4K')
+  background-position center center
+  background-repeat no-repeat
+  background-size 30px 30px
+  border-radius 6px
+  display block
+  opacity 0.85
+  position absolute
+  left 0
+  top 0
+  right 0
+  bottom 0

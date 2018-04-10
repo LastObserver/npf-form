@@ -1,0 +1,179 @@
+.npf-form-bone
+  &._ipp-form
+    max-width 770px
+    margin-left auto
+    margin-right auto
+    
+    .npf-input-group__datepicker
+      top 22px
+      transform none
+
+  &__plate
+    padding 60px 40px
+
+  &__section
+    margin-top 80px
+    margin-bottom 80px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+    &._hide
+      display none
+
+  &__row
+    margin-left -15px
+    margin-right -15px
+    margin-bottom -40px
+    clearfix()
+
+  &__full-col
+  &__half-col
+  &__quarter-col
+    float left
+    padding-left 15px
+    padding-right 15px
+    margin-bottom 40px
+
+    &._stick-to-prev
+      margin-top -15px
+
+  &__full-col
+    width 100%
+
+  &__half-col
+    width 50%
+
+  &__quarter-col
+    width 25%
+
+  &__group-title
+    font-weight bold
+    line-height 1.2
+    margin-bottom 30px
+
+    &._big
+      font-size 26px
+      text-align center
+      font-weight 500
+
+    &:last-child
+      margin-bottom 0
+
+    &._centred
+      text-align center
+
+  &__group-intro
+    margin-top 15px
+    font-size 14px
+    line-height 1.5
+
+    &._centred
+      text-align center
+
+  &__fields-group
+    margin-bottom 60px
+    margin-top 60px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+  &__btns-holder
+    margin-top 50px
+    margin-bottom 50px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+    &._right-side
+      text-align right
+
+    &._center
+      text-align center
+
+      .npf-button
+        margin-left auto
+        margin-right auto
+    
+    .npf-button + .npf-button
+      margin-left 40px
+      
+      @media (max-width: 768px)
+        margin-left 0
+        margin-top 10px
+  
+  &__group-items
+    margin-top 40px
+    margin-bottom 40px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+  &__content
+    margin-top 40px
+    margin-bottom 40px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+  &__shadow-plate
+    padding 40px 60px
+    border-radius 10px
+    background-color #fff
+    box-shadow 0 20px 81px rgba(0, 0, 0, .15)
+
+    &._outrange
+      margin-left -60px
+      margin-right -60px
+
+  &__header
+    margin-bottom 60px
+
+  &__header-top
+    text-align center
+    font-size 12px
+    margin-bottom 40px
+    text-transform uppercase
+    color #5b6065
+
+  &__header-bottom
+    margin-top 40px
+    text-align center
+    font-weight 300
+    color #3d4349
+
+_state_npf-form-bone(state)
+  if state == 'tablet'
+    .npf-form-bone
+      &__quarter-col
+        width 50%
+  
+  if state == 'mobile'
+    .npf-form-bone
+      &__half-col
+        width 100%
+        
+      &__quarter-col
+        width 100%
+  
+.npf-form-bone._ipp-form
+  @media (max-width: 1024px)
+    _state_npf-form-bone('tablet')
+  
+  @media (max-width: 768px)
+    _state_npf-form-bone('mobile')

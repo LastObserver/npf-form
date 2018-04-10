@@ -1,0 +1,104 @@
+@import "~stylesheets/_variables.styl";
+
+.top-menu__li:hover .top-menu__drop
+	margin-top 0
+	opacity 1
+	transform translateY(0)
+	transition-delay 0s
+	transition-duration .3s
+	transition-property opacity, transform
+	transition-timing-function: ease-out
+	visibility visible
+.top-menu__drop
+	position absolute
+	left 0
+	right 0
+	top 100%
+	background #fff
+	z-index $header-drop-down_z-index
+	visibility hidden
+	transform translateY(50px)
+	opacity 0
+	padding-top 50px
+	padding-bottom 50px
+	box-shadow 0px 40px 40px -40px rgba(0,0,0,0.5)
+
+	&._toggled
+		margin-top 0
+		opacity 1
+		transform translateY(0)
+		transition-delay 0s
+		transition-duration .3s
+		transition-property opacity, transform
+		transition-timing-function: ease-out
+		visibility visible
+
+
+.top-menu-drop-col
+	width 360px
+	float left
+	padding-left 0
+	padding-top 15px
+.top-menu-drop-col__menu-name
+	font-weight 200
+	font-size 40px
+	color #000
+	line-height 130%
+.top-menu-drop-col__menu-desc
+	font-size 18px
+	color #000
+	margin-top 25px
+	line-height 180%
+ul.top-menu-drop-col
+	list-style none
+	a
+		font-size 18px
+		color #3d4349
+		text-decoration none
+		line-height 180%
+		position relative
+	a:hover
+		text-decoration underline
+.top-menu-drop-col__icon
+	display: inline-block
+	margin-left 5px
+	margin-right -5px
+	width 0px
+	
+	svg
+		stroke $colors-ops
+		stroke-width 2px
+
+ul.top-menu-drop-col li+li
+	margin-top 15px
+.top-menu-drop-col_block
+	height 300px
+	background #f3f6f9
+	border-radius 4px
+	padding-top 0
+	display none
+	padding-left 20px
+	padding-right 20px
+	overflow hidden
+
+	@media screen and (min-width: $screen-lg-min)
+		display block
+.top-menu-drop-col_block__image
+	height 145px
+.top-menu-drop-col_block__image_self
+	background url(/local/templates/npfsb/images/drop-self.png) no-repeat center bottom
+.top-menu-drop-col_block__image_about
+	background url(/local/templates/npfsb/images/drop-about.png) no-repeat center bottom
+.top-menu-drop-col_block__name
+	margin-top 15px
+	text-align center
+	font-weight normal
+	font-size 20px
+	color #3d4349
+	font-weight 500
+.top-menu-drop-col_block__desc
+	margin-top 10px
+	color $colors-text-lighter
+	text-align center
+	font-size 14px
+	line-height 180%

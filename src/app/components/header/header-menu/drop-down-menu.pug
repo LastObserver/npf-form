@@ -1,0 +1,114 @@
+div.drop-down
+	+e.container.container
+		.drop-down-content
+			a.drop-down__close(href="#")
+			div.drop-down__contacts
+				div.drop-down-logo
+					img.drop-down-logo__img(src="/local/templates/npfsb/images/logo.png")
+				div.drop-down-phone
+					div.drop-down-phone__name Горячая линия
+					div.drop-down-phone__content 8 800 555 00 41
+				div.drop-down-address
+					div.drop-down-address__name Главный офис
+					div.drop-down-address__content.
+						115162, г. Москва, ул. Шаболовка,<br>д. 31Г
+				div.drop-down-time
+					div.drop-down-time__name Время работы
+					div.drop-down-time__content
+						div.drop-down-time-line
+							div.drop-down-time-line__name понедельник-четверг
+							div.drop-down-time-line__content 9:00 – 18:00
+							div.g-clear
+						div.drop-down-time-line
+							div.drop-down-time-line__name пятница
+							div.drop-down-time-line__content 9:00 – 16:45
+							div.g-clear
+						div.drop-down-time-line
+							div.drop-down-time-line__name суббота-воскресенье
+							div.drop-down-time-line__content выходной
+							div.g-clear
+				div.drop-down-social
+					div.drop-down-social__name Социальные сети
+					div.drop-down-social__content
+						div.drop-down-social-links
+							a.drop-down-social-links__link(href="https://www.facebook.com/npfsb")
+								img.g-img(src="/local/templates/npfsb/images/drop-fb.png")
+							a.drop-down-social-links__link(href="https://vk.com/npf_sberbanka")
+								img.g-img(src="/local/templates/npfsb/images/drop-vk.png")
+							div.g-clear
+			div.drop-down__menu
+				div.drop-down-one-menu._js-accordion._hidden
+					div.drop-down-one-menu__name._js-accordion__header
+						| О фонде
+						span._js-accordion__icon: include ../../../icons/ic_arrow_down.svg
+					ul.drop-down-one-menu__list._js-accordion__body
+						li.g-li
+							a.g-link(href="/bundle/about.html") Общая информация
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/management.html") Руководство НПФ Сбербанка
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/fund-numbers.html") Фонд в цифрах
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/disclosure/index.html") Раскрытие информации и реквизиты
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+				div.drop-down-one-menu._js-accordion._hidden
+					div.drop-down-one-menu__name._js-accordion__header
+						| Для себя
+						span._js-accordion__icon: include ../../../icons/ic_arrow_down.svg
+					ul.drop-down-one-menu__list._js-accordion__body
+						li.g-li
+							a.g-link(href="/bundle/product/ipp/index.html") Индивидуальные пенсионные планы
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/product/ops/index.html") Обязательное пенсионное страхование
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/services.html") Клиентам НПФ Сбербанка
+								| &nbsp;
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/faq/faq-index.html") Вопросы и ответы
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+				div.drop-down-one-menu._js-accordion._hidden
+					div.drop-down-one-menu__name._js-accordion__header
+						| Бизнесу
+						span._js-accordion__icon: include ../../../icons/ic_arrow_down.svg
+					ul.drop-down-one-menu__list._js-accordion__body
+						li.g-li
+							a.g-link(href="/bundle/programs.html") Работнику
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/business/index.html") Работодателю
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+				div.drop-down-one-menu._js-accordion._hidden
+					div.drop-down-one-menu__name._js-accordion__header
+						| Инвестиционная деятельность
+						span._js-accordion__icon: include ../../../icons/ic_arrow_down.svg
+					ul.drop-down-one-menu__list._js-accordion__body
+						li.g-li
+							a.g-link(href="#") Об инвестиционной деятельности
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="#") Показатели инвестиционной деятельности
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+				div.drop-down-one-menu._js-accordion._hidden
+					div.drop-down-one-menu__name._js-accordion__header
+						| Пресс-центр
+						span._js-accordion__icon: include ../../../icons/ic_arrow_down.svg
+					ul.drop-down-one-menu__list._js-accordion__body
+						li.g-li
+							a.g-link(href="/bundle/news.html") Новости
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+						li.g-li
+							a.g-link(href="/bundle/articles.html") Статьи и интервью
+								span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+				div.drop-down-bold-links
+					a.drop-down-bold-links__link(href="/bundle/jobs.html") Соискателям
+						span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+					<br>
+					a.drop-down-bold-links__link(href="/bundle/contacts.html") Контактная информация
+						span.top-menu-drop-col__icon: include ../../../icons/ic_arrow_next.svg
+			div.g-clear

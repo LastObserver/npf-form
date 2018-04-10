@@ -1,0 +1,346 @@
+$button = '.npf-button'
+
+
+{$button}
+  display inline-flex
+  cursor pointer
+  font-family $font-sans
+  align-items center
+  flex-direction column
+  justify-content center
+  transition background, border-color
+  cursor pointer
+  border 0
+  overflow hidden
+  border-radius 30px
+  width 100%
+  text-decoration none !important
+
+  @media screen and (min-width: $screen-sm-min)
+    width auto
+    padding-left 30px
+    padding-right 30px
+
+  &:focus
+    outline none
+
+  &[disabled]
+    cursor not-allowed
+
+  &._theme
+    &_green
+      background $colors-ops
+      color #fff
+
+      svg
+        stroke #fff
+        fill #fff
+        stroke-width 2px
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+    &_dark-green
+      background-color $colors-kpp
+      color #fff
+
+      svg
+        stroke #fff
+        fill #fff
+        stroke-width 2px
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+    &_orange
+      background $colors-ipp
+      color #fff
+
+      svg
+        stroke #fff
+        fill #fff
+        stroke-width 2px
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+    &_white
+      background #fff
+      color $colors-ops
+
+      svg
+        stroke $colors-ops
+        stroke-width 2px
+        fill $colors-ops
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+    &_white-kpp
+      background #fff
+      color $colors-ops
+
+      svg
+        stroke $colors-kpp
+        stroke-width 2px
+        fill $colors-kpp
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+    &_transparent
+      background none
+      color $colors-text
+      border 2px solid $colors-line-lighter
+
+      &-dark-green
+        background none
+        color $colors-text
+        border 2px solid $colors-line-lighter
+
+        &._current
+        &._theme_green._current
+          background-color $colors-kpp
+          background $colors-kpp
+          color #fff
+          border-color $colors-kpp
+          cursor default
+
+        svg
+          stroke $colors-kpp
+          stroke-width 2px
+          fill $colors-kpp
+          margin-left 7px
+
+          @media screen and (min-width:$screen-sm-min)
+            margin-left 14px
+
+        &:hover
+        &._active
+          background $colors-kpp
+          color #fff
+          border-color $colors-kpp
+
+          svg
+            stroke #fff
+            fill: #fff
+
+
+      &._current
+        background $colors-ops
+        color #fff
+        border-color $colors-ops
+        cursor default
+
+      &[disabled]
+        background none
+        border-color $colors-line-lighter
+        color rgba(91,96,101,.40)
+
+      svg
+        stroke $colors-ops
+        stroke-width 2px
+        fill $colors-ops
+        margin-left 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 14px
+
+      &:hover
+        &._active
+          background $colors-ops
+          color #fff
+          border-color $colors-ops
+
+          ^[2]&[disabled]
+            background none
+            border-color $colors-line-lighter
+            color rgba(91,96,101,.40)
+
+          svg
+            stroke #fff
+            fill: #fff
+
+      &:active
+        svg
+          stroke #fff
+          fill: #fff
+
+    &_black-font
+      color $colors-text
+
+    &_green-font
+      color $colors-ops
+
+    &_circle
+      border-radius 50%
+      text-align center
+      display inline-flex
+      justify-content center
+      padding 0
+
+      span + .npf-button__icon
+        margin-left 7px
+
+    &_no-border
+      background none
+      border none
+      color $colors-text
+      padding 0 !important
+
+      &._current
+        color #fff
+        cursor default
+
+      &[disabled]
+        color rgba(91,96,101,.40)
+
+      svg
+        stroke $colors-ops
+        stroke-width 2px
+        fill $colors-ops
+        transform rotate(180deg)
+        margin-right 7px
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-right 14px
+
+      &._theme_kpp
+        svg
+          stroke $colors-kpp
+
+      &:hover
+
+        ^[2]&[disabled]
+          color rgba(91,96,101,.40)
+
+      &:active
+        svg
+          stroke #fff
+          fill #fff
+
+      span
+        float right
+
+    &_carousel-tab
+      padding-left 20px
+      padding-right 20px
+
+  &._s
+    &_s
+      height 40px
+
+    &_m
+      padding-top 15px
+      padding-bottom 15px
+      height 45px
+
+    &_l
+      height 60px
+      padding-top 23px
+      padding-bottom 23px
+
+      @media screen and (min-width: $screen-lg-min)
+        padding-left 60px
+        padding-right 60px
+
+    &_fullwidth
+      padding-left 0
+      padding-right 0
+      text-align center
+      width 100%
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-left 0
+        padding-right 0
+
+      @media screen and (min-width: $screen-lg-min)
+        padding-left 0
+        padding-right 0
+
+    &_auto
+      width auto
+
+  &._padding_40
+    padding-left 40px
+    padding-right 40px
+
+    @media screen and (min-width: $screen-sm-min)
+      padding-left 40px
+      padding-right 40px
+
+  &._padding_30
+    padding-left 30px
+    padding-right 30px
+
+    @media screen and (min-width: $screen-sm-min)
+      padding-left 30px
+      padding-right 30px
+      
+    &_i
+      padding-left 30px !important
+      padding-right 30px !important
+
+      @media screen and (min-width: $screen-sm-min)
+        padding-left 30px !important
+        padding-right 30px !important
+
+  &._circle
+    &_xs
+      height 32px
+      width 32px
+      position relative
+      svg
+        position absolute
+        left 50%
+        top 50%
+        transform translate(-50%,-50%)
+        margin-left 0
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 0
+    &_s
+      height 60px
+      width 60px
+      svg
+        margin-left 0
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 0
+
+    &_m
+      height 160px
+      width 160px
+      svg
+        margin-left 0
+
+        @media screen and (min-width:$screen-sm-min)
+          margin-left 0
+
+  &._position_center
+    margin-left auto
+    margin-right auto
+    
+  &._position_left
+    @media screen and (min-width 768px)
+      float left
+
+  &__text
+    font-size 18px
+    font-weight 500
+    letter-spacing: .010em
+    line-height 18px
+
+  .ic_arrow_down
+    width 12px
+    height 8px
+    display inline-block
+
+
+button.npf-button
+  display block

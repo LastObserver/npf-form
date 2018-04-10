@@ -1,0 +1,304 @@
+.npf-fund-yield
+  padding-top 84px
+  padding-bottom 100px
+  make-row()
+
+  &__container
+    make-xs-column(12)
+    make-lg-column(8)
+    make-lg-column-offset(2)
+
+
+  &__cards-container
+    make-row()
+
+  &__card
+    make-xs-column(12)
+    make-sm-column(6)
+    position relative
+    margin-bottom 15px
+    &::before
+      content ''
+      border-radius 6px
+      left 15px
+      top 0
+      right 15px
+      bottom 0
+      position absolute
+      z-index -1
+      box-shadow 0 20px 81px rgba(0, 0, 0, 0.15)
+
+  &__card-content
+    border-radius 6px
+    height 200px
+    padding 40px 0 40px 38px
+    overflow hidden
+    background #fff
+    position relative
+
+
+  &__year
+    font-size 18px
+    font-weight 500
+    line-height ( 20/18 )
+    position absolute
+    right 30px
+    top 23px
+    letter-spacing .01em
+
+  &__percent
+    margin-bottom 12px
+
+  &__percent-number
+    font-size 50px
+    font-weight 200
+    letter-spacing -.015em
+
+    &._theme_green
+      color $colors-ops
+
+    &._theme_orange
+      color $colors-ipp
+
+  &__percent-sign
+    font-size 14px
+
+  &__title
+    font-size 18px
+    font-weight 500
+    line-height ( 30/18 )
+
+  &__subtitle
+    font-size 14px
+    font-weight 300
+    line-height ( 25/14 )
+    letter-spacing .02em
+  
+  &__links
+    margin-top 5px
+    text-align right
+    padding-right 25px
+    
+  &__link
+    font-size 14px
+    font-weight 300
+    color #1a991a 
+
+.npf-fund-charts
+  make-row()
+  
+  @media screen and (min-width:$screen-sm-min)
+    padding-bottom 100px
+
+  .npf-fold-btn
+    padding-bottom 60px
+
+  &__container
+    make-lg-column-offset(2)
+    make-lg-column(8)
+
+  .npf-tabs__switchers
+    display flex
+    flex-flow row wrap
+    justify-content space-between
+    align-items center
+    margin-bottom 40px
+
+  &__data-title
+    flex-grow 1
+    font-size 18px
+    font-weight 500
+    line-height ( 30/18 )
+
+    @media screen and (max-width:$screen-xs-max)
+      margin-bottom 30px
+
+
+  .npf-tabs__switcher
+    margin-bottom 15px
+
+    @media screen and (min-width:$screen-sm-min)
+      margin-left 20px
+      margin-bottom 0
+
+  &__warning
+    background-color $colors-background
+    border-radius 4px
+    padding-top 24px
+    padding-left 30px
+    padding-bottom 24px
+    margin-bottom 100px
+
+  &__warning-content
+    padding-left 29px
+    position relative
+
+    &::before
+      content '!'
+      color $colors-ops
+      border 1px solid $colors-ops
+      border-radius 50%
+      display block
+      height 20px
+      position absolute
+      left 0
+      line-height 20px
+      text-align center
+      top 0
+      width 20px
+
+  &__warning-text
+    color #000
+    font-size 14px
+    line-height ( 20/14 )
+
+.npf-fund-chart
+
+  &-container
+    margin-left -30px
+    margin-right -30px
+    margin-bottom 86px
+    position relative
+
+  &__line
+    fill none
+    stroke-width 3px
+
+    &._theme_green
+      stroke $colors-ops
+
+    &._theme_orange
+      stroke $colors-ipp
+
+  &__dot
+    pointer-events fill
+
+    &._theme_green
+      fill $colors-ops
+
+    &._theme_orange
+      fill $colors-ipp
+
+    &:hover
+      stroke-width 7px
+      stroke #fff
+
+
+  .tick
+    line
+      visibility hidden
+
+  &__left-y
+    .tick
+      &:first-of-type
+        text
+          display none
+    .domain
+      display none
+    text
+      color black
+      font-family "SeroPro"
+      font-size 14px
+      font-weight 300
+      letter-spacing .02em
+
+  &__right-y
+    .tick
+      &:first-of-type
+        text
+          display none
+    .domain
+      display none
+    text
+      color black
+      font-family "SeroPro"
+      font-size 14px
+      font-weight 300
+      letter-spacing .02em
+
+  &__axisX
+    .domain
+      display none
+    text
+      opacity 0.5
+      color black
+      font-family "SeroPro"
+      font-size 14px
+      font-weight 300
+      letter-spacing .02em
+
+  &__grid
+    .domain
+      fill none
+    .tick
+      line
+        visibility visible
+    line
+      stroke $colors-line-lighter
+      stroke-opacity 0.7
+      shape-rendering crispEdges
+    path
+      stroke-width 0
+
+  &__axis-label
+    fill #a1a1a1
+    color $colors-background
+    font-family "SeroPro"
+    font-size 14px
+    font-weight 400
+    line-height ( 20/14 )
+    letter-spacing .02
+
+  &__axis-check
+    pointer-events all
+
+  &__tooltip
+    background #fff
+    box-shadow   0 10px 81px rgba(0, 0, 0, 0.2)
+    border-radius 10px
+    display block
+    height auto
+    position absolute
+    padding-top 20px
+    padding-left 20px
+    padding-bottom 20px
+    width 136px
+    pointer-events none
+
+    &::before
+      content ''
+      display block
+      position absolute
+      left -10px
+      top 50%
+      width 0
+      height 0
+      border-style solid
+      border-width 10px 10px 10px 0
+      border-color transparent #ffffff transparent transparent
+      transform translateY(-50%)
+
+  &__tooltip-dot
+    border-radius 50%
+    display inline-block
+    height 12px
+    margin-right 15px
+    width 12px
+
+    &._theme_orange
+      background-color $colors-ipp
+
+    &._theme_green
+      background-color $colors-ops
+
+  &__tooltip-green-text,
+  &__tooltip-orange-text
+    display inline-block
+    color #000
+    font-size 14px
+    font-weight 300
+    line-height ( 25/14 )
+
+  &__overlay
+    fill none
+    pointer-events all
