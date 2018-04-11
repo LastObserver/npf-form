@@ -2,7 +2,6 @@ import { Directive, ElementRef } from '@angular/core';
 import * as $ from 'jquery';
 import { TweenMax } from 'gsap';
 
-// TODO: add types declaration for gsap
 
 @Directive({
   selector: '._js-accordion',
@@ -10,65 +9,55 @@ import { TweenMax } from 'gsap';
 export class AccordionDirective {
 
   private element: HTMLElement
+  private head: Element
+  private body: Element
+  private isSpecial: Boolean
   private mq: {
     matches: Boolean
   }
-  private footer: string = '.npf-page__footer'
-  private header: string = '.head'
 
   constructor(private el:ElementRef) {
     this.element = el.nativeElement
-
+    this.isSpecial = $(this.element).parents('.npf-page__footer').length || $(this.element).parents('.head').length
     this.mq = window.matchMedia('(min-width: 768px)')
-
-    if (this.mq.matches) {
-      if ($(this.footer).find('._js-accordion').hasClass('_hidden')) {
-        TweenMax.set($(this.footer).find('._js-accordion__body'), { height: 'auto' })
-        TweenMax.from($(this.footer).find('._js-accordion__body'), 0.3, { height: 0 })
-        $(this.footer).find('._js-accordion').removeClass('_hidden')
-      }
-    }
-
-    if (this.mq.matches) {
-      if ($(this.header).find('._js-accordion').hasClass('_hidden')) {
-        TweenMax.set($(this.header).find('._js-accordion__body'), { height: 'auto' })
-        TweenMax.from($(this.header).find('._js-accordion__body'), 0.3, { height: 0 })
-        $(this.header).find('._js-accordion').removeClass('_hidden')
-      }
-    }
-
-
   }
 
   ngAfterViewInit() {
-    this.element.querySelector('._js-accordion__header').addEventListener('click', this.onClick.bind(this))
+    this.head = this.element.querySelector('._js-accordion__header')
+    this.body = this.element.querySelector('._js-accordion__body')
+
+    if (this.mq.matches) {
+      if (this.element.classList.contains('_hidden') && this.isSpecial) {
+        TweenMax.set(this.body, { height: 'auto' })
+        TweenMax.from(this.body, 0.3, { height: 0 })
+        this.element.classList.remove('_hidden')
+      }
+    }
+
+    if (this.mq.matches) {
+      if (this.element.classList.contains('_hidden') && this.isSpecial) {
+        TweenMax.set(this.body, { height: 'auto' })
+        TweenMax.from(this.body, 0.3, { height: 0 })
+        this.element.classList.remove('_hidden')
+      }
+    }
+    this.head.addEventListener('click', this.onClick.bind(this))
   }
 
   onClick(event) {
     event.preventDefault()
 
-    const self = $(event.target)
-    const container = self.closest('._js-accordion')
-    const content = container.find('._js-accordion__body')
-    if (self.parents(this.footer).length) {
-      if (this.mq.matches) {
-        return
-      }
+    if (this.isSpecial && this.mq.matches) {
+      return false
     }
 
-    if (self.parents(this.header).length) {
-      if (this.mq.matches) {
-        return
-      }
-    }
-
-    if (!container.hasClass('_hidden')) {
-      TweenMax.to(content, 0.3, { height: 0 })
-      container.addClass('_hidden')
+    if (this.element.classList.contains('_hidden')) {
+      TweenMax.set(this.body, { height: 'auto' })
+      TweenMax.from(this.body, 0.3, { height: 0 })
+      this.element.classList.remove('_hidden')
     } else {
-      TweenMax.set(content, { height: 'auto' })
-      TweenMax.from(content, 0.3, { height: 0 })
-      container.removeClass('_hidden')
+      TweenMax.to(this.body, 0.3, { height: 0 })
+      this.element.classList.add('_hidden')
     }
   }
 

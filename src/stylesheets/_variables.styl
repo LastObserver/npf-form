@@ -1,4 +1,5 @@
 @require './../../node_modules/rupture/rupture'
+@import './../../node_modules/bootstrap-styl/bootstrap/variables.styl'
 
 rupture.scale = 0 767px 1023px 1199px
 rupture.scale-names = 'xs' 'sm' 'md' 'lg'
@@ -9,7 +10,7 @@ rupture.mobile-cutoff = 767px
 rupture.desktop-cutoff = 1023px
 rupture.hd-cutoff = 1199px
 
-$fonts-path ?= "/local/templates/npfsb/fonts/" 
+$fonts-path ?= "assets/fonts/" 
 
 $transition-duration = .325s
 $transition-timing-function = cubic-bezier(.19, 1, .22, 1)
