@@ -1,0 +1,25 @@
+<div class="npf-form-bone _ipp-form">
+  <div class="npf-form-bone__header">
+    <div class="npf-form-bone__header-top">Оформление индивидуального пенсионного плана</div>
+
+    <div class="npf-form-bone__header-steps">
+      <div class="npf-steps-line _centred">
+        <div class="npf-steps-line__steps-holder">
+          <div class="npf-steps-line__progress-bar"></div>
+          <div class="npf-steps-line__steps">
+            <step-symbol [index]="1" [progress]="step1.getProgressValue()"></step-symbol>
+            <step-symbol [index]="2"></step-symbol>
+            <step-symbol [index]="3"></step-symbol>
+            <step-symbol [complete]='true'></step-symbol>
+          </div>
+        </div>
+        <div class="npf-steps-line__help-holder">
+          <a class="npf-steps-line__help npf-modal-show" href="#help">?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form-step-1></form-step-1>
+
+</div>
+

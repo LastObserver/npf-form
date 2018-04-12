@@ -1,0 +1,145 @@
+<form #stepForm="ngForm">
+  <div class="npf-form-bone__section npf-u-mask-scope">
+    <div class="npf-form-bone__groups-holder">
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Личные данные</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input class="npf-input-group__input _theme_ipp npf-u-mask" name="last_name" type="text" [(ngModel)]="formData.last_name" required/>
+                <div class="npf-input-group__label">Фамилия</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text" [(ngModel)]="formData.name" required/>
+                <div class="npf-input-group__label">Имя</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="second_name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text"
+                  [attr.required] = "formData.is_no_second_name ? undefined : true" [(ngModel)]="formData.second_name"
+                  data-tooltip="Если у Вас нет отчества, пожалуйста, отметьте ниже, что его нет" data-my="bottom center"
+                  data-at="top center" />
+                <div class="npf-input-group__label">Отчество</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col _stick-to-prev">
+              <div class="npf-checkbox-group _simple">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input type="checkbox" name="is_no_second_name" [(ngModel)]="formData.is_no_second_name" (change)="setValidation(formData.is_no_second_name, 'second_name')">
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Нет отчества</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-radio-group _simple">
+                <label class="npf-radio-group__item">
+                  <span class="npf-radio-group__radio">
+                    <input type="radio" name="gender" value="M" [(ngModel)]="formData.gender" checked>
+                    <span class="npf-radio-group__styler"></span>
+                  </span>
+                  <span class="npf-radio-group__label">Мужчина</span>
+                </label>
+                <label class="npf-radio-group__item">
+                  <span class="npf-radio-group__radio">
+                    <input type="radio" name="gender" value="F" [(ngModel)]="formData.gender">
+                    <span class="npf-radio-group__styler"></span>
+                  </span>
+                  <span class="npf-radio-group__label">Женщина</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Контакты</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="email" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.email"/>
+                <div class="npf-input-group__label">E-mail</div>
+                <div class="npf-input-group__helper">На этот адрес будет отправлена копия договора</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="tel" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel"/>
+                <div class="npf-input-group__label">Номер мобильного телефона</div>
+                <div class="npf-input-group__helper">На указанный номер поступит информация о статусе договора</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="tel_stat" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel_stat"/>
+                <div class="npf-input-group__label">Домашний телефон</div>
+                <div class="npf-input-group__helper">При наличии</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="personal_data" type="checkbox" [(ngModel)]="formData.personal_data">
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Я согласен с условиями
+                    <a class="npf-modal-show" href="#personal-modal">обработки и передачи информации</a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-captcha-group">
+                <div class="npf-captcha-group__image-group">
+                  <input type="text" name="captcha_sid" [(ngModel)]="formData.captcha.sid"/>
+                  <img src="//placehold.it/166x60" alt="CAPTCHA" />
+                  <a class="npf-captcha-group__update" href="/captcha/">Обновить код</a>
+                </div>
+                <div class="npf-captcha-group__input-group">
+                  <div class="npf-input-group npf-u-mask-field">
+                    <input name="captcha" class="npf-input-group__input" type="text" [(ngModel)]="formData.captcha.word"/>
+                    <div class="npf-input-group__label _ellipsis">Введите код с картинки</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="npf-form-bone__btns-holder _right-side">
+      <a class="npf-button _theme_transparent _s_l">
+        <div class="npf-button__text">
+          <span>Следующий шаг</span>
+          <span class="npf-button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="-1 -1 8 14">
+              <path fill="none" d="M0 0l5.672 5.992L0 11.983" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</form>

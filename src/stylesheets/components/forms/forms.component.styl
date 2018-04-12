@@ -1255,8 +1255,8 @@
     background #fff
     border 2px solid #e0e3e6
 
-    &:first-child
-      margin-left 0
+    // &:first-child
+      // margin-left 0
 
     canvas
       position absolute
@@ -1312,9 +1312,70 @@
     &__help-holder
       margin-left 0
 
+.npf-step
+  position relative
+  float left
+  font-weight 500
+  width 40px
+  height 40px
+  margin-left 40px
+  background #fff
+  user-select none
+
+  &._complete
+
+    .npf-step
+      // &__progress
+      &__index
+        display none
+      &__icon
+        display block
+
+  &._success
+
+    .npf-step
+      &__index
+        display none
+      &__icon
+        display block
+      &__icon
+      &__progress
+        color $colors-ops
+
+        svg
+          fill $color-ops
+
+  &__index
+    position absolute
+    left 0
+    right 0
+    top 0
+    bottom 0
+    margin auto
+    line-height 44px
+    text-align center
+
+  &__icon
+    position absolute
+    top 8px
+    left 8px
+    display none
+
+  &__progress
+    display block
+    color $colors-ipp
+
+
+
+
+step-symbol
+  &:first-child
+    .npf-step
+      margin-left 0
+
 .npf-form-bone._ipp-form
   @media (max-width: 768px)
-    .npf-steps-line__step
+    .npf-step
       margin-left 15px
       
       &:first-child
