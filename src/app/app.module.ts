@@ -12,6 +12,8 @@ import { FormComponent } from './components/form/form.component';
 import { FormStep1Component } from './components/form/form-step-1/form-step-1.component';
 import { ApiService } from './services/api.service';
 import { StepsService } from './services/steps.service';
+import { FormStepComponent } from './components/form/form-step/form-step.component';
+import { RequiredIfDirective } from './directives/required-if/required-if.directive';
 
 
 @NgModule({
@@ -23,6 +25,8 @@ import { StepsService } from './services/steps.service';
     StepSymbolComponent,
     FormComponent,
     FormStep1Component,
+    FormStepComponent,
+    RequiredIfDirective,
   ],
   imports: [
     BrowserModule,

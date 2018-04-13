@@ -10,7 +10,6 @@ export class FormComponent implements OnInit {
   @ViewChild(FormStep1Component) step1
 
   constructor() {
-    console.log(this)
   }
 
   ngOnInit() {

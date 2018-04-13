@@ -23,9 +23,9 @@
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
                 <input name="second_name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text"
-                  [attr.required] = "formData.is_no_second_name ? undefined : true" [(ngModel)]="formData.second_name"
+                  [(ngModel)]="formData.second_name"
                   data-tooltip="Если у Вас нет отчества, пожалуйста, отметьте ниже, что его нет" data-my="bottom center"
-                  data-at="top center" />
+                  data-at="top center" [requiredIf]="formData.is_no_second_name"/>
                 <div class="npf-input-group__label">Отчество</div>
               </div>
             </div>
@@ -34,7 +34,7 @@
               <div class="npf-checkbox-group _simple">
                 <label>
                   <span class="npf-checkbox-group__checkbox">
-                    <input type="checkbox" name="is_no_second_name" [(ngModel)]="formData.is_no_second_name" (change)="setValidation(formData.is_no_second_name, 'second_name')">
+                    <input type="checkbox" name="is_no_second_name" [(ngModel)]="formData.is_no_second_name">
                     <span class="npf-checkbox-group__styler"></span>
                   </span>
                   <span class="npf-checkbox-group__label">Нет отчества</span>
@@ -72,7 +72,7 @@
 
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="email" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.email"/>
+                <input name="email" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.email" required/>
                 <div class="npf-input-group__label">E-mail</div>
                 <div class="npf-input-group__helper">На этот адрес будет отправлена копия договора</div>
               </div>
@@ -80,7 +80,7 @@
 
             <div class="npf-form-bone__half-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="tel" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel"/>
+                <input name="tel" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel" required/>
                 <div class="npf-input-group__label">Номер мобильного телефона</div>
                 <div class="npf-input-group__helper">На указанный номер поступит информация о статусе договора</div>
               </div>
@@ -98,7 +98,7 @@
               <div class="npf-checkbox-group _simple npf-u-mask-field">
                 <label>
                   <span class="npf-checkbox-group__checkbox">
-                    <input name="personal_data" type="checkbox" [(ngModel)]="formData.personal_data">
+                    <input name="personal_data" type="checkbox" [(ngModel)]="formData.personal_data" required>
                     <span class="npf-checkbox-group__styler"></span>
                   </span>
                   <span class="npf-checkbox-group__label">Я согласен с условиями
@@ -117,7 +117,7 @@
                 </div>
                 <div class="npf-captcha-group__input-group">
                   <div class="npf-input-group npf-u-mask-field">
-                    <input name="captcha" class="npf-input-group__input" type="text" [(ngModel)]="formData.captcha.word"/>
+                    <input name="captcha" class="npf-input-group__input" type="text" [(ngModel)]="formData.captcha.word" required/>
                     <div class="npf-input-group__label _ellipsis">Введите код с картинки</div>
                   </div>
                 </div>

@@ -13,7 +13,6 @@ export class StepSymbolComponent implements OnInit {
   @Input() index: string
   @Input() complete: boolean
   @Input() progress: number
-  @Input() progresso: number
   private element: HTMLElement
 
   constructor(private el: ElementRef) {
@@ -24,7 +23,7 @@ export class StepSymbolComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const { progress  } = changes
+    const { progress } = changes
 
     if (progress) {
       if (progress.isFirstChange()) {
