@@ -35,7 +35,6 @@ export class StepSymbolComponent implements OnInit {
           drawSVG: `${progress.currentValue * 100}% 0%`,
         })
       }
-
       $('.npf-step', this.element)
         .toggleClass('_success', progress.currentValue === 1)
     }

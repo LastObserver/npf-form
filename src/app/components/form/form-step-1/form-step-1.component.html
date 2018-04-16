@@ -1,4 +1,4 @@
-<form #stepForm="ngForm">
+<form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate>
   <div class="npf-form-bone__section npf-u-mask-scope">
     <div class="npf-form-bone__groups-holder">
       <div class="npf-form-bone__fields-group">
@@ -8,14 +8,14 @@
 
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input class="npf-input-group__input _theme_ipp npf-u-mask" name="last_name" type="text" [(ngModel)]="formData.last_name" required/>
+                <input class="npf-input-group__input _theme_ipp npf-u-mask" data-mask="rusNameMask" name="last_name" type="text" [(ngModel)]="formData.last_name" required/>
                 <div class="npf-input-group__label">Фамилия</div>
               </div>
             </div>
 
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text" [(ngModel)]="formData.name" required/>
+                <input name="name" class="npf-input-group__input _theme_ipp npf-u-mask" data-mask="rusNameMask" type="text" [(ngModel)]="formData.name" required/>
                 <div class="npf-input-group__label">Имя</div>
               </div>
             </div>
@@ -23,9 +23,9 @@
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
                 <input name="second_name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text"
-                  [(ngModel)]="formData.second_name"
+                  [(ngModel)]="formData.second_name" data-mask="rusNameMask"
                   data-tooltip="Если у Вас нет отчества, пожалуйста, отметьте ниже, что его нет" data-my="bottom center"
-                  data-at="top center" [requiredIf]="formData.is_no_second_name"/>
+                  data-at="top center" [requiredIf]="!formData.is_no_second_name"/>
                 <div class="npf-input-group__label">Отчество</div>
               </div>
             </div>
@@ -72,7 +72,8 @@
 
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="email" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.email" required/>
+                <input name="email" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                 data-mask="engNameMask" [(ngModel)]="formData.email" required/>
                 <div class="npf-input-group__label">E-mail</div>
                 <div class="npf-input-group__helper">На этот адрес будет отправлена копия договора</div>
               </div>
@@ -80,7 +81,8 @@
 
             <div class="npf-form-bone__half-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="tel" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel" required/>
+                <input name="tel" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                 data-mask="+7 (999) 999 99 99" [(ngModel)]="formData.tel" required/>
                 <div class="npf-input-group__label">Номер мобильного телефона</div>
                 <div class="npf-input-group__helper">На указанный номер поступит информация о статусе договора</div>
               </div>
@@ -88,7 +90,8 @@
 
             <div class="npf-form-bone__half-col">
               <div class="npf-input-group npf-u-mask-field">
-                <input name="tel_stat" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" [(ngModel)]="formData.tel_stat"/>
+                <input name="tel_stat" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                 data-mask="+7 (999) 999 99 99" [(ngModel)]="formData.tel_stat"/>
                 <div class="npf-input-group__label">Домашний телефон</div>
                 <div class="npf-input-group__helper">При наличии</div>
               </div>
@@ -130,7 +133,7 @@
     </div>
 
     <div class="npf-form-bone__btns-holder _right-side">
-      <a class="npf-button _theme_transparent _s_l">
+      <button class="npf-button _theme_transparent _s_l" type="submit">
         <div class="npf-button__text">
           <span>Следующий шаг</span>
           <span class="npf-button__icon">
@@ -139,7 +142,7 @@
             </svg>
           </span>
         </div>
-      </a>
+      </button>
     </div>
   </div>
 </form>

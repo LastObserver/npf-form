@@ -2,8 +2,6 @@ import { Directive, ElementRef, Input, SimpleChanges, ChangeDetectorRef } from '
 import { NgControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
-// TODO: deal with THIS FUCKING ExpressionChangedAfterItHasBeenCheckedError ERROR
-
 @Directive({
   selector: '[requiredIf]'
 })
@@ -18,7 +16,7 @@ export class RequiredIfDirective {
   
   ngOnChanges(changes: SimpleChanges) {
     const { condition } = changes
-    console.log(condition)
+
     if (condition) {
       if (condition.currentValue) {
         this.element.setAttribute('required', 'true')

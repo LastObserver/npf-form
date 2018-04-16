@@ -7,9 +7,9 @@
         <div class="npf-steps-line__steps-holder">
           <div class="npf-steps-line__progress-bar"></div>
           <div class="npf-steps-line__steps">
-            <step-symbol [index]="1" [progress]="step1.getProgressValue()"></step-symbol>
-            <step-symbol [index]="2"></step-symbol>
-            <step-symbol [index]="3"></step-symbol>
+            <step-symbol [index]="ind + 1" [progress]="state" *ngFor="let state of states; index as ind"></step-symbol>
+            <!-- <step-symbol [index]="2"></step-symbol> -->
+            <!-- <step-symbol [index]="3"></step-symbol> -->
             <step-symbol [complete]='true'></step-symbol>
           </div>
         </div>

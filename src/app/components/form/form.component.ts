@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormStep1Component } from './form-step-1/form-step-1.component';
+import { Component, OnInit, ViewChild, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { FormStepComponent } from './form-step/form-step.component';
+
+
 
 @Component({
   selector: 'app-form',
@@ -7,12 +9,22 @@ import { FormStep1Component } from './form-step-1/form-step-1.component';
   styleUrls: ['./form.component.styl'],
 })
 export class FormComponent implements OnInit {
-  @ViewChild(FormStep1Component) step1
+  steps: FormStepComponent[]
+  private states: number[]
 
-  constructor() {
+  constructor(private cd: ChangeDetectorRef) {
+    this.steps = []
+    this.states = []
   }
 
   ngOnInit() {
+  }
+
+  ngAfterViewChecked() {
+    this.states = this.steps.map(step => {
+      return step.getProgressValue()
+    })
+    this.cd.detectChanges()
   }
 
 }

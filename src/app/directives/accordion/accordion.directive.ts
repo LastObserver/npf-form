@@ -18,7 +18,7 @@ export class AccordionDirective {
 
   constructor(private el:ElementRef) {
     this.element = el.nativeElement
-    this.isSpecial = $(this.element).parents('.npf-page__footer').length || $(this.element).parents('.head').length
+    this.isSpecial = Boolean($(this.element).parents('.npf-page__footer').length) || Boolean($(this.element).parents('.head').length)
     this.mq = window.matchMedia('(min-width: 768px)')
   }
 

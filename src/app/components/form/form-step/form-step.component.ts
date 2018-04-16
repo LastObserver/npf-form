@@ -1,5 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, Host } from '@angular/core';
 import { Validators } from '@angular/forms';
+import { FormComponent } from '../form.component';
+import { ApiService } from '../../../services/api.service';
 
 @Component({
   selector: 'app-form-step',
@@ -10,24 +12,13 @@ export class FormStepComponent implements OnInit {
   @ViewChild('stepForm') form
   element: HTMLElement
 
-  constructor(public el: ElementRef, public cd: ChangeDetectorRef) {
+  constructor(public el: ElementRef, public cd: ChangeDetectorRef, public api: ApiService, @Host() parent: FormComponent) {
     this.element = el.nativeElement
+    parent.steps.push(this)
   }
 
   ngOnInit() {
   }
-
-  // setValidation(condition: boolean, name: string) {
-  //   const control = this.form.controls[name]
-  //   if (condition) {
-  //     control.clearValidators()
-  //   } else {
-  //     control.setValidators(Validators.required)
-  //   }
-  //   control.updateValueAndValidity({ emitEvent: false, onlySelf: true })
-  //   this.cd.detectChanges()
-  // }
-
 
   getProgressValue() {
     if (!this.form) { return 1 }

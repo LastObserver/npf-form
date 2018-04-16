@@ -22,7 +22,8 @@
         "stylesheets/_variables.styl",
         "stylesheets/application.styl"
       ],
-      "scripts": [],
+      "scripts": [
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

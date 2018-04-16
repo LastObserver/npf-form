@@ -23,4 +23,19 @@ export class DataStep1 {
             word: '',
         }
     }
+
+    get transformedData() {
+        return {
+            last_name: this.last_name,
+            name: this.name,
+            no_second_name: this.is_no_second_name ? 1 : null,
+            second_name: this.second_name,
+            gender: this.gender,
+            tel: this.tel ? this.tel.replace(/[+ ()]/g, '') : '',
+            tel_stat: this.tel_stat ? this.tel_stat.replace(/[+ ()]/g, '') : '',
+            email: this.email,
+            personal_data: this.personal_data ? 1 : '',
+            captcha: this.captcha,
+        }
+    }
 }
