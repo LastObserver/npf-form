@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
@@ -19,7 +19,11 @@ import { CaptchaDirective } from './directives/captcha/captcha.directive';
 
 
 // mock backend
-import { mockBackendProvider } from './helpers/mockBackend'
+import { mockBackendProvider } from './helpers/mockBackend';
+import { FormStep2Component } from './components/form/form-step-2/form-step-2.component';
+import { FormStep3Component } from './components/form/form-step-3/form-step-3.component';
+import { FormStepCompleteComponent } from './components/form/form-step-complete/form-step-complete.component'
+import { BackupService } from './services/backup.service';
  
 
 @NgModule({
@@ -35,6 +39,9 @@ import { mockBackendProvider } from './helpers/mockBackend'
     RequiredIfDirective,
     InputDirective,
     CaptchaDirective,
+    FormStep2Component,
+    FormStep3Component,
+    FormStepCompleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,8 +50,12 @@ import { mockBackendProvider } from './helpers/mockBackend'
   ],
   providers: [
     ApiService,
+    BackupService,
     mockBackendProvider,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    NO_ERRORS_SCHEMA,
+  ]
 })
 export class AppModule { }

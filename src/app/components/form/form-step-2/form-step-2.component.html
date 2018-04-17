@@ -1,0 +1,338 @@
+<form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate>
+  <div class="npf-form-bone__section npf-u-mask-scope">
+    <div class="npf-form-bone__groups-holder">
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Данные паспорта гражданина РФ</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <div class="npf-input-group__datepicker">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="17" width="16" viewBox="0 0 16 17">
+                    <rect rx="2" ry="1.8" height="13" width="14" y="2.8" x="1" stroke-width="1.9" fill="none" />
+                    <path d="M4 5.6h2V0H4zM4 7.5h2v1.9H4zM7 7.5h2v1.9H7zM10 7.5h2v1.9h-2zM4 11h2v2H4zm3 0h2v2H7zm3 0h2v2h-2zM10-.01h2v5.6h-2z"
+                      stroke="none" />
+                  </svg>
+                </div>
+                <input name="birthdate" type="text" class="npf-input-group__input _theme_ipp _js_datepicker-single npf-u-mask" required
+                  data-mask="dateMask" [(ngModel)]="formData.birth_date" />
+                <div class="npf-input-group__label">Дата рождения</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="passport" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" required data-mask="9999 999999"
+                  data-mask-placeholder="_" [(ngModel)]="formData.passport"/>
+                <div class="npf-input-group__label">Серия и номер паспорта</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="birth_place" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                  required data-mask="rusNameMask" [(ngModel)]="formData.birth_place" />
+                <div class="npf-input-group__label">Место рождения (как в паспорте)</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <div class="npf-input-group__datepicker">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="17" width="16" viewBox="0 0 16 17">
+                    <rect rx="2" ry="1.8" height="13" width="14" y="2.8" x="1" stroke-width="1.9" fill="none" />
+                    <path d="M4 5.6h2V0H4zM4 7.5h2v1.9H4zM7 7.5h2v1.9H7zM10 7.5h2v1.9h-2zM4 11h2v2H4zm3 0h2v2H7zm3 0h2v2h-2zM10-.01h2v5.6h-2z"
+                      stroke="none" />
+                  </svg>
+                </div>
+                <input name="issue_date" type="text" class="npf-input-group__input _theme_ipp _js_datepicker-single npf-u-mask" required
+                  data-mask="dateMask" [(ngModel)]="formData.issue_date"/>
+                <div class="npf-input-group__label">Дата выдачи паспорта</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="issue_org_code" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" required data-mask="999-999"
+                  [(ngModel)]="formData.issue_org_code"/>
+                <div class="npf-input-group__label">Код подразделения</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="issue_org" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" required data-mask="rusNameMask"
+                  [(ngModel)]="formData.issue_org"/>
+                <div class="npf-input-group__label">Наименование органа, выдавшего паспорт (полностью)</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Адрес регистрации (как в паспорте)</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="reg_cname" type="text" class="npf-input-group__input _theme_ipp _js-kladr npf-u-mask"
+                  data-mask="rusNameMask" data-tooltip="Укажите наименование населенного пункта, а индекс и регион мы найдем сами"
+                  data-my="bottom center" data-at="top center" [(ngModel)]="formData.reg_cname" />
+                <!-- <div class="npf-input-group__address-parents">{{reg_full.parent}}</div> -->
+                <div class="npf-input-group__label">Название населенного пункта</div>
+                <div class="npf-input-group__error-text">
+                  <span class="npf-u-error"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col" [hidden]="formData.reg_no_street">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="reg_street" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                  data-mask="rusNameMask" [requiredIf]="!formData.reg_no_street" [(ngModel)]="formData.reg_street"/>
+                <div class="npf-input-group__label">Улица</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col _stick-to-prev">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="reg_no_street" type="checkbox" [(ngModel)]="formData.reg_no_street" />
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Нет улицы</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="reg_house" type="text" class="npf-input-group__input _theme_ipp"
+                  required [(ngModel)]="formData.reg_house"/>
+                <div class="npf-input-group__label">Дом</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col">
+              <div class="npf-input-group">
+                <input name="reg_build" type="text" class="npf-input-group__input _theme_ipp"
+                  [(ngModel)]="formData.reg_build"/>
+                <div class="npf-input-group__label">Корп/стр</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col" [hidden]="formData.reg_no_apt">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="reg_apt" type="text" class="npf-input-group__input _theme_ipp" [requiredIf]="!formData.reg_no_apt"
+                  [(ngModel)]="formData.reg_apt" />
+                <div class="npf-input-group__label">Квартира</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col _stick-to-prev">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="reg_no_apt" type="checkbox" [(ngModel)]="formData.reg_no_apt" />
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Нет номера квартиры</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Место жительства</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+            <div class="npf-form-bone__full-col">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input type="checkbox" (change)="formData.clearAddress()" name="fact_is_same" [(ngModel)]="formData.fact_is_same" />
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Совпадает с адресом регистрации</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="npf-form-bone__group-items" *ngIf="!formData.fact_is_same">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="fact_cname" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                  [requiredIf]="!formData.fact_is_same" data-mask="rusNameMask" [(ngModel)]="formData.fact_cname" />
+                <div class="npf-input-group__label">Название населенного пункта</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col" [hidden]="formData.fact_no_street">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="fact_street" type="text" class="npf-input-group__input _theme_ipp npf-u-mask" data-mask="rusNameMask"
+                  [requiredIf]="!formData.fact_no_street" [(ngModel)]="formData.fact_street"/>
+                <div class="npf-input-group__label">Улица</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col _stick-to-prev">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="fact_no_street" type="checkbox" [(ngModel)]="formData.fact_no_street" />
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Нет улицы</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="fact_house" type="text" class="npf-input-group__input _theme_ipp" [requiredIf]="!formData.fact_is_same" [(ngModel)]="formData.fact_house"/>
+                <div class="npf-input-group__label">Дом</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col">
+              <div class="npf-input-group">
+                <input name="fact_build" type="text" class="npf-input-group__input _theme_ipp" [(ngModel)]="formData.fact_build"/>
+                <div class="npf-input-group__label">Корп/стр</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__quarter-col" [hidden]="formData.fact_no_apt">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="fact_apt" type="text" class="npf-input-group__input _theme_ipp"
+                  [requiredIf]="!formData.fact_no_apt" [(ngModel)]="formData.fact_apt"/>
+                <div class="npf-input-group__label">Квартира</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col _stick-to-prev">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="fact_no_apt" type="checkbox" [(ngModel)]="formData.fact_no_apt" />
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Нет номера квартиры</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">Прочие данные</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="snils" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                  data-mask="999-999-999-99" data-mask-placeholder="_" [(ngModel)]="formData.snils" />
+                <div class="npf-input-group__label">СНИЛС</div>
+                <div class="npf-input-group__helper">При наличии</div>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="inn" type="text" class="npf-input-group__input _theme_ipp npf-u-mask"
+                  data-mask="999999999999" data-mask-placeholder="_" [(ngModel)]="formData.inn"/>
+                <div class="npf-input-group__label">ИНН</div>
+                <a class="npf-input-group__find" target="_blank" href="https://service.nalog.ru/inn.html">
+                  <span>Узнать</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="1 -1 10 10">
+                    <g fill="none" fill-rule="evenodd">
+                      <path d="M3 0h7v7" />
+                      <path d="M10 0L2 8" />
+                    </g>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="npf-form-bone__full-col">
+              <div class="npf-checkbox-group _simple npf-u-mask-field">
+                <label>
+                  <span class="npf-checkbox-group__checkbox">
+                    <input name="confirm_my_data" type="checkbox" required [(ngModel)]="formData.is_approved"/>
+                    <span class="npf-checkbox-group__styler"></span>
+                  </span>
+                  <span class="npf-checkbox-group__label">Я подтверждаю, что предоставленные данные достоверны и актуальны
+                    <a class="npf-modal-show" href="#accept-modal"></a>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="npf-form-bone__fields-group">
+        <div class="npf-form-bone__group-title">На ваш номер телефона направлено СМС. Введите код в поле и нажмите кнопку «Следующий шаг»</div>
+        <div class="npf-form-bone__group-items">
+          <div class="npf-form-bone__row">
+            <div class="npf-form-bone__half-col">
+              <div class="npf-input-group npf-u-mask-field">
+                <input name="sms_code" type="text" class="npf-input-group__input _theme_ipp" required [(ngModel)]="formData.sms_code"
+                />
+                <div class="npf-input-group__label">Введите СМС-код</div>
+                <div class="npf-input-group__static-helper">
+                  <a ng-show="smsTimer == 0" (click)="repeatSms()">Нажмите для повторной отправки СМС</a>
+                  <span ng-show="smsTimer > 0">СМС отправлено на номер {{formData.tel}}. Повторная отправка СМС возможна через: {{smsTimer}}
+                    сек
+                  </span>
+                  <br>Если СМС не пришло, обратитесь в Фонд по телефону
+                  <nobr>8 800 555 00 41</nobr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="npf-form-bone__btns-holder _right-side">
+      <a class="npf-button _theme_no-border _s_l" (click)="revertStep()">
+        <div class="npf-button__text">
+          <span>Предыдущий шаг</span>
+          <span class="npf-button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="-1 -1 8 14">
+              <path fill="none" d="M0 0l5.672 5.992L0 11.983" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <button class="npf-button _theme_transparent _s_l _padding_30_i" type="submit">
+        <div class="npf-button__text">
+          <span>Следующий шаг</span>
+          <span class="npf-button__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="-1 -1 8 14">
+              <path fill="none" d="M0 0l5.672 5.992L0 11.983" />
+            </svg>
+          </span>
+        </div>
+      </button>
+
+    </div>
+  </div>
+</form>
