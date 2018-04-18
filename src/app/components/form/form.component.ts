@@ -11,7 +11,10 @@ import 'gsap/scrollToPlugin.js';
 })
 export class FormComponent implements OnInit, AfterViewChecked {
   steps: FormStepComponent[];
-  private states: number[];
+  private states: {
+    progress: number,
+    complete: boolean;
+  }[];
   private currentStep: number;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -43,7 +46,10 @@ export class FormComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
     this.states = this.steps.map(step => {
-      return step.getProgressValue();
+      return {
+        progress: step.getProgressValue(),
+        complete: step.complete,
+      };
     });
     this.cd.detectChanges();
   }

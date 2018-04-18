@@ -4,7 +4,7 @@ import { FormStepComponent } from './../form-step/form-step.component';
 import { FormComponent } from '../form.component';
 import { ApiService } from '../../../services/api.service';
 import { CaptchaDirective } from '../../../directives/captcha/captcha.directive';
-import { BackupService } from '../../../services/backup.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-form-step-1',
@@ -16,14 +16,14 @@ export class FormStep1Component extends FormStepComponent implements OnInit, Aft
   @ViewChild(CaptchaDirective) captcha;
 
   constructor(
-    public backupService: BackupService,
+    public dataService: DataService,
     public el: ElementRef,
     public cd: ChangeDetectorRef,
     public api: ApiService,
     @Host() parent: FormComponent,
   ) {
-    super(backupService, el, cd, api, false, parent);
-    this.formData = new DataStep1();
+    super(dataService, el, cd, api, false, parent);
+    this.formData = dataService.data.step1;
   }
 
   ngOnInit() {

@@ -9,7 +9,7 @@
               <div class="npf-input-group npf-u-mask-field">
                 <input name="amount" type="text" class="npf-input-group__input npf-u-mask" [(ngModel)]="formData.amount"
                   data-tooltip="Подключите автоплатеж, и регулярные взносы будут списываться автоматически."
-                  data-my="bottom center" data-at="top center" data-mask="intMask" />
+                  data-my="bottom center" data-at="top center" data-mask="intMask" required/>
                 <div class="npf-input-group__label">Первоначальный взнос, от 1500 руб.</div>
               </div>
             </div>
@@ -258,27 +258,27 @@
                   <p>Почтовый адрес:115162, Москва, ул. Шаболовка, д.31Г</p>
                   <p>ИНН 7725352740 КПП 772501001 Банковские реквизиты: расчетный счет: 40701810300020001347. Кор. счет №30101810400000000225
                     ПАО Сбербанк г. Москва БИК 044525225 Телефон: (495) 784-64-72</p>
-                  <p>ВКЛАДЧИК: {{formData.last_name}} {{formData.name}} {{formData.second_name}}</p>
+                  <p>ВКЛАДЧИК: {{step1Data.last_name}} {{step1Data.name}} {{step1Data.second_name}}</p>
                   <p>Гражданство, вид и реквизиты документа, удостоверяющего личность, дата рождения, место рождения, пол, ИНН
-                    (при наличии), СНИЛС (при наличии) Гражданство РФ паспорт {{formData.passport}}, выдан {{formData.issue_org}}
-                    {{formData.issue_date}}, код подразделения {{formData.issue_org_code}}, дата рождения {{formData.birth_date}},
-                    место рождения {{formData.birth_place}}, пол {{formData.gender}}, {{formData.inn ?
-                    'ИНН ' + formData.inn + ', ' : ''}} {{formData.snils ? 'СНИЛС ' + formData.snils :
+                    (при наличии), СНИЛС (при наличии) Гражданство РФ паспорт {{step2Data.passport}}, выдан {{step2Data.issue_org}}
+                    {{formData.issue_date}}, код подразделения {{step2Data.issue_org_code}}, дата рождения {{step2Data.birthdate}},
+                    место рождения {{step2Data.birth_place}}, пол {{step1Data.gender}}, {{step2Data.inn ?
+                    'ИНН ' + step2Data.inn + ', ' : ''}} {{step2Data.snils ? 'СНИЛС ' + step2Data.snils :
                     ''}}</p>
                   <p>
-                    Адрес места жительства (регистрации) {{formData.reg_index}}, {{formData.reg_federal}}, {{formData.reg_region}},
-                    {{formData.reg_ctype | lowercase}} {{formData.reg_cname}}, {{formData.reg_no_street
-                    ? '' : 'ул. ' + formData.reg_street}}, дом {{formData.reg_house}}, {{formData.reg_build
-                    ? ' строение ' + formData.reg_build : '' }} {{formData.reg_no_apt ? '' : ' кв. ' + formData.reg_apt}}</p>
+                    Адрес места жительства (регистрации) {{step2Data.reg_index}}, {{step2Data.reg_federal}}, {{step2Data.reg_region}},
+                    {{step2Data.reg_ctype | lowercase}} {{step2Data.reg_cname}}, {{step2Data.reg_no_street
+                    ? '' : 'ул. ' + step2Data.reg_street}}, дом {{step2Data.reg_house}}, {{step2Data.reg_build
+                    ? ' строение ' + step2Data.reg_build : '' }} {{step2Data.reg_no_apt ? '' : ' кв. ' + step2Data.reg_apt}}</p>
                   <p>
-                    Адрес места пребывания {{formData.fact_index}}, {{formData.fact_federal}}, {{formData.fact_region}}, {{formData.fact_ctype
-                    | lowercase}} {{formData.fact_cname}}, {{formData.fact_no_street ? '' : 'ул. ' + formData.fact_street}},
-                    дом {{formData.fact_house}}, {{formData.fact_build ? ' строение ' + formData.fact_build
-                    : '' }} {{formData.fact_no_apt ? '' : ' кв. ' + formData.fact_apt}}
+                    Адрес места пребывания {{step2Data.fact_index}}, {{step2Data.fact_federal}}, {{step2Data.fact_region}}, {{step2Data.fact_ctype
+                    | lowercase}} {{step2Data.fact_cname}}, {{step2Data.fact_no_street ? '' : 'ул. ' + step2Data.fact_street}},
+                    дом {{step2Data.fact_house}}, {{step2Data.fact_build ? ' строение ' + step2Data.fact_build
+                    : '' }} {{step2Data.fact_no_apt ? '' : ' кв. ' + step2Data.fact_apt}}
                   </p>
-                  <p>Телефон для связи (мобильный) {{formData.tel}}</p>
-                  <p *ngIf="formData.tel_stat">Телефон для связи (домашний) {{formData.tel_stat}}</p>
-                  <p>Электронная почта {{formData.email}}</p>
+                  <p>Телефон для связи (мобильный) {{step1Data.tel}}</p>
+                  <p *ngIf="step1Data.tel_stat">Телефон для связи (домашний) {{step1Data.tel_stat}}</p>
+                  <p>Электронная почта {{step1Data.email}}</p>
                   <p>ФОНД:</p>
                   <p>_______________ /Г.В. Морозова/</p>
                   <p>(подпись)</p>

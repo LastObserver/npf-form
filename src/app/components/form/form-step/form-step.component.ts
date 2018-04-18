@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, Host } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, Host, Input } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { FormComponent } from '../form.component';
 import { ApiService } from '../../../services/api.service';
 import { DataStep2 } from '../../../models/data-step-2';
 import { DataStep1 } from '../../../models/data-step-1';
 import { DataStep3 } from '../../../models/data-step-3';
-import { BackupService } from '../../../services/backup.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-form-step',
@@ -14,12 +14,13 @@ import { BackupService } from '../../../services/backup.service';
 })
 export class FormStepComponent implements OnInit {
   @ViewChild('stepForm') form;
-  element: HTMLElement;
+  @Input('current') current: boolean;
   private parent: FormComponent;
-  formData: DataStep1 | DataStep2 | DataStep3;
+  public element: HTMLElement;
+  public formData: DataStep1 | DataStep2 | DataStep3;
 
   constructor(
-    public backupService: BackupService,
+    public dataService: DataService,
     public el: ElementRef,
     public cd: ChangeDetectorRef,
     public api: ApiService,
@@ -28,7 +29,6 @@ export class FormStepComponent implements OnInit {
   ) {
     this.element = el.nativeElement;
     this.parent = parent;
-    this.complete = complete;
     parent.steps.push(this);
   }
 
@@ -36,7 +36,7 @@ export class FormStepComponent implements OnInit {
   }
 
   getProgressValue() {
-    if (!this.form) { return 1; }
+    if (!this.form) { return this.current ? 1 : 0; }
     const required = Array.from(this.element.querySelectorAll('[required]'));
     const controls = this.form.controls;
     const valid = required.reduce((count, element) => {
@@ -52,7 +52,7 @@ export class FormStepComponent implements OnInit {
   }
 
   submitStep() {
-    this.api.sendRequest(this.formData)
+    this.api.sendRequest()
       .subscribe(data => {
         this.onSuccess();
       });

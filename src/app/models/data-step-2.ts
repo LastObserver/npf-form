@@ -52,12 +52,13 @@ export class DataStep2 {
   }
 
   get transformedData() {
+    this.setSameAddress();
     return {
       birthdate: this.birthdate,
       birth_place: this.birth_place,
 
-      passportseries: this.passport.split(' ')[0],
-      passportnumber: this.passport.split(' ')[1],
+      passportseries: this.passport ? this.passport.split(' ')[0] : '',
+      passportnumber: this.passport ? this.passport.split(' ')[1] : '',
       issue_date: this.issue_date,
       issue_org_code: this.issue_org_code,
       issue_org: this.issue_org,

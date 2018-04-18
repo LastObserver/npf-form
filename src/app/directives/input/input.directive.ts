@@ -7,11 +7,13 @@ import * as Inputmask from 'inputmask';
   selector: 'input[type="text"], select'
 })
 export class InputDirective implements OnInit {
-  // @Input('data-mask') mask: string
   private element: HTMLInputElement;
   private wrapper: JQuery;
 
-  constructor(private el: ElementRef, @Optional() private control: NgControl) {
+  constructor(
+    private el: ElementRef,
+    @Optional() private control: NgControl
+  ) {
     this.element = el.nativeElement;
     this.wrapper = $(this.element).parents('.npf-input-group, .npf-select-group');
 
@@ -53,7 +55,7 @@ export class InputDirective implements OnInit {
             regex: '^[0-9]*$'
 
           };
-          Inputmask('Regex', options).mask(this.element);
+          Inputmask(options).mask(this.element);
         }
         break;
 

@@ -23,8 +23,9 @@ import { mockBackendProvider } from './helpers/mockBackend';
 import { FormStep2Component } from './components/form/form-step-2/form-step-2.component';
 import { FormStep3Component } from './components/form/form-step-3/form-step-3.component';
 import { FormStepCompleteComponent } from './components/form/form-step-complete/form-step-complete.component'
-import { BackupService } from './services/backup.service';
- 
+import { DataService } from './services/data.service';
+import { DatepickerDirective } from './directives/datepicker/datepicker.directive';
+import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,8 @@ import { BackupService } from './services/backup.service';
     FormStep2Component,
     FormStep3Component,
     FormStepCompleteComponent,
+    DatepickerDirective,
+    ScrollbarDirective,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { BackupService } from './services/backup.service';
   ],
   providers: [
     ApiService,
-    BackupService,
+    DataService,
     mockBackendProvider,
   ],
   bootstrap: [AppComponent],

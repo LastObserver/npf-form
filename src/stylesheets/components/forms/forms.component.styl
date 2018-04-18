@@ -432,7 +432,14 @@
     top -2px
 
     input
-      display none
+      width 1px
+      height 1px
+      margin 0
+      padding 0
+      opacity 0
+      position absolute
+      top 50%
+      left 50%
 
       &:checked + .npf-checkbox-group__styler::after
         transform scale(1)
