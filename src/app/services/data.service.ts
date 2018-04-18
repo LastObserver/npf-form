@@ -19,12 +19,16 @@ export class DataService {
   }
 
   get transformedData() {
-    console.log(this.data);
     return {
       personal: this.data.step1.transformedData,
       passport: this.data.step2.transformedData,
       payment: this.data.step3.transformedData,
     };
+  }
+
+  get fullname() {
+    const step1Data = this.data.step1.transformedData;
+    return `${step1Data.last_name} ${step1Data.name}${step1Data.last_name || ''}`;
   }
 
 }

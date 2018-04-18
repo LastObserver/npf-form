@@ -8,6 +8,9 @@ import { DataService } from './data.service';
 @Injectable()
 export class ApiService {
   private apiUrl = '/';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(
     private http: HttpClient,
@@ -16,14 +19,23 @@ export class ApiService {
   }
 
   sendRequest() {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-    };
-    return this.http.post(this.apiUrl, this.dataService.transformedData, httpOptions);
+    return this.http.post(this.apiUrl, this.dataService.transformedData, this.httpOptions);
   }
 
   requestCaptcha(url) {
     return this.http.get(url);
+  }
+
+  sendSmsCode() {
+    const currentData = this.dataService.transformedData;
+    const body = {
+      tel: currentData.personal.tel,
+      fullname: this.dataService.fullname,
+      passportseries: currentData.passport.passportseries,
+      passportnumber: currentData.passport.passportnumber,
+      birthdate: currentData.passport.birthdate,
+    };
+    return this.http.post(`${this.apiUrl}/sms`, body, this.httpOptions);
   }
 
 }

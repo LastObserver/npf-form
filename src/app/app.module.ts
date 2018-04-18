@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,7 +19,7 @@ import { CaptchaDirective } from './directives/captcha/captcha.directive';
 
 
 // mock backend
-import { mockBackendProvider } from './helpers/mockBackend';
+import { MockBackendProvider } from './helpers/mockBackend';
 import { FormStep2Component } from './components/form/form-step-2/form-step-2.component';
 import { FormStep3Component } from './components/form/form-step-3/form-step-3.component';
 import { FormStepCompleteComponent } from './components/form/form-step-complete/form-step-complete.component'
@@ -54,7 +54,7 @@ import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
   providers: [
     ApiService,
     DataService,
-    mockBackendProvider,
+    MockBackendProvider,
   ],
   bootstrap: [AppComponent],
   schemas: [
