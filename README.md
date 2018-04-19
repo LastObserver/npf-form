@@ -1,27 +1,18 @@
-# NpfForm
+# Описание проекта
+Сайт для проекта «Форма заключения договора на индивидуальный пенсионный план» НПФ Сбербанка.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+Сайт помогает пользователю пошагово оформить договор на индивидуальный пенсионный план, отправляя введенные пользовательские данные по REST API на сервер.
+Проект создан с помощью Angular CLI. В качестве фреймворка была использована версия Angular 5.2.0.
+В проекте реализована внутренняя симуляция бэкенда и перехватчик запросов к серверу.
 
-## Development server
+## Как развернуть проект локально
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Клонировать репозиторий
 
-## Code scaffolding
+2. Необходимы установленный [NPM](https://www.npmjs.com/get-npm) и глобально установленный [Angular CLI](https://github.com/angular/angular-cli)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. Установить зависимости командой `npm install` в корне проекта
 
-## Build
+4. Запустить команду `ng serve` для запуска дев сервера.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+5. В браузере перейти по ссылке `http://localhost:4200/`.
