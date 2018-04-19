@@ -7,12 +7,17 @@
         <div class="npf-steps-line__steps-holder">
           <div class="npf-steps-line__progress-bar"></div>
           <div class="npf-steps-line__steps">
-            <step-symbol [index]="ind + 1" [progress]="state.progress" [complete]='state.complete'
-              *ngFor="let state of states; index as ind"></step-symbol>
+            <step-symbol [index]="ind + 1" [progress]="state.progress"
+              [complete]='state.complete' *ngFor="let state of states; index as ind">
+            </step-symbol>
           </div>
         </div>
         <div class="npf-steps-line__help-holder">
-          <a class="npf-steps-line__help npf-modal-show" href="#help">?</a>
+          <a class="npf-steps-line__help" [tooltipAt]="'top center'" [tooltipMy]="'bottom center'" href="#"
+            [appTooltip]="'Если у вас возникли какие-либо вопросы с оформлением договора, Вы можете оставить обращение в разделе npfsberbanka.ru/faq/,
+            а также круглосуточно обращаться по бесплатному номеру горячей линии Фонда 8-800-555-00-41'" >
+            ?
+          </a>
         </div>
       </div>
     </div>
@@ -23,4 +28,3 @@
   <app-form-step-complete [hidden]="currentStep !== 4" [current]="currentStep === 4"></app-form-step-complete>
 
 </div>
-

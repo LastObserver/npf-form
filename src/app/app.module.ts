@@ -26,6 +26,7 @@ import { FormStepCompleteComponent } from './components/form/form-step-complete/
 import { DataService } from './services/data.service';
 import { DatepickerDirective } from './directives/datepicker/datepicker.directive';
 import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
+import { TooltipDirective } from './directives/tooltip/tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
     FormStepCompleteComponent,
     DatepickerDirective,
     ScrollbarDirective,
+    TooltipDirective,
   ],
   imports: [
     BrowserModule,

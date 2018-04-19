@@ -24,8 +24,8 @@
               <div class="npf-input-group npf-u-mask-field">
                 <input name="second_name" class="npf-input-group__input _theme_ipp npf-u-mask" type="text"
                   [(ngModel)]="formData.second_name" data-mask="rusNameMask"
-                  data-tooltip="Если у Вас нет отчества, пожалуйста, отметьте ниже, что его нет" data-my="bottom center"
-                  data-at="top center" [requiredIf]="!formData.is_no_second_name"/>
+                  [appTooltip]="'Если у Вас нет отчества, пожалуйста, отметьте ниже, что его нет'" [tooltipMy]="'bottom center'"
+                  [tooltipAt]="'top center'" [requiredIf]="!formData.is_no_second_name"/>
                 <div class="npf-input-group__label">Отчество</div>
               </div>
             </div>

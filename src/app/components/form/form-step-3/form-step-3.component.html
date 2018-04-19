@@ -8,8 +8,8 @@
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
                 <input name="amount" type="text" class="npf-input-group__input npf-u-mask" [(ngModel)]="formData.amount"
-                  data-tooltip="Подключите автоплатеж, и регулярные взносы будут списываться автоматически."
-                  data-my="bottom center" data-at="top center" data-mask="intMask" required/>
+                  [appTooltip]="'Подключите автоплатеж, и регулярные взносы будут списываться автоматически.'"
+                  [tooltipMy]="'bottom center'" [tooltipAt]="'top center'" data-mask="intMask" required/>
                 <div class="npf-input-group__label">Первоначальный взнос, от 1500 руб.</div>
               </div>
             </div>

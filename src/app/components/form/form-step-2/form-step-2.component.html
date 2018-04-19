@@ -80,8 +80,8 @@
             <div class="npf-form-bone__full-col">
               <div class="npf-input-group npf-u-mask-field">
                 <input name="reg_cname" type="text" class="npf-input-group__input _theme_ipp _js-kladr npf-u-mask" data-mask="rusNameMask"
-                  data-tooltip="Укажите наименование населенного пункта, а индекс и регион мы найдем сами" data-my="bottom center"
-                  data-at="top center" [(ngModel)]="formData.reg_cname" />
+                  [appTooltip]="'Укажите наименование населенного пункта, а индекс и регион мы найдем сами'" [tooltipMy]="'bottom center'"
+                  [tooltipAt]="'top center'" [(ngModel)]="formData.reg_cname" />
                 <!-- <div class="npf-input-group__address-parents">{{reg_full.parent}}</div> -->
                 <div class="npf-input-group__label">Название населенного пункта</div>
                 <div class="npf-input-group__error-text">
