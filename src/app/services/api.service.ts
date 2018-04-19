@@ -17,16 +17,32 @@ export class ApiService {
     private dataService: DataService,
   ) {
   }
-
+/**
+ * Sends transformed data to api
+ *
+ * @returns {Observable}
+ * @memberof ApiService
+ */
   sendRequest() {
     return this.http.post(this.apiUrl, this.dataService.transformedData, this.httpOptions);
   }
-
+/**
+ * Gets new captcha from api
+ *
+ * @param {any} url
+ * @returns {Observable}
+ * @memberof ApiService
+ */
   requestCaptcha(url) {
     return this.http.get(url);
   }
-
-  sendSmsCode() {
+/**
+ * Requests to send SMS code to user's entered phone number
+ *
+ * @returns {Observable}
+ * @memberof ApiService
+ */
+sendSmsCode() {
     const currentData = this.dataService.transformedData;
     const body = {
       tel: currentData.personal.tel,

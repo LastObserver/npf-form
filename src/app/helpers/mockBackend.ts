@@ -48,7 +48,7 @@ export class MockBackend implements HttpInterceptor {
       .dematerialize();
   }
 }
-
+// exporting http interceptor provider
 export const MockBackendProvider = {
   provide: HTTP_INTERCEPTORS,
   useClass: MockBackend,

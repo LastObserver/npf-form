@@ -32,12 +32,17 @@ export class FormStep3Component extends FormStepComponent implements OnInit, OnC
 
   ngOnInit() {
   }
-
+/**
+ * Gets data from previous steps after going to third step
+ *
+ * @param {SimpleChanges} changes
+ * @memberof FormStep3Component
+ */
   ngOnChanges(changes: SimpleChanges) {
     const { current } = changes;
     if (current && current.currentValue) {
-      this.step1Data = this.dataService.data.step1.transformedData;
-      this.step2Data = this.dataService.data.step2.transformedData;
+      this.step1Data = this.dataService.data.step1.data;
+      this.step2Data = this.dataService.data.step2.data;
     }
   }
 

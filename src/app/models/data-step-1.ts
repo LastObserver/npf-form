@@ -23,7 +23,32 @@ export class DataStep1 {
             word: '',
         };
     }
-
+/**
+ * Returns current data values
+ *
+ * @readonly
+ * @memberof DataStep1
+ */
+    get data() {
+        return {
+            last_name: this.last_name,
+            name: this.name,
+            no_second_name: this.is_no_second_name,
+            second_name: this.second_name,
+            gender: this.gender,
+            tel: this.tel,
+            tel_stat: this.tel_stat,
+            email: this.email,
+            personal_data: this.personal_data,
+            captcha: this.captcha,
+        };
+    }
+/**
+ * Returns current data values transformed to send to api
+ *
+ * @readonly
+ * @memberof DataStep1
+ */
     get transformedData() {
         return {
             last_name: this.last_name,

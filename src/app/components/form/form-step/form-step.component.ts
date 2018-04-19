@@ -18,8 +18,18 @@ export class FormStepComponent implements OnInit {
   private parent: FormComponent;
   public element: HTMLElement;
   public formData: DataStep1 | DataStep2 | DataStep3;
-
-  constructor(
+/**
+ * Creates an instance of FormStepComponent.
+ * Adds step to parent FormComponent
+ * @param {DataService} dataService
+ * @param {ElementRef} el
+ * @param {ChangeDetectorRef} cd
+ * @param {ApiService} api
+ * @param {boolean} complete
+ * @param {FormComponent} parent
+ * @memberof FormStepComponent
+ */
+constructor(
     public dataService: DataService,
     public el: ElementRef,
     public cd: ChangeDetectorRef,
@@ -34,7 +44,12 @@ export class FormStepComponent implements OnInit {
 
   ngOnInit() {
   }
-
+/**
+ * Calculates current progress for required inputs
+ *
+ * @returns {number} progress value
+ * @memberof FormStepComponent
+ */
   getProgressValue() {
     if (!this.form) { return this.current ? 1 : 0; }
     const required = Array.from(this.element.querySelectorAll('[required]'));
@@ -46,11 +61,19 @@ export class FormStepComponent implements OnInit {
 
     return valid / required.length;
   }
-
+/**
+ * Calls parent's FormComponent method to go to the next step
+ *
+ * @memberof FormStepComponent
+ */
   onSuccess() {
     this.parent.goForward();
   }
-
+/**
+ * Submits step's form data
+ *
+ * @memberof FormStepComponent
+ */
   submitStep() {
     this.api.sendRequest()
       .subscribe(data => {

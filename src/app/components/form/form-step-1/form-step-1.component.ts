@@ -28,7 +28,11 @@ export class FormStep1Component extends FormStepComponent implements OnInit, Aft
 
   ngOnInit() {
   }
-
+/**
+ * Calls CaptchaDirective method to update captcha
+ *
+ * @memberof FormStep1Component
+ */
   ngAfterViewInit() {
     this.captcha.updateCaptcha();
   }

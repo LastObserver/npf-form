@@ -21,8 +21,13 @@ export class StepSymbolComponent implements OnInit, OnChanges {
 
   ngOnInit() {
   }
-
-  ngOnChanges(changes: SimpleChanges) {
+/**
+ * Draws progress line on progress value changes
+ *
+ * @param {SimpleChanges} changes
+ * @memberof StepSymbolComponent
+ */
+ngOnChanges(changes: SimpleChanges) {
     const { progress } = changes;
 
     if (progress) {

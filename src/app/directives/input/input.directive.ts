@@ -9,8 +9,14 @@ import * as Inputmask from 'inputmask';
 export class InputDirective implements OnInit {
   private element: HTMLInputElement;
   private wrapper: JQuery;
-
-  constructor(
+/**
+ * Creates an instance of InputDirective.
+ * Adds input and change event handlers to move input's label
+ * @param {ElementRef} el
+ * @param {NgControl} control
+ * @memberof InputDirective
+ */
+constructor(
     private el: ElementRef,
     @Optional() private control: NgControl
   ) {
@@ -25,8 +31,12 @@ export class InputDirective implements OnInit {
       }
     }).trigger('change');
   }
-
-  ngOnInit() {
+/**
+ * Adds mask (if present) to input
+ *
+ * @memberof InputDirective
+ */
+ngOnInit() {
     if (!this.control) {
       return;
     }

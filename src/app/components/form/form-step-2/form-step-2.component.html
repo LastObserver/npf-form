@@ -293,7 +293,7 @@
                 <input name="sms_code" type="text" class="npf-input-group__input _theme_ipp" required [(ngModel)]="formData.sms_code"/>
                 <div class="npf-input-group__label">Введите СМС-код</div>
                 <div class="npf-input-group__static-helper">
-                  <a [hidden]="smsTimer !== 0" (click)="repeatSms()">Нажмите для повторной отправки СМС</a>
+                  <a [hidden]="smsTimer !== 0" (click)="sendSms()">Нажмите для повторной отправки СМС</a>
                   <span [hidden]="smsTimer === 0">СМС отправлено на номер {{tel}}. Повторная отправка СМС возможна через: {{smsTimer}} сек
                   </span>
                   <br>Если СМС не пришло, обратитесь в Фонд по телефону

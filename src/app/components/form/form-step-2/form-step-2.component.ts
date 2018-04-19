@@ -29,25 +29,42 @@ export class FormStep2Component extends FormStepComponent implements OnInit, OnC
 
   ngOnInit() {
   }
-
+/**
+ * Sends SMS after going at second step
+ *
+ * @param {SimpleChanges} changes
+ * @memberof FormStep2Component
+ */
   ngOnChanges(changes: SimpleChanges) {
     const { current } = changes;
     if (current && current.currentValue) {
-      this.repeatSms();
+      this.sendSms();
     }
   }
-
-  get tel() {
-    return this.dataService.data.step1.transformedData.tel;
+/**
+ * @readonly
+ * @returns {string} phone number
+ * @memberof FormStep2Component
+ */
+  get tel(): string {
+    return this.dataService.data.step1.data.tel;
   }
-
-  repeatSms() {
+/**
+ * Makes request to send SMS code and starts timer
+ *
+ * @memberof FormStep2Component
+ */
+  sendSms() {
     this.api.sendSmsCode().subscribe(data => {
       this.resetTimer();
       this.startTimer();
     });
   }
-
+/**
+ * Starts timer before next SMS request can be sent
+ *
+ * @memberof FormStep2Component
+ */
   startTimer() {
     this.interval = window.setInterval(() => {
       if (this.smsTimer > 0) {
@@ -58,7 +75,11 @@ export class FormStep2Component extends FormStepComponent implements OnInit, OnC
       }
     }, 1000);
   }
-
+/**
+ * Resets timer
+ *
+ * @memberof FormStep2Component
+ */
   resetTimer() {
     window.clearInterval(this.interval);
     this.smsTimer = 30;

@@ -51,6 +51,64 @@ export class DataStep2 {
     this.fact_is_same = true;
   }
 
+  /**
+   * Returns current data values
+   *
+   * @readonly
+   * @memberof DataStep1
+   */
+  get data() {
+    return {
+      birthdate: this.birthdate,
+      birth_place: this.birth_place,
+
+      passportseries: this.passport ? this.passport.split(' ')[0] : '',
+      passportnumber: this.passport ? this.passport.split(' ')[1] : '',
+      passport: this.passport,
+      issue_date: this.issue_date,
+      issue_org_code: this.issue_org_code,
+      issue_org: this.issue_org,
+
+      reg_index: this.reg_index,
+      reg_federal: this.reg_federal,
+      reg_region: this.reg_region,
+      reg_ctype: this.reg_ctype,
+      reg_cname: this.reg_cname,
+      reg_street: this.reg_street,
+      reg_no_street: this.reg_no_street,
+      reg_house: this.reg_house,
+      reg_build: this.reg_build,
+      reg_apt: this.reg_apt,
+      reg_no_apt: this.reg_no_apt,
+
+      fact_reg: this.fact_is_same,
+      fact_index: this.fact_index,
+      fact_federal: this.fact_federal,
+      fact_region: this.fact_region,
+      fact_ctype: this.fact_ctype,
+      fact_cname: this.fact_cname,
+      fact_street: this.fact_street,
+      fact_no_street: this.fact_no_street,
+      fact_house: this.fact_house,
+      fact_build: this.fact_build,
+      fact_apt: this.fact_apt,
+      fact_no_apt: this.fact_no_apt,
+
+      inn: this.inn,
+      snils: this.snils,
+      confirm_my_data: this.is_approved,
+
+      sms_code: this.sms_code,
+
+    };
+  }
+
+/**
+ * Returns current data values transformed to send to api
+ *
+ * @readonly
+ * @memberof DataStep1
+ */
   get transformedData() {
     this.setSameAddress();
     return {
@@ -95,8 +153,12 @@ export class DataStep2 {
       sms_code: this.sms_code,
     };
   }
-
-  setSameAddress() {
+/**
+ * Sets address of residence same as address of registration
+ *
+ * @memberof DataStep2
+ */
+setSameAddress() {
     if (this.fact_is_same) {
       this.fact_index = this.reg_index;
       this.fact_federal = this.reg_federal;
@@ -111,8 +173,12 @@ export class DataStep2 {
       this.fact_no_apt = this.reg_no_apt;
     }
   }
-
-  clearAddress() {
+/**
+ * Clears address address of residence
+ *
+ * @memberof DataStep2
+ */
+clearAddress() {
     this.fact_index = '';
     this.fact_federal = '';
     this.fact_region = '';

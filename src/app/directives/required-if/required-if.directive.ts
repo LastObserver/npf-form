@@ -1,32 +1,41 @@
-import { Directive, ElementRef, Input, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Directive, ElementRef, Input, SimpleChanges, ChangeDetectorRef, OnChanges } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 @Directive({
   selector: '[requiredIf]'
 })
-export class RequiredIfDirective {
+export class RequiredIfDirective implements OnChanges {
 
-  private element: HTMLElement
-  @Input('requiredIf') condition: boolean
+  private element: HTMLElement;
+  @Input() requiredIf: boolean;
 
-  constructor(private control: NgControl, private el: ElementRef, private cd: ChangeDetectorRef) {
-    this.element = el.nativeElement
+  constructor(
+    private control: NgControl,
+    private el: ElementRef,
+    private cd: ChangeDetectorRef
+  ) {
+    this.element = el.nativeElement;
   }
-  
+/**
+ * Toggles required validator on requiredIf input change
+ *
+ * @param {SimpleChanges} changes
+ * @memberof RequiredIfDirective
+ */
   ngOnChanges(changes: SimpleChanges) {
-    const { condition } = changes
+    const { requiredIf } = changes;
 
-    if (condition) {
-      if (condition.currentValue) {
-        this.element.setAttribute('required', 'true')
-        this.control.control.setValidators(Validators.required)
+    if (requiredIf) {
+      if (requiredIf.currentValue) {
+        this.element.setAttribute('required', 'true');
+        this.control.control.setValidators(Validators.required);
       } else {
-        this.element.removeAttribute('required')
-        this.control.control.clearValidators()
+        this.element.removeAttribute('required');
+        this.control.control.clearValidators();
       }
     }
-    this.control.control.updateValueAndValidity({ emitEvent: false, onlySelf: true })
+    this.control.control.updateValueAndValidity({ emitEvent: false, onlySelf: true });
   }
 
 }

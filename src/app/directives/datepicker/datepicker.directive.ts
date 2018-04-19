@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Optional } from '@angular/core';
+import { Directive, ElementRef, Optional, AfterViewInit } from '@angular/core';
 import * as $ from 'jquery';
 import 'bootstrap-datepicker';
 import { NgControl } from '@angular/forms';
@@ -6,10 +6,16 @@ import { NgControl } from '@angular/forms';
 @Directive({
   selector: '._js_datepicker-single'
 })
-export class DatepickerDirective {
+export class DatepickerDirective implements AfterViewInit {
   private element: HTMLInputElement;
-
-  constructor(
+/**
+ * Creates an instance of DatepickerDirective.
+ * Sets names for datepicker
+ * @param {ElementRef} el
+ * @param {NgControl} control
+ * @memberof DatepickerDirective
+ */
+constructor(
     private el: ElementRef,
     @Optional() private control: NgControl
   ) {
@@ -26,6 +32,13 @@ export class DatepickerDirective {
       format: 'dd.mm.yyyy',
       weekStart: 1,
     };
+  }
+/**
+ * Initializes datepicker and binds onhide and onshow event handlers
+ *
+ * @memberof DatepickerDirective
+ */
+  ngAfterViewInit() {
 
     $(this.element).datepicker({
       language: 'ru',
@@ -51,6 +64,7 @@ export class DatepickerDirective {
           this.control.control.patchValue(this.element.value);
         }
       });
+
   }
 
 }

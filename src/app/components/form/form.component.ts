@@ -25,25 +25,41 @@ export class FormComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
   }
-
+/**
+ * Goes to the next step (if present)
+ *
+ * @memberof FormComponent
+ */
   goForward() {
     if (this.currentStep < this.steps.length) {
       this.currentStep++;
       this.scrollToTop();
     }
   }
-
+/**
+ * Goes to the previous step (if present)
+ *
+ * @memberof FormComponent
+ */
   goBack() {
     if (this.currentStep > 1) {
       this.currentStep--;
       this.scrollToTop();
     }
   }
-
+/**
+ * Scrolls to the top of the window
+ *
+ * @memberof FormComponent
+ */
   scrollToTop() {
     TweenLite.to(window, 0.5, { scrollTo: { y: 0 } });
   }
-
+/**
+ * Updates progress values for every step
+ *
+ * @memberof FormComponent
+ */
   ngAfterViewChecked() {
     this.states = this.steps.map(step => {
       return {
