@@ -266,13 +266,11 @@
                     'ИНН ' + step2Data.inn + ', ' : ''}} {{step2Data.snils ? 'СНИЛС ' + step2Data.snils :
                     ''}}</p>
                   <p>
-                    Адрес места жительства (регистрации) {{step2Data.reg_index}}, {{step2Data.reg_federal}}, {{step2Data.reg_region}},
-                    {{step2Data.reg_ctype | lowercase}} {{step2Data.reg_cname}}, {{step2Data.reg_no_street
+                    Адрес места жительства (регистрации) {{step2Data.reg_cname}}, {{step2Data.reg_no_street
                     ? '' : 'ул. ' + step2Data.reg_street}}, дом {{step2Data.reg_house}}, {{step2Data.reg_build
                     ? ' строение ' + step2Data.reg_build : '' }} {{step2Data.reg_no_apt ? '' : ' кв. ' + step2Data.reg_apt}}</p>
                   <p>
-                    Адрес места пребывания {{step2Data.fact_index}}, {{step2Data.fact_federal}}, {{step2Data.fact_region}}, {{step2Data.fact_ctype
-                    | lowercase}} {{step2Data.fact_cname}}, {{step2Data.fact_no_street ? '' : 'ул. ' + step2Data.fact_street}},
+                    Адрес места пребывания {{step2Data.fact_cname}}, {{step2Data.fact_no_street ? '' : 'ул. ' + step2Data.fact_street}},
                     дом {{step2Data.fact_house}}, {{step2Data.fact_build ? ' строение ' + step2Data.fact_build
                     : '' }} {{step2Data.fact_no_apt ? '' : ' кв. ' + step2Data.fact_apt}}
                   </p>

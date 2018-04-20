@@ -41,6 +41,7 @@
     "bootstrap-daterangepicker": "^2.1.25",
     "bootstrap-styl": "^5.0.8",
     "bootstrap-stylus": "^0.2.2",
+    "classlist.js": "^1.1.20150312",
     "codelyzer": "^4.0.1",
     "gsap": "^1.20.4",
     "inputmask": "^3.3.11",
