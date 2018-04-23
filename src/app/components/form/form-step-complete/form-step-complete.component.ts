@@ -21,8 +21,6 @@ export class FormStepCompleteComponent extends FormStepComponent implements OnIn
     super(dataService, el, cd, api, true, parent);
   }
 
-  ngOnInit() {
-  }
 /**
  * Returns appeal for user with his last name, name and second name (if present)
  *

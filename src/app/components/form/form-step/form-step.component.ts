@@ -39,10 +39,10 @@ constructor(
   ) {
     this.element = el.nativeElement;
     this.parent = parent;
-    parent.addStep(this);
   }
 
   ngOnInit() {
+    this.parent.addStep(this);
   }
 /**
  * Calculates current progress for required inputs

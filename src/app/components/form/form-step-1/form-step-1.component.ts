@@ -26,8 +26,6 @@ export class FormStep1Component extends FormStepComponent implements OnInit, Aft
     this.formData = dataService.data.step1;
   }
 
-  ngOnInit() {
-  }
 /**
  * Calls CaptchaDirective method to update captcha
  *

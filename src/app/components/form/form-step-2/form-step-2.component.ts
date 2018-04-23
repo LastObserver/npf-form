@@ -27,8 +27,6 @@ export class FormStep2Component extends FormStepComponent implements OnInit, OnC
     this.formData = dataService.data.step2;
   }
 
-  ngOnInit() {
-  }
 /**
  * Sends SMS after going at second step
  *

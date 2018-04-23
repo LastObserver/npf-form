@@ -30,8 +30,6 @@ export class FormStep3Component extends FormStepComponent implements OnInit, OnC
     this.step2Data = {};
   }
 
-  ngOnInit() {
-  }
 /**
  * Gets data from previous steps after going to third step
  *
