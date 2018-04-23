@@ -36,6 +36,14 @@ export class FormComponent implements OnInit, AfterViewChecked {
       this.scrollToTop();
     }
   }
+
+  addStep(step) {
+    this.steps.push(step);
+    this.states.push({
+      progress: step.getProgressValue(),
+      complete: step.complete,
+    });
+  }
 /**
  * Goes to the previous step (if present)
  *
@@ -61,11 +69,10 @@ export class FormComponent implements OnInit, AfterViewChecked {
  * @memberof FormComponent
  */
   ngAfterViewChecked() {
-    this.states = this.steps.map(step => {
-      return {
-        progress: step.getProgressValue(),
-        complete: step.complete,
-      };
+    this.states.map((state, index) => {
+      const step = this.steps[index];
+      state.progress = step.getProgressValue();
+      state.complete = step.complete;
     });
     this.cd.detectChanges();
   }

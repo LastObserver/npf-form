@@ -39,7 +39,7 @@ constructor(
   ) {
     this.element = el.nativeElement;
     this.parent = parent;
-    parent.steps.push(this);
+    parent.addStep(this);
   }
 
   ngOnInit() {
