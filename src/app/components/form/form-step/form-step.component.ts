@@ -1,59 +1,66 @@
-import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef, Host, Input } from '@angular/core';
-import { Validators } from '@angular/forms';
+import {
+  Component, OnInit, ViewChild,
+  ElementRef, ChangeDetectorRef, Host,
+  Input, EventEmitter, Output, ContentChildren,
+  QueryList, AfterViewInit
+} from '@angular/core';
+import { Validators, NgModel } from '@angular/forms';
 import { FormComponent } from '../form.component';
 import { ApiService } from '../../../services/api.service';
 import { DataStep2 } from '../../../models/data-step-2';
 import { DataStep1 } from '../../../models/data-step-1';
 import { DataStep3 } from '../../../models/data-step-3';
 import { DataService } from '../../../services/data.service';
+import * as shortid from 'shortid';
 
 @Component({
-  selector: 'app-form-step',
+  selector: 'form-step',
   templateUrl: './form-step.component.html',
   styleUrls: ['./form-step.component.styl']
 })
-export class FormStepComponent implements OnInit {
+export class FormStepComponent implements OnInit, AfterViewInit {
   @ViewChild('stepForm') form;
-  @Input('current') current: boolean;
+  @Input() isForm: boolean;
+  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @ContentChildren(NgModel, { descendants: true }) models: QueryList<NgModel>;
   private parent: FormComponent;
+  public id: string;
   public element: HTMLElement;
   public formData: DataStep1 | DataStep2 | DataStep3;
-/**
- * Creates an instance of FormStepComponent.
- * Adds step to parent FormComponent
- * @param {DataService} dataService
- * @param {ElementRef} el
- * @param {ChangeDetectorRef} cd
- * @param {ApiService} api
- * @param {boolean} complete
- * @param {FormComponent} parent
- * @memberof FormStepComponent
- */
-constructor(
+
+  constructor(
     public dataService: DataService,
     public el: ElementRef,
     public cd: ChangeDetectorRef,
     public api: ApiService,
-    public complete: boolean,
     @Host() parent: FormComponent,
   ) {
     this.element = el.nativeElement;
     this.parent = parent;
+    this.id = shortid.generate();
   }
 
   ngOnInit() {
     this.parent.addStep(this);
   }
-/**
- * Calculates current progress for required inputs
- *
- * @returns {number} progress value
- * @memberof FormStepComponent
- */
-  getProgressValue() {
-    if (!this.form) { return this.current ? 1 : 0; }
+
+  ngAfterViewInit() {
+    const models = this.models.toArray();
+    models.map(model => this.form.addControl(model));
+  }
+
+  /**
+   * Calculates current progress for required inputs
+   *
+   * @returns {number} progress value
+   * @memberof FormStepComponent
+   */
+  public getProgressValue() {
+    if (!this.form) { return this.element.getAttribute('hidden') ? 0 : 1; }
+
     const required = Array.from(this.element.querySelectorAll('[required]'));
     const controls = this.form.controls;
+
     const valid = required.reduce((count, element) => {
       const name = element.getAttribute('ng-reflect-name');
       return controls[name] && controls[name].valid ? count + 1 : count;
@@ -61,24 +68,22 @@ constructor(
 
     return valid / required.length;
   }
-/**
- * Calls parent's FormComponent method to go to the next step
- *
- * @memberof FormStepComponent
- */
-  onSuccess() {
-    this.parent.goForward();
+
+  /**
+   * Submits step's form data
+   *
+   * @memberof FormStepComponent
+   */
+  private submitStep() {
+    this.submit.emit();
   }
-/**
- * Submits step's form data
- *
- * @memberof FormStepComponent
- */
-  submitStep() {
-    this.api.sendRequest()
-      .subscribe(data => {
-        this.onSuccess();
-      });
+
+  public toggleVisibility(condition: boolean) {
+    if (condition) {
+      this.element.removeAttribute('hidden');
+    } else {
+      this.element.setAttribute('hidden', 'true');
+    }
   }
 
 }

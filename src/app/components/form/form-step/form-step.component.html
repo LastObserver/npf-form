@@ -1,3 +1,8 @@
-<form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate>
-  <ng-content></ng-content>
-</form>
+<div [ngSwitch]="isForm">
+  <form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate *ngSwitchCase="true">
+    <ng-content></ng-content>
+  </form>
+  <div *ngSwitchCase="true">
+  </div>
+
+</div>

@@ -20,6 +20,9 @@ import { CaptchaDirective } from './directives/captcha/captcha.directive';
 
 // mock backend
 import { MockBackendProvider } from './helpers/mockBackend';
+
+import { AppRoutes } from './app.routes';
+
 import { FormStep2Component } from './components/form/form-step-2/form-step-2.component';
 import { FormStep3Component } from './components/form/form-step-3/form-step-3.component';
 import { FormStepCompleteComponent } from './components/form/form-step-complete/form-step-complete.component'
@@ -27,6 +30,8 @@ import { DataService } from './services/data.service';
 import { DatepickerDirective } from './directives/datepicker/datepicker.directive';
 import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
 import { TooltipDirective } from './directives/tooltip/tooltip.directive';
+import { NpoFormComponent } from './views/npo-form/npo-form.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -47,11 +52,13 @@ import { TooltipDirective } from './directives/tooltip/tooltip.directive';
     DatepickerDirective,
     ScrollbarDirective,
     TooltipDirective,
+    NpoFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(AppRoutes),
   ],
   providers: [
     ApiService,

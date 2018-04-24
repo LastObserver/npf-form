@@ -3,7 +3,6 @@ import { DataStep1 } from '../models/data-step-1';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DataStep2 } from '../models/data-step-2';
 import { DataStep3 } from '../models/data-step-3';
-import { DataService } from './data.service';
 
 @Injectable()
 export class ApiService {
@@ -14,7 +13,6 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-    private dataService: DataService,
   ) {
   }
 /**
@@ -23,8 +21,8 @@ export class ApiService {
  * @returns {Observable}
  * @memberof ApiService
  */
-  sendRequest() {
-    return this.http.post(this.apiUrl, this.dataService.transformedData, this.httpOptions);
+  sendRequest(data) {
+    return this.http.post(this.apiUrl, data, this.httpOptions);
   }
 /**
  * Gets new captcha from api
@@ -42,11 +40,11 @@ export class ApiService {
  * @returns {Observable}
  * @memberof ApiService
  */
-sendSmsCode() {
-    const currentData = this.dataService.transformedData;
+sendSmsCode(data, fullname: string) {
+    const currentData = data;
     const body = {
       tel: currentData.personal.tel,
-      fullname: this.dataService.fullname,
+      fullname: fullname,
       passportseries: currentData.passport.passportseries,
       passportnumber: currentData.passport.passportnumber,
       birthdate: currentData.passport.birthdate,
