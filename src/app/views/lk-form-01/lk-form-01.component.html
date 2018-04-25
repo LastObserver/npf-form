@@ -1,0 +1,63 @@
+<app-form>
+  <form-step (submited)="onSubmit()" [isForm]="true">
+    <div class="ngx-content ngx-content_s_m">
+      <p>
+        Проверьте ваши данные:
+        <br /> если какие-либо данные не актуальны, обновите их
+      </p>
+    </div>
+    <div class="ngx-section ngx-section_s_l">
+      <div class="ngx-columns ngx-columns_s_s">
+        <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4" *ngFor="let type of contractsTypes">
+          <div class="ngx-checkbox">
+            <input type="radio" name="contractType" [(ngModel)]="contractType" value="{{type}}" (change)="onContractsTypeChange()">
+            <label class="ngx-checkbox__content">{{contractTypeNames[type]}}</label>
+          </div>
+        </div>
+      </div>
+      <div class="ngx-input-container ngx-input-container_size_md">
+        <div class="ngx-input-container__control">
+          <input type="text" name="contractNumber" disabled>
+        </div>
+      </div>
+    </div>
+    <div class="ngx-section ngx-section_s_l">
+      <div class="ngx-checkbox">
+        <input type="checkbox" name="wantsChangePersonalData" [(ngModel)]="data.wantsChangePersonalData">
+        <label class="ngx-checkbox__content">У меня изменились личные данные</label>
+      </div>
+      <div class="ngx-checkbox">
+        <input type="checkbox" name="wantsGetContractDeclaration" [(ngModel)]="data.wantsGetContractDeclaration">
+        <label class="ngx-checkbox__content">Мне необходима выписка по действующему договору</label>
+      </div>
+      <div class="ngx-checkbox">
+        <input type="checkbox" name="wantsGetContractCopy" [(ngModel)]="data.wantsGetContractCopy">
+        <label class="ngx-checkbox__content">Мне необходима копия экземпляра договора</label>
+      </div>
+      <div class="ngx-checkbox">
+        <input type="checkbox" name="wantsChangeAccountData" [(ngModel)]="data.wantsChangeAccountData">
+        <label class="ngx-checkbox__content">Я хочу подтвердить/изменить свои банковские реквизиты (для получающих пенсию)</label>
+      </div>
+      <div class="ngx-checkbox">
+        <input type="checkbox" name="wantsGetTaxDeduction" [(ngModel)]="data.wantsGetTaxDeduction">
+        <label class="ngx-checkbox__content">Я хочу получить стандартный налоговый вычет по НДФЛ</label>
+      </div>
+    </div>
+    <div class="ngx-section ngx-section_s_l">
+      <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+        <div class="ngx-column">
+          <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
+            <span class="ngx-button__text">Отменить</span>
+          </a>
+        </div>
+        <div class="ngx-column">
+          <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+            <span class="ngx-button__text">Следующий шаг</span>
+            <span class="ngx-button__icon ngx-icon">
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form-step>
+</app-form>

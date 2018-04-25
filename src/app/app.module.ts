@@ -10,7 +10,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AccordionDirective } from './directives/accordion/accordion.directive';
 import { StepSymbolComponent } from './components/step-symbol/step-symbol.component';
 import { FormComponent } from './components/form/form.component';
-import { FormStep1Component } from './components/form/form-step-1/form-step-1.component';
 import { ApiService } from './services/api.service';
 import { FormStepComponent } from './components/form/form-step/form-step.component';
 import { RequiredIfDirective } from './directives/required-if/required-if.directive';
@@ -23,15 +22,15 @@ import { MockBackendProvider } from './helpers/mockBackend';
 
 import { AppRoutes } from './app.routes';
 
-import { FormStep2Component } from './components/form/form-step-2/form-step-2.component';
-import { FormStep3Component } from './components/form/form-step-3/form-step-3.component';
-import { FormStepCompleteComponent } from './components/form/form-step-complete/form-step-complete.component'
 import { DataService } from './services/data.service';
 import { DatepickerDirective } from './directives/datepicker/datepicker.directive';
 import { ScrollbarDirective } from './directives/scrollbar/scrollbar.directive';
 import { TooltipDirective } from './directives/tooltip/tooltip.directive';
 import { NpoFormComponent } from './views/npo-form/npo-form.component';
 import { RouterModule } from '@angular/router';
+import { LkForm01Component } from './views/lk-form-01/lk-form-01.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { CheckboxDirective } from './directives/checkbox/checkbox.directive';
 
 @NgModule({
   declarations: [
@@ -41,18 +40,17 @@ import { RouterModule } from '@angular/router';
     AccordionDirective,
     StepSymbolComponent,
     FormComponent,
-    FormStep1Component,
     FormStepComponent,
     RequiredIfDirective,
     InputDirective,
     CaptchaDirective,
-    FormStep2Component,
-    FormStep3Component,
-    FormStepCompleteComponent,
     DatepickerDirective,
     ScrollbarDirective,
     TooltipDirective,
     NpoFormComponent,
+    LkForm01Component,
+    NavigationComponent,
+    CheckboxDirective,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,45 @@
+.root
+  box-shadow 0 1px 0 #dce0e4
+  padding 24px 0 16px
+  background #fff
+
+.container
+  composes container_size_md from 'stylus!./layout.styl'
+
+.columns
+  composes columns from 'stylus!./layout.styl'
+  margin-right -25px
+  margin-left @margin-right
+  align-items center
+
+.column
+  composes column from 'stylus!./layout.styl'
+  padding-right 25px
+  padding-left @padding-right
+
+.link
+  cursor pointer
+  font-family 'SeroPro-Medium', sans-serif
+  font-size 18px
+  line-height unit(56 / @font-size, '')
+  display block
+  margin-bottom -16px
+  padding-bottom 16px
+  overflow hidden
+  position relative
+  padding-right 4px
+  padding-left @padding-right
+
+  &::after
+    content ''
+    height 8px
+    position absolute
+    bottom -(@height / 2)
+    left 0
+    right 0
+    border-radius (@height / 2)
+    display none
+    background #fda50a
+
+  &.active::after
+    display block

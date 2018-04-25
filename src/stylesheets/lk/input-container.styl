@@ -1,0 +1,312 @@
+.ngx-input-container
+  position relative
+  text-align left
+
+  &_type_inline
+    display inline-block
+    vertical-align baseline
+
+  &__tags
+    &-columns
+      margin 20px -5px -5px -5px
+
+    &-column
+      padding 5px
+
+  textarea
+    resize none
+    padding 17px 24px
+    line-height 24px
+
+  input
+  textarea
+  .select2-selection
+    border 1px solid #dfe2e5
+    border-radius 6px
+    width 100%
+    font-weight 300
+
+    &[disabled]
+    &[readonly]
+      cursor not-allowed
+      color rgba(colorShuttleGray, 3 / 4)
+
+    .ng-submitted &.ng-invalid
+    &.ng-invalid.ng-touched.ng-dirty
+      border-color colorWarning
+
+  &_size_md
+    padding 24px 0 0
+    min-height 110px
+
+    ~/_type_inline
+      padding 0
+      min-height 0
+
+    ~/_theme_silver&
+      padding 0
+      min-height 0
+
+    // &:first-child
+      // margin-top 0
+
+    input
+    .select2-selection
+      padding 0 24px
+      height 60px
+
+      ~/_theme_silver&
+        height 56px
+        border-radius 28px !important
+        border-width 2px
+        padding-left @border-radius
+
+        +below('sm')
+          height 48px
+          border-radius 24px !important
+          padding-left @border-radius
+
+      ~/_type_inline&
+        border-radius 0
+        border-top 0
+        border-left 0
+        border-right 0
+
+        height 32px
+        padding 0
+
+
+    .select2-selection
+      padding-right 64px
+
+  &_has_focus
+  &_has_datepicker
+    input
+    textarea
+    .select2-selection
+      border-color colorForestGreen
+
+      ~/_theme_corporate&
+        border-color colorFunGreen
+
+  &__control
+    position relative
+
+
+  &__placeholder
+    position absolute
+    left 0
+    top 0
+    pointer-events none
+    transition transform, opacity
+    transform-origin top left
+    color colorShuttleGray
+    {$typography-16}
+    opacity .75
+    
+    +mobile()
+      max-width calc(100% - 50px)
+      overflow hidden
+      text-overflow ellipsis
+      white-space nowrap
+
+    ~/_size_md &
+      transform translate3d(24px, 16px, 0)
+
+    ~/_has_focus &
+    ~/_has_value &
+    ~/_has_datepicker &
+      transform translate3d(4px, -26px, 0) scale(14 / 16)
+      opacity 1
+      
+      +mobile()
+        max-width 100%
+
+    ~/ input[disabled] + &
+      opacity (1/3)
+
+
+  &__tip
+    position absolute
+    right 24px
+    top 50%
+    transform translate3d(0, -50%, 0)
+
+    &-link
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 3/4)
+      {$typography-14}
+
+      &:hover
+        opacity 1
+        color colorForestGreen
+
+  &__description
+    color colorShuttleGray
+    color rgba(colorShuttleGray, 3/4)
+
+  &__description
+  &__error
+    {$typography-12}
+    padding 2px 0 2px 4px
+    font-weight 300
+
+
+  &__error
+    color colorWarning
+
+  select
+    .ng-submitted &.ng-invalid + .select2 .select2-selection
+      border-color colorWarning
+
+  .select2-container--default.select2-container--open.select2-container--below .select2-selection--single
+  .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple
+      border-bottom-left-radius 6px
+      border-bottom-right-radius 6px
+
+  .select2-container--default.select2-container--open.select2-container--above .select2-selection--single
+  .select2-container--default.select2-container--open.select2-container--above .select2-selection--multiple
+      border-top-left-radius 6px
+      border-top-right-radius 6px
+
+
+
+.ngx-input-container-tags
+  margin 30px 0 0
+
+.ngx-input-container-tag
+  color white
+  border-radius 15px
+  background colorForestGreen
+  padding 3px 39px 3px 15px
+  position relative
+
+  &__value
+    {$typography-14}
+
+  &__remove
+    position absolute
+    right 10px
+    top 50%
+    margin-top -12px
+
+
+.select2-dropdown
+#kladr_autocomplete ul
+  border 0
+  border-radius 6px
+  box-shadow 0px 10px 20px 0px rgba(0, 0, 0, 0.1)
+  overflow hidden
+
+#kladr_autocomplete ul
+  margin-top 5px
+
+.select2-dropdown.select2-dropdown--below
+  border-top-left-radius 6px
+  border-top-right-radius 6px
+
+.select2-dropdown.select2-dropdown--above
+  border-bottom-left-radius 6px
+  border-bottom-right-radius 6px
+
+
+.select2-container
+  .select2-selection--multiple
+    .select2-selection__rendered
+      margin-top -1px
+
+      .select2-selection__choice
+        display none
+
+  .select2-selection--single
+  .select2-selection--multiple
+    .select2-search
+      height 30px
+
+      .select2-search__field
+        height 30px
+        margin 0
+
+    .select2-selection__rendered
+      {$typography-16}
+      padding 15px 0
+      color colorMako
+
+
+      .ngx-input-container_theme_silver &
+        {$typography-18}
+        padding 12px 0
+        font-weight 500
+
+        +below('sm')
+            font-size 16px
+            line-height 1.5
+            font-weight 500
+            padding-top 10px
+            padding-bottom @padding-top
+
+    .select2-selection__arrow
+      top 30px
+      right 24px
+      transform translate3d(0, -50%, 0) rotate(0deg)
+      background-image url('./../assets/images/icons/24/ic-arrow-down-green.svg')
+      background-size 24px
+      background-position 0 0
+      background-repeat no-repeat
+      transition transform
+      width 24px
+      height 24px
+
+      +below('sm')
+          top 25px
+
+      b
+        display none
+
+  &--open
+  &--focus
+    .select2-selection
+      border-color colorForestGreen !important
+
+  &--open
+    .select2-selection--single
+      .select2-selection__arrow
+        transform translate3d(0, -50%, 0) rotate(180deg)
+
+#kladr_autocomplete ul li strong
+  font-weight 500
+  color colorMako
+
+#kladr_autocomplete ul li + li
+  border-top 0
+
+.select2-container--default .select2-results__option
+#kladr_autocomplete ul li
+  {$typography-16}
+  padding 10px 24px 10px 60px
+  color colorMako
+
+.select2-container--default .select2-results__option[aria-selected=true]
+  background none
+  position relative
+  overflow hidden
+
+  &::before
+    content ''
+    position absolute
+    left 24px
+    top 13px
+    width 24px
+    height 24px
+    background-image url('./../assets/images/icons/24/ic-selected.svg')
+    background-repeat no-repeat
+    background-size 24px
+    background-position 0 0
+
+#kladr_autocomplete ul li:hover
+.select2-container--default .select2-results__option--highlighted[aria-selected]
+    background colorCatskillWhite
+    color colorMako
+
+.select2-dropdown
+  z-index 999999
