@@ -28,11 +28,24 @@ export class NpoFormComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit() {
-    console.log('boop');
     this.api.sendRequest(this.formData.transformedData)
       .subscribe(data => {
         this.form.goForward();
       });
+  }
+
+  /**
+   * Returns appeal for user with his last name, name and second name (if present)
+   *
+   * @readonly
+   * @returns {string} appeal
+   * @memberof FormStepCompleteComponent
+   */
+  get appeal(): string {
+    const step1Data = this.formData.step1.data;
+    const genderAppeal = step1Data.gender === 'M' ? 'Уважаемый' : 'Уважаемая';
+    const secondName = step1Data.no_second_name ? '' : ` ${step1Data.second_name}`;
+    return `${genderAppeal} ${step1Data.name}${secondName}`;
   }
 
 }

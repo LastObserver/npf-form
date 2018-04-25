@@ -1,8 +1,9 @@
-<div [ngSwitch]="isForm">
-  <form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate *ngSwitchCase="true">
-    <ng-content></ng-content>
-  </form>
-  <div *ngSwitchCase="true">
-  </div>
-
+<form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate *ngIf="isForm">
+  <ng-containter *ngTemplateOutlet="myTemlpate"></ng-containter>
+</form>
+<div *ngIf="!isForm">
+  <ng-containter *ngTemplateOutlet="myTemlpate"></ng-containter>
 </div>
+<ng-template #myTemlpate>
+  <ng-content></ng-content>
+</ng-template>

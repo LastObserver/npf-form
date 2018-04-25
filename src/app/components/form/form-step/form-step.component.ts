@@ -21,7 +21,7 @@ import * as shortid from 'shortid';
 export class FormStepComponent implements OnInit, AfterViewInit {
   @ViewChild('stepForm') form;
   @Input() isForm: boolean;
-  @Output() submit: EventEmitter<any> = new EventEmitter();
+  @Output() submited: EventEmitter<any> = new EventEmitter();
   @ContentChildren(NgModel, { descendants: true }) models: QueryList<NgModel>;
   private parent: FormComponent;
   public id: string;
@@ -75,7 +75,7 @@ export class FormStepComponent implements OnInit, AfterViewInit {
    * @memberof FormStepComponent
    */
   private submitStep() {
-    this.submit.emit();
+    this.submited.emit();
   }
 
   public toggleVisibility(condition: boolean) {

@@ -4,9 +4,6 @@ import { TweenLite } from 'gsap';
 import 'gsap/scrollToPlugin.js';
 
 
-// TODO: deal with double submitting
-
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -61,7 +58,6 @@ export class FormComponent implements OnInit, AfterViewChecked {
 
       this.toggleSteps();
       this.scrollToTop();
-      console.log(this.currentStep);
     }
   }
   /**
@@ -82,20 +78,20 @@ export class FormComponent implements OnInit, AfterViewChecked {
     }
   }
 
-/**
- * Scrolls to the top of the window
- *
- * @memberof FormComponent
- */
+  /**
+   * Scrolls to the top of the window
+   *
+   * @memberof FormComponent
+   */
   private scrollToTop() {
     TweenLite.to(window, 0.5, { scrollTo: { y: 0 } });
   }
 
-/**
- * Updates progress values for every step
- *
- * @memberof FormComponent
- */
+  /**
+   * Updates progress values for every step
+   *
+   * @memberof FormComponent
+   */
   ngAfterViewChecked() {
     this.states.map((state, index) => {
       const step = this.steps[index];
