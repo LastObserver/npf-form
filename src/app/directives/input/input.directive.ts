@@ -21,7 +21,7 @@ constructor(
     @Optional() private control: NgControl
   ) {
     this.element = el.nativeElement;
-    this.wrapper = $(this.element).parents('.npf-input-group, .npf-select-group');
+    this.wrapper = $(this.element).parents('.npf-input-group, .npf-select-group, .ngx-input-container');
 
     $(this.element).on('input change', () => {
       if (this.element.value) {

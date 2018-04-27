@@ -1,63 +1,438 @@
-<app-form>
-  <form-step (submited)="onSubmit()" [isForm]="true">
-    <div class="ngx-content ngx-content_s_m">
-      <p>
-        Проверьте ваши данные:
-        <br /> если какие-либо данные не актуальны, обновите их
-      </p>
-    </div>
-    <div class="ngx-section ngx-section_s_l">
-      <div class="ngx-columns ngx-columns_s_s">
-        <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4" *ngFor="let type of contractsTypes">
-          <div class="ngx-checkbox">
-            <input type="radio" name="contractType" [(ngModel)]="contractType" value="{{type}}" (change)="onContractsTypeChange()">
-            <label class="ngx-checkbox__content">{{contractTypeNames[type]}}</label>
+<div class="ngx-container ngx-container_s_s ngx-container_justify_center">
+  <div class="ngx-h6">Заявление по текущему обслуживанию</div>
+  <app-form>
+    <div class="ngx-h2">Формирование заявления по форме 01-Ф</div>
+    <div>
+
+      <form-step (submited)="onSubmit()">
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_s">
+            <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4" *ngFor="let type of contractsTypes">
+              <div class="ngx-checkbox">
+                <input type="radio" name="contractType" [(ngModel)]="contractType" value="{{type}}" (change)="onContractsTypeChange()" required>
+                <label class="ngx-checkbox__content">{{contractTypeNames[type]}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="contractNumber" value="{{contracts[contractType] && contracts[contractType].ContractNumber}}" disabled>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="ngx-input-container ngx-input-container_size_md">
-        <div class="ngx-input-container__control">
-          <input type="text" name="contractNumber" disabled>
+        <div class="ngx-section ngx-section_s_l" *ngIf="data.contracts && data.contracts.length">
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangePersonalData" [(ngModel)]="data.wantsChangePersonalData">
+            <label class="ngx-checkbox__content">У меня изменились личные данные</label>
+          </div>
+          <div class="ngx-checkbox" *ngIf="isContractOnPayment && isNPOContract">
+            <input type="checkbox" name="wantsChangeAccountData" [(ngModel)]="data.wantsChangeAccountData">
+            <label class="ngx-checkbox__content">Я хочу подтвердить/изменить свои банковские реквизиты (для получающих пенсию)</label>
+          </div>
+          <div class="ngx-checkbox" *ngIf="isContractOnPayment">
+            <input type="checkbox" name="wantsGetTaxDeduction" [(ngModel)]="data.wantsGetTaxDeduction">
+            <label class="ngx-checkbox__content">Я хочу получить стандартный налоговый вычет по НДФЛ</label>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="ngx-section ngx-section_s_l">
-      <div class="ngx-checkbox">
-        <input type="checkbox" name="wantsChangePersonalData" [(ngModel)]="data.wantsChangePersonalData">
-        <label class="ngx-checkbox__content">У меня изменились личные данные</label>
-      </div>
-      <div class="ngx-checkbox">
-        <input type="checkbox" name="wantsGetContractDeclaration" [(ngModel)]="data.wantsGetContractDeclaration">
-        <label class="ngx-checkbox__content">Мне необходима выписка по действующему договору</label>
-      </div>
-      <div class="ngx-checkbox">
-        <input type="checkbox" name="wantsGetContractCopy" [(ngModel)]="data.wantsGetContractCopy">
-        <label class="ngx-checkbox__content">Мне необходима копия экземпляра договора</label>
-      </div>
-      <div class="ngx-checkbox">
-        <input type="checkbox" name="wantsChangeAccountData" [(ngModel)]="data.wantsChangeAccountData">
-        <label class="ngx-checkbox__content">Я хочу подтвердить/изменить свои банковские реквизиты (для получающих пенсию)</label>
-      </div>
-      <div class="ngx-checkbox">
-        <input type="checkbox" name="wantsGetTaxDeduction" [(ngModel)]="data.wantsGetTaxDeduction">
-        <label class="ngx-checkbox__content">Я хочу получить стандартный налоговый вычет по НДФЛ</label>
-      </div>
-    </div>
-    <div class="ngx-section ngx-section_s_l">
-      <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
-        <div class="ngx-column">
-          <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
-            <span class="ngx-button__text">Отменить</span>
-          </a>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
+                <span class="ngx-button__text">Отменить</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+                <span class="ngx-button__text">Следующий шаг</span>
+                <span class="ngx-button__icon ngx-icon" [inlineSVG]="'assets/images/icons/24/ic-arrow-right.svg'">
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="ngx-column">
-          <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
-            <span class="ngx-button__text">Следующий шаг</span>
-            <span class="ngx-button__icon ngx-icon">
-            </span>
-          </button>
+      </form-step>
+
+
+
+
+      <form-step (submited)="onSubmit()">
+        <div class="ngx-h2">Заявитель</div>
+        <div class="ngx-content ngx-content_s_m">
+          <p>Проверьте ваши данные:
+            <br /> если какие-либо данные не актуальны, обновите их</p>
         </div>
-      </div>
+        <!-- Фамилия, имя, отчество -->
+        <div class="ngx-section ngx-section_s_m">
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="lastname" [(ngModel)]="data.lastname" required>
+              <label class="ngx-input-container__placeholder">Фамилия</label>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="firstname" [(ngModel)]="data.firstname" required>
+              <label class="ngx-input-container__placeholder">Имя</label>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="secondname" [(ngModel)]="data.secondname" required>
+              <label class="ngx-input-container__placeholder">Отчество</label>
+            </div>
+          </div>
+        </div>
+        <!-- Пол -->
+        <div class="ngx-section ngx-section_s_m" style="margin-top: -40px;">
+          <div class="ngx-columns ngx-columns_s_m">
+            <div class="ngx-column">
+              <div class="ngx-radio">
+                <input type="radio" name="sex" [(ngModel)]="data.sex" value="M">
+                <label class="ngx-radio__content">Мужчина</label>
+              </div>
+            </div>
+            <div class="ngx-column">
+              <div class="ngx-radio">
+                <input type="radio" name="sex" [(ngModel)]="data.sex" value="F">
+                <label class="ngx-radio__content">Женщина</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Дата рождения, гражданство, место рождения, СНИЛС, ИНН -->
+        <div class="ngx-section ngx-section_s_m">
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="birthdate" [(ngModel)]="data.birthdate" data-mask="99.99.9999" data-mask-placeholder=" " class="_js_datepicker-single">
+              <label class="ngx-input-container__placeholder">Дата рождения</label>
+              <div class="ngx-input-container__tip" [inlineSVG]="'assets/images/icons/24/ic-calendar.svg'">
+              </div>
+            </div>
+          </div>
+
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="nationality" [(ngModel)]="data.nationality" required>
+              <label class="ngx-input-container__placeholder">Гражданство</label>
+            </div>
+          </div>
+
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="birthplace" [(ngModel)]="data.birthplace" required>
+              <label class="ngx-input-container__placeholder">Место рождения</label>
+            </div>
+          </div>
+
+          <div class="ngx-columns ngx-columns_s_m">
+            <div class="ngx-column ngx-column-xs-12 ngx-column-sm-6">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="snils" [(ngModel)]="data.snils" required data-mask="999-999-999 99" data-mask-placeholder=" ">
+                  <label class="ngx-input-container__placeholder">СНИЛС</label>
+                </div>
+              </div>
+            </div>
+            <div class="ngx-column ngx-column-xs-12 ngx-column-sm-6">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="inn" [(ngModel)]="data.inn" data-mask="999999999999" data-mask-placeholder=" ">
+                  <label class="ngx-input-container__placeholder">ИНН</label>
+                  <div class="ngx-input-container__tip">
+                    <a class="ngx-input-container__tip-link ngx-link ngx-link_theme_green" href="https://service.nalog.ru/inn.html" target="_blank">
+                      <span class="ngx-link__text">Узнать</span>
+                      <span class="ngx-link__icon ngx-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="1 -1 10 10" width="12" height="12">
+                          <g fill="none" fill-rule="evenodd" stroke="#1a991a">
+                            <path d="M3 0h7v7"></path>
+                            <path d="M10 0L2 8"></path>
+                          </g>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="phone" [(ngModel)]="data.phone" required data-data-mask="+7 (999) 999-99-99" data-mask-placeholder=" ">
+              <label class="ngx-input-container__placeholder">Номер телефона</label>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="email" [(ngModel)]="data.email" required>
+              <label class="ngx-input-container__placeholder">Электронная почта</label>
+            </div>
+          </div>
+        </div>
+        <!-- Паспортные данные -->
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-h3" style="text-align: left;">Паспортные данные</div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="passport" [(ngModel)]="data.passport" required data-mask="9999 999999" data-mask-placeholder=" ">
+              <label class="ngx-input-container__placeholder">Серия и номер паспорта гражданина РФ</label>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="passportIssueAgency" [(ngModel)]="data.passportIssueAgency" required>
+              <label class="ngx-input-container__placeholder">Наименование органа, выдавшего паспорт</label>
+            </div>
+          </div>
+          <div class="ngx-columns ngx-columns_s_m">
+            <div class="ngx-column ngx-column-xs-12 ngx-column-sm-6">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="passportIssueDate" [(ngModel)]="data.passportIssueDate" required data-mask="99.99.9999" data-mask-placeholder=" "
+                    class="_js_datepicker-single">
+                  <label class="ngx-input-container__placeholder">Дата выдачи</label>
+                  <div class="ngx-input-container__tip" [inlineSVG]="'assets/images/icons/24/ic-calendar.svg'">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ngx-column ngx-column-xs-12 ngx-column-sm-6">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="passportIssueCode" [(ngModel)]="data.passportIssueCode" data-mask="999 999" data-mask-placeholder=" ">
+                  <label class="ngx-input-container__placeholder">Код подразделения</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Адрес регистрации -->
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-h3" style="text-align: left;">Адрес регистрации</div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="zip" required [(ngModel)]="data.address.zip" data-mask="999 999" data-mask-placeholder=" ">
+              <div class="ngx-input-container__placeholder">Индекс</div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="region" required [(ngModel)]="data.address.region">
+              <div class="ngx-input-container__placeholder">Область</div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="district" [(ngModel)]="data.address.district">
+              <div class="ngx-input-container__placeholder">Район</div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="city" required [(ngModel)]="data.address.city">
+              <div class="ngx-input-container__placeholder">Населенный пункт</div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md">
+            <div class="ngx-input-container__control">
+              <input type="text" name="street" required [(ngModel)]="data.address.street">
+              <div class="ngx-input-container__placeholder">Улица</div>
+            </div>
+          </div>
+          <div class="ngx-columns ngx-columns_s_s">
+            <div class="ngx-column ngx-column-xs-4">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="house" required [(ngModel)]="data.address.house">
+                  <div class="ngx-input-container__placeholder">Дом</div>
+                </div>
+              </div>
+            </div>
+            <div class="ngx-column ngx-column-xs-4">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="building" [(ngModel)]="data.address.building">
+                  <div class="ngx-input-container__placeholder">Корп/стр</div>
+                </div>
+              </div>
+            </div>
+            <div class="ngx-column ngx-column-xs-4">
+              <div class="ngx-input-container ngx-input-container_size_md">
+                <div class="ngx-input-container__control">
+                  <input type="text" name="apartment" [(ngModel)]="data.address.apartment">
+                  <div class="ngx-input-container__placeholder">Квартира</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Адрес для направления корреспонденции -->
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-h3" style="text-align: left;">Адрес для направления корреспонденции</div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="addressForCorrespondenceEquals" [(ngModel)]="data.addressForCorrespondenceEquals">
+            <label class="ngx-checkbox__content">Совпадает с адресом регистрации</label>
+          </div>
+          <div *ngIf="!data.addressForCorrespondenceEquals">
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="zip" required [(ngModel)]="data.addressForCorrespondence.zip" data-mask="999 999" data-mask-placeholder=" ">
+                <div class="ngx-input-container__placeholder">Индекс</div>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="region" required [(ngModel)]="data.addressForCorrespondence.region">
+                <div class="ngx-input-container__placeholder">Область</div>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="district" [(ngModel)]="data.addressForCorrespondence.district">
+                <div class="ngx-input-container__placeholder">Район</div>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="city" required [(ngModel)]="data.addressForCorrespondence.city">
+                <div class="ngx-input-container__placeholder">Населенный пункт</div>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="street" required [(ngModel)]="data.addressForCorrespondence.street">
+                <div class="ngx-input-container__placeholder">Улица</div>
+              </div>
+            </div>
+            <div class="ngx-columns ngx-columns_s_s">
+              <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4">
+                <div class="ngx-input-container ngx-input-container_size_md">
+                  <div class="ngx-input-container__control">
+                    <input type="text" name="house" [(ngModel)]="data.addressForCorrespondence.house">
+                    <div class="ngx-input-container__placeholder">Дом</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4">
+                <div class="ngx-input-container ngx-input-container_size_md">
+                  <div class="ngx-input-container__control">
+                    <input type="text" name="building" [(ngModel)]="data.addressForCorrespondence.building">
+                    <div class="ngx-input-container__placeholder">Корп/стр</div>
+                  </div>
+                </div>
+              </div>
+              <div class="ngx-column ngx-column-xs-12 ngx-column-sm-4">
+                <div class="ngx-input-container ngx-input-container_size_md">
+                  <div class="ngx-input-container__control">
+                    <input type="text" name="apartment" [(ngModel)]="data.addressForCorrespondence.apartment">
+                    <div class="ngx-input-container__placeholder">Квартира</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
+                <span class="ngx-button__text">Отменить</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+                <span class="ngx-button__text">Следующий шаг</span>
+                <span class="ngx-button__icon ngx-icon" [inlineSVG]="'assets/images/icons/24/ic-arrow-right.svg'">
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form-step>
+
+
+
+
+      <form-step (submited)="onSubmit()" *ngIf="data.wantsChangePersonalData">
+        <div class="ngx-h2">Прошу изменить личные данные</div>
+        <div class="ngx-content ngx-content_s_m">
+          <p>Отметьте нужный Вам пункт и введите данные</p>
+        </div>
+        <div class="ngx-section ngx-section_s_m">
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangeName" [(ngModel)]="data.wantsChangeName">
+            <label class="ngx-checkbox__content">ФИО (указать прежние ФИО)</label>
+          </div>
+          <div class="ngx-section ngx-section_s_m" *ngIf="data.wantsChangeName">
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="previousLastname" [(ngModel)]="data.previousLastname" required>
+                <label class="ngx-input-container__placeholder">Фамилия</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="previousFirstname" [(ngModel)]="data.previousFirstname" required>
+                <label class="ngx-input-container__placeholder">Имя</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="previousSecondname" [(ngModel)]="data.previousSecondname" required>
+                <label class="ngx-input-container__placeholder">Отчество</label>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangePassport" [(ngModel)]="data.wantsChangePassport">
+            <label class="ngx-checkbox__content">Паспортные данные (указать прежние реквизиты, при наличии отметки в паспорте)</label>
+          </div>
+          <div class="ngx-section ngx-section_s_m" *ngIf="data.wantsChangePassport">
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input type="text" name="previousPassport" [(ngModel)]="data.previousPassport" required data-mask="9999 999999" data-mask-placeholder=" ">
+                <label class="ngx-input-container__placeholder">Серия и номер паспорта</label>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangeAddress" [(ngModel)]="data.wantsChangeAddress">
+            <label class="ngx-checkbox__content">Адрес регистрации (прописка)</label>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangeAddressForCorrespondence" [(ngModel)]="data.wantsChangeAddressForCorrespondence">
+            <label class="ngx-checkbox__content">Адрес для направления корреспонденции</label>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="wantsChangeOtherData" [(ngModel)]="data.wantsChangeOtherData">
+            <label class="ngx-checkbox__content">Другое (привести данные Фонда в соответствие с документами)</label>
+          </div>
+          <div class="ngx-section ngx-section_s_m" *ngIf="data.wantsChangeOtherData">
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <textarea name="otherDataChanges" rows="4" [(ngModel)]="data.otherDataChanges" required></textarea>
+                <label class="ngx-input-container__placeholder">Другое</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
+                <span class="ngx-button__text">Отменить</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+                <span class="ngx-button__text">Следующий шаг</span>
+                <span class="ngx-button__icon ngx-icon" [inlineSVG]="'assets/images/icons/24/ic-arrow-right.svg'">
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form-step>
+
     </div>
-  </form-step>
-</app-form>
+  </app-form>
+</div>

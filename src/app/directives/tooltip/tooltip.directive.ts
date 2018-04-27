@@ -33,14 +33,14 @@ ngAfterViewInit() {
         },
       },
       hide: {
-        event: 'unfocus click'
+        event: 'unfocus click',
       },
       position: {
         container: $(document.body),
         my: this.tooltipMy || 'top center',
         at: this.tooltipAt || 'bottom center',
         target: $(this.element),
-        viewport: $(window),
+        viewport: true,
       },
     });
   }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 
 import { AppComponent } from './app.component';
@@ -57,6 +58,7 @@ import { CheckboxDirective } from './directives/checkbox/checkbox.directive';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
+    InlineSVGModule,
   ],
   providers: [
     ApiService,

@@ -2,7 +2,7 @@ import {
   Component, OnInit, ViewChild,
   ElementRef, ChangeDetectorRef, Host,
   Input, EventEmitter, Output, ContentChildren,
-  QueryList, AfterViewInit
+  QueryList, AfterViewInit, OnDestroy
 } from '@angular/core';
 import { Validators, NgModel } from '@angular/forms';
 import { FormComponent } from '../form.component';
@@ -18,11 +18,11 @@ import * as shortid from 'shortid';
   templateUrl: './form-step.component.html',
   styleUrls: ['./form-step.component.styl']
 })
-export class FormStepComponent implements OnInit, AfterViewInit {
+export class FormStepComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('stepForm') form;
-  @Input() isForm: boolean;
   @Output() submited: EventEmitter<any> = new EventEmitter();
   @ContentChildren(NgModel, { descendants: true }) models: QueryList<NgModel>;
+  public isForm: boolean;
   private parent: FormComponent;
   public id: string;
   public element: HTMLElement;
@@ -42,11 +42,15 @@ export class FormStepComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.parent.addStep(this);
+    this.isForm = !!this.submited.observers.length;
   }
 
   ngAfterViewInit() {
-    const models = this.models.toArray();
-    models.map(model => this.form.addControl(model));
+    this.models.toArray().map(model => this.form.addControl(model));
+  }
+
+  ngOnDestroy() {
+    this.parent.removeStep(this);
   }
 
   /**

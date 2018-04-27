@@ -13,7 +13,8 @@ export class FormComponent implements OnInit, AfterViewChecked {
   steps: FormStepComponent[];
   private states: {
     progress: number,
-    isForm: boolean;
+    isForm: boolean,
+    id: string,
   }[];
   private currentStep: number;
   public currentStepId: string;
@@ -41,7 +42,16 @@ export class FormComponent implements OnInit, AfterViewChecked {
     this.states.push({
       progress: step.getProgressValue(),
       isForm: step.isForm,
+      id: id,
     });
+  }
+
+  public removeStep(step: FormStepComponent) {
+    const { id } = step;
+
+    this.states.splice(this.states.findIndex(state => state.id === id), 1);
+    this.steps.splice(this.steps.findIndex(stepRef => stepRef.id === id), 1);
+
   }
   /**
    * Goes to the next step (if present)
@@ -94,9 +104,9 @@ export class FormComponent implements OnInit, AfterViewChecked {
    */
   ngAfterViewChecked() {
     this.states.map((state, index) => {
-      const step = this.steps[index];
-      state.progress = step.getProgressValue();
-      state.isForm = step.isForm;
+      const stepRef = this.steps.find(step => step.id === state.id);
+      state.progress = stepRef.getProgressValue();
+      state.isForm = stepRef.isForm;
     });
 
     this.cd.detectChanges();

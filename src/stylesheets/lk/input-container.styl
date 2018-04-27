@@ -115,6 +115,7 @@
 
     ~/_has_focus &
     ~/_has_value &
+    ~/._has-value &
     ~/_has_datepicker &
       transform translate3d(4px, -26px, 0) scale(14 / 16)
       opacity 1
@@ -124,6 +125,11 @@
 
     ~/ input[disabled] + &
       opacity (1/3)
+
+  input:focus + &__placeholder
+    transform translate3d(4px, -26px, 0) scale(14 / 16)
+    opacity 1
+
 
 
   &__tip
