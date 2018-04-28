@@ -5,13 +5,13 @@ import * as scrollbar from 'perfect-scrollbar';
   selector: '.js-scrollbar'
 })
 export class ScrollbarDirective {
-/**
- * Creates an instance of ScrollbarDirective.
- * Initializes perfect-scrollbar on element
- * @param {ElementRef} el
- * @memberof ScrollbarDirective
- */
-constructor(private el: ElementRef) {
+  /**
+   * Creates an instance of ScrollbarDirective.
+   * Initializes perfect-scrollbar on element
+   * @param {ElementRef} el
+   * @memberof ScrollbarDirective
+   */
+  constructor(private el: ElementRef) {
     scrollbar.initialize(el.nativeElement);
   }
 

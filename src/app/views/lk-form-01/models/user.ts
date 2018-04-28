@@ -126,3 +126,25 @@ export const user = {
   },
   interview: 13
 };
+
+
+export class UserModel {
+  private data: any;
+
+  constructor(data) {
+    this.data = data;
+  }
+
+  get fullname() {
+    return `${this.data.firstname} ${this.data.secondname}`;
+  }
+
+  get userData() {
+    return Object.assign({}, this.data);
+  }
+
+  get contracts() {
+    return Object.assign({}, this.data.contracts);
+  }
+
+}

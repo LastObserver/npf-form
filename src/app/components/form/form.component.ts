@@ -16,7 +16,7 @@ export class FormComponent implements OnInit, AfterViewChecked {
     isForm: boolean,
     id: string,
   }[];
-  private currentStep: number;
+  public currentStep: number;
   public currentStepId: string;
 
   constructor(private cd: ChangeDetectorRef) {
@@ -27,8 +27,15 @@ export class FormComponent implements OnInit, AfterViewChecked {
   ngOnInit() {
   }
 
+  /**
+   * Adds form step
+   *
+   * @param {FormStepComponent} step
+   * @memberof FormComponent
+   */
   public addStep(step: FormStepComponent) {
     const { id } = step;
+    const index = step.index;
 
     if (!this.steps.length) {
       this.currentStep = 1;
@@ -37,15 +44,21 @@ export class FormComponent implements OnInit, AfterViewChecked {
 
     step.toggleVisibility(step.id === this.currentStepId);
 
-    this.steps.push(step);
+    this.steps.splice(index, 0, step);
 
-    this.states.push({
+    this.states.splice(index, 0, {
       progress: step.getProgressValue(),
       isForm: step.isForm,
       id: id,
     });
   }
 
+  /**
+   * Removes form step
+   *
+   * @param {FormStepComponent} step
+   * @memberof FormComponent
+   */
   public removeStep(step: FormStepComponent) {
     const { id } = step;
 
@@ -53,6 +66,7 @@ export class FormComponent implements OnInit, AfterViewChecked {
     this.steps.splice(this.steps.findIndex(stepRef => stepRef.id === id), 1);
 
   }
+
   /**
    * Goes to the next step (if present)
    *
@@ -70,6 +84,7 @@ export class FormComponent implements OnInit, AfterViewChecked {
       this.scrollToTop();
     }
   }
+
   /**
    * Goes to the previous step (if present)
    *
@@ -112,6 +127,12 @@ export class FormComponent implements OnInit, AfterViewChecked {
     this.cd.detectChanges();
   }
 
+  /**
+   * Changes visibility of steps
+   *
+   * @private
+   * @memberof FormComponent
+   */
   private toggleSteps() {
     this.steps.map((step, ind) => {
       step.toggleVisibility(this.currentStepId === step.id);

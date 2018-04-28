@@ -23,12 +23,22 @@ export class NpoFormComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
+  /**
+   * Requests captcha
+   *
+   * @memberof NpoFormComponent
+   */
   ngAfterViewInit() {
     this.captcha.updateCaptcha();
   }
 
+  /**
+   * Sends form data to api
+   *
+   * @memberof NpoFormComponent
+   */
   onSubmit() {
-    this.api.sendRequest(this.formData.transformedData)
+    this.api.sendNPORequest(this.formData.transformedData)
       .subscribe(data => {
         this.form.goForward();
       });

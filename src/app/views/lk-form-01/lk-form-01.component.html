@@ -433,6 +433,191 @@
         </div>
       </form-step>
 
+
+
+      <form-step (submited)="onSubmit()" *ngIf="data.wantsGetTaxDeduction || data.wantsChangeAccountData">
+        <div class="ngx-h2">Для договоров на этапе выплат</div>
+        <div class="ngx-section ngx-section_s_l" *ngIf="data.wantsChangeAccountData">
+          <div class="ngx-content" style="text-align: left;">
+            <p>
+              <strong>Прошу подтвердить/изменить банковские реквизиты</strong>
+            </p>
+          </div>
+          <div class="ngx-radio">
+            <input type="radio" name="canChangeAccountData" attr.name="canChangeAccountData" [(ngModel)]="data.canChangeAccountData" [value]="false">
+            <label class="ngx-radio__content">Банковские реквизиты не менялись</label>
+          </div>
+          <div class="ngx-radio">
+            <input type="radio" name="canChangeAccountData" attr.name="canChangeAccountData" [(ngModel)]="data.canChangeAccountData" [value]="true">
+            <label class="ngx-radio__content">Изменить банковские реквизиты (укажите банковские реквизиты для перечисления)</label>
+          </div>
+          <div class="ngx-section ngx-section_s_m" *ngIf="data.canChangeAccountData">
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input name="accountName" [(ngModel)]="data.accountName" required>
+                <label class="ngx-input-container__placeholder">Наименование и номер филиала банка получателя</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input name="accountInn" [(ngModel)]="data.accountInn" required data-mask="9999999999" data-mask-placeholder=" ">
+                <label class="ngx-input-container__placeholder">ИНН</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input name="accountBIC" [(ngModel)]="data.accountBIC" required data-mask="999999999" data-mask-placeholder=" ">
+                <label class="ngx-input-container__placeholder">БИК</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md">
+              <div class="ngx-input-container__control">
+                <input name="accountCorrespondNumber" [(ngModel)]="data.accountCorrespondNumber" required data-mask="99999999999999999999"
+                  data-mask-placeholder=" ">
+                <label class="ngx-input-container__placeholder">Корреспондентский счет</label>
+              </div>
+            </div>
+            <div class="ngx-input-container ngx-input-container_size_md" style="margin-bottom: -24px;">
+              <div class="ngx-input-container__control">
+                <input name="accountPersonalNumber" [(ngModel)]="data.accountPersonalNumber" required data-mask="99999999999999999999" data-mask-placeholder=" ">
+                <label class="ngx-input-container__placeholder">Лицевой счет</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l" *ngIf="data.wantsGetTaxDeduction">
+          <div class="ngx-content" style="text-align: left;">
+            <p>
+              <strong>Прошу предоставить стандартный налоговый вычет по НДФЛ в связи с тем, что кроме пенсии никаких доходов не имею
+                и являюсь:</strong>
+            </p>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="belongsTo1PreferCategory" [(ngModel)]="data.belongsTo1PreferCategory">
+            <label class="ngx-checkbox__content">Инвалидом I или II группы, Героем Советского Союза, героем Российской Федерации, награжден Орденом Славы трех
+              степеней, участников ВОВ</label>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="belongsTo2PreferCategory" [(ngModel)]="data.belongsTo2PreferCategory">
+            <label class="ngx-checkbox__content">Участником ликвидации последствий катастрофы на Чернобыльской АЭС ( с т.ч. военнослужащие, инвалиды и т.д.)</label>
+          </div>
+          <div class="ngx-checkbox">
+            <input type="checkbox" name="belongsToOtherPreferCategory" [(ngModel)]="data.belongsToOtherPreferCategory">
+            <label class="ngx-checkbox__content">Другое (указать категорию льготного гражданина)</label>
+          </div>
+          <div class="ngx-section ngx-section_s_m" *ngIf="data.belongsToOtherPreferCategory">
+            <div class="ngx-input-container ngx-input-container_size_md" style="margin-bottom: -24px;">
+              <div class="ngx-input-container__control">
+                <input name="otherPreferCategory" [(ngModel)]="data.otherPreferCategory" required>
+                <label class="ngx-input-container__placeholder">Другое</label>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-content ngx-content_s_s ngx-content_theme_note" style="text-align: left;">
+            <p>Заявитель проинформирован о том, что данное заявление не требует повторной подачи, если основание для налогового
+              вычета является бессрочным.</p>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent" href="/statements">
+                <span class="ngx-button__text">Отменить</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+                <span class="ngx-button__text">Следующий шаг</span>
+                <span class="ngx-button__icon ngx-icon" [inlineSVG]="'assets/images/icons/24/ic-arrow-right.svg'">
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form-step>
+      <form-step (submited)="onSubmit()">
+        <div class="ngx-h2">Опросный лист</div>
+        <div class="ngx-section ngx-section_s_l" *ngFor="let questionnaire of questionnairies; index as $index">
+          <div class="ngx-content ngx-content_s_m" style="text-align: left;">
+            <p>{{questionnaire}}</p>
+          </div>
+          <div class="ngx-columns ngx-columns_s_m">
+            <div class="ngx-column">
+              <div class="ngx-radio">
+                <input type="radio" name="questionnaire[{{$index}}]" attr.name="questionnaire[{{$index}}]" required [(ngModel)]="data.quest_approved[$index]"
+                  [value]="false">
+                <label class="ngx-radio__content">Нет</label>
+              </div>
+            </div>
+            <div class="ngx-column">
+              <div class="ngx-radio">
+                <input type="radio" name="questionnaire[{{$index}}]" attr.name="questionnaire[{{$index}}]" required [(ngModel)]="data.quest_approved[$index]"
+                  [value]="true">
+                <label class="ngx-radio__content">Да</label>
+              </div>
+            </div>
+          </div>
+          <div class="ngx-input-container ngx-input-container_size_md" [hidden]="!data.quest_approved[$index]" style="margin: 8px 0 -24px;">
+            <div class="ngx-input-container__control">
+              <input type="text" name="questionnaire[{{$index}}][value]" attr.name="questionnaire[{{$index}}][value]" [(ngModel)]="data.quest_value[$index]"
+                [requiredIf]="data.quest_approved[$index]">
+            </div>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_right" style="margin-top: -24px;">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_transparent">
+                <span class="ngx-button__text">Отменить</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <button class="ngx-button ngx-button_s_m ngx-button_theme_green" type="submit">
+                <span class="ngx-button__text">Сформировать заявление</span>
+                <span class="ngx-button__icon ngx-icon" [inlineSVG]="'assets/images/icons/24/ic-arrow-right.svg'">
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form-step>
+
+
+      <form-step>
+        <div class="ngx-section ngx-section_s_l">
+          <div [inlineSVG]="'assets/images/icons/120/ic-happy.svg'"></div>
+          <div *ngIf="!esiaInvalid">
+            <div class="ngx-h2">{{user.fullname}},
+              <br />Ваше заявление направлено в Фонд!</div>
+            <div class="ngx-content">
+              <p>Входящий номер: {{statementNumber}}</p>
+              <p>Отследить статус поданного заявления Вы можете в разделе &laquo;
+                <a ui-sref="account.statements">Заявления</a>&raquo; (оно отобразится в нем не позднее 3-х рабочих дней)</p>
+            </div>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-columns ngx-columns_s_m ngx-columns_justify_center">
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_silver" href="{{form01Pdf}}" target="_blank">
+                <span class="ngx-button__text">Распечатать заявление</span>
+              </a>
+            </div>
+            <div class="ngx-column">
+              <a class="ngx-button ngx-button_s_m ngx-button_theme_silver" href="{{form01Pdf}}" target="_blank">
+                <span class="ngx-button__text">Сохранить заявление</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="ngx-section ngx-section_s_l">
+          <div class="ngx-content ngx-content_s_s ngx-content_theme_note">
+            <p>При возникновении вопросов, пожалуйста, обратитесь в наш Контакт-центр по телефону 8&nbsp;800&nbsp;555&nbsp;00&nbsp;41&nbsp;(звонок&nbsp;по&nbsp;России&nbsp;бесплатный)</p>
+          </div>
+        </div>
+      </form-step>
+
     </div>
   </app-form>
 </div>

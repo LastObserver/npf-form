@@ -17,12 +17,13 @@ export class RequiredIfDirective implements OnChanges {
   ) {
     this.element = el.nativeElement;
   }
-/**
- * Toggles required validator on requiredIf input change
- *
- * @param {SimpleChanges} changes
- * @memberof RequiredIfDirective
- */
+
+  /**
+   * Toggles required validator on requiredIf input change
+   *
+   * @param {SimpleChanges} changes
+   * @memberof RequiredIfDirective
+   */
   ngOnChanges(changes: SimpleChanges) {
     const { requiredIf } = changes;
 

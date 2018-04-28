@@ -12,6 +12,7 @@ import { DataStep1 } from '../../../models/data-step-1';
 import { DataStep3 } from '../../../models/data-step-3';
 import { DataService } from '../../../services/data.service';
 import * as shortid from 'shortid';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'form-step',
@@ -39,12 +40,21 @@ export class FormStepComponent implements OnInit, AfterViewInit, OnDestroy {
     this.parent = parent;
     this.id = shortid.generate();
   }
-
+  /**
+   * Adds step to parent FormComponent
+   * Checks if step is form
+   * @memberof FormStepComponent
+   */
   ngOnInit() {
     this.parent.addStep(this);
     this.isForm = !!this.submited.observers.length;
   }
 
+  /**
+   * Registers input controls
+   *
+   * @memberof FormStepComponent
+   */
   ngAfterViewInit() {
     this.models.toArray().map(model => this.form.addControl(model));
   }
@@ -70,7 +80,7 @@ export class FormStepComponent implements OnInit, AfterViewInit, OnDestroy {
       return controls[name] && controls[name].valid ? count + 1 : count;
     }, 0);
 
-    return valid / required.length;
+    return required.length ? valid / required.length : this.parent.currentStep > this.index + 1 ? 1 : 0;
   }
 
   /**
@@ -82,12 +92,28 @@ export class FormStepComponent implements OnInit, AfterViewInit, OnDestroy {
     this.submited.emit();
   }
 
+  /**
+   * Toggles visibility of the step
+   *
+   * @param {boolean} condition
+   * @memberof FormStepComponent
+   */
   public toggleVisibility(condition: boolean) {
     if (condition) {
       this.element.removeAttribute('hidden');
     } else {
       this.element.setAttribute('hidden', 'true');
     }
+  }
+
+  /**
+   * Returns index of step
+   *
+   * @readonly
+   * @memberof FormStepComponent
+   */
+  public get index() {
+    return $(this.element).index();
   }
 
 }

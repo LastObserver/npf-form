@@ -9,14 +9,15 @@ import * as Inputmask from 'inputmask';
 export class InputDirective implements OnInit {
   private element: HTMLInputElement;
   private wrapper: JQuery;
-/**
- * Creates an instance of InputDirective.
- * Adds input and change event handlers to move input's label
- * @param {ElementRef} el
- * @param {NgControl} control
- * @memberof InputDirective
- */
-constructor(
+
+  /**
+   * Creates an instance of InputDirective.
+   * Adds input and change event handlers to move input's label
+   * @param {ElementRef} el
+   * @param {NgControl} control
+   * @memberof InputDirective
+   */
+  constructor(
     private el: ElementRef,
     @Optional() private control: NgControl
   ) {
@@ -31,12 +32,13 @@ constructor(
       }
     }).trigger('change');
   }
-/**
- * Adds mask (if present) to input
- *
- * @memberof InputDirective
- */
-ngOnInit() {
+
+  /**
+   * Adds mask (if present) to input
+   *
+   * @memberof InputDirective
+   */
+  ngOnInit() {
     if (!this.control) {
       return;
     }

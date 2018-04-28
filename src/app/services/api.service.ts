@@ -13,34 +13,48 @@ export class ApiService {
 
   constructor(
     private http: HttpClient,
-  ) {
-  }
-/**
- * Sends transformed data to api
- *
- * @returns {Observable}
- * @memberof ApiService
- */
-  sendRequest(data) {
+  ) {}
+
+  /**
+   * Sends NPO data to api
+   *
+   * @param {any} form data
+   * @returns {Observable}
+   * @memberof ApiService
+   */
+  sendNPORequest(data) {
     return this.http.post(this.apiUrl, data, this.httpOptions);
   }
-/**
- * Gets new captcha from api
- *
- * @param {any} url
- * @returns {Observable}
- * @memberof ApiService
- */
+
+  /**
+   * Sends LK form data to api
+   *
+   * @param {any} form data
+   * @returns {Observable}
+   * @memberof ApiService
+   */
+  sendLKRequest(data) {
+    return this.http.post(`${this.apiUrl}lk-form`, data, this.httpOptions);
+  }
+
+  /**
+   * Gets new captcha from api
+   *
+   * @param {any} url
+   * @returns {Observable}
+   * @memberof ApiService
+   */
   requestCaptcha(url) {
     return this.http.get(url);
   }
-/**
- * Requests to send SMS code to user's entered phone number
- *
- * @returns {Observable}
- * @memberof ApiService
- */
-sendSmsCode(data, fullname: string) {
+
+  /**
+   * Requests to send SMS code to user's entered phone number
+   *
+   * @returns {Observable}
+   * @memberof ApiService
+   */
+  sendSmsCode(data, fullname: string) {
     const currentData = data;
     const body = {
       tel: currentData.personal.tel,

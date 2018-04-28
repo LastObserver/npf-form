@@ -16,12 +16,13 @@ export class TooltipDirective implements AfterViewInit{
   ) {
     this.element = el.nativeElement;
   }
-/**
- * Initializes tooltip on element
- *
- * @memberof TooltipDirective
- */
-ngAfterViewInit() {
+
+  /**
+   * Initializes tooltip on element
+   *
+   * @memberof TooltipDirective
+   */
+  ngAfterViewInit() {
     $(this.element).qtip({
       content: this.appTooltip,
       style: {

@@ -2,7 +2,7 @@ import { Directive, ElementRef, AfterViewInit } from '@angular/core';
 import * as shortid from 'shortid';
 
 @Directive({
-  selector: '.ngx-checkbox'
+  selector: '.ngx-checkbox, .ngx-radio'
 })
 export class CheckboxDirective implements AfterViewInit {
   private element: HTMLElement;
