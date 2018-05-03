@@ -16,12 +16,13 @@ export class TooltipDirective implements AfterViewInit{
   ) {
     this.element = el.nativeElement;
   }
-/**
- * Initializes tooltip on element
- *
- * @memberof TooltipDirective
- */
-ngAfterViewInit() {
+
+  /**
+   * Initializes tooltip on element
+   *
+   * @memberof TooltipDirective
+   */
+  ngAfterViewInit() {
     $(this.element).qtip({
       content: this.appTooltip,
       style: {
@@ -33,14 +34,14 @@ ngAfterViewInit() {
         },
       },
       hide: {
-        event: 'unfocus click'
+        event: 'unfocus click',
       },
       position: {
         container: $(document.body),
         my: this.tooltipMy || 'top center',
         at: this.tooltipAt || 'bottom center',
         target: $(this.element),
-        viewport: $(window),
+        viewport: true,
       },
     });
   }

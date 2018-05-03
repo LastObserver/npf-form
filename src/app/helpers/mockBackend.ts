@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import * as shortid from 'shortid';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/delay';
@@ -18,7 +19,17 @@ export class MockBackend implements HttpInterceptor {
     return Observable.of(null).mergeMap(() => {
 
       if (request.url.endsWith('/') && request.method === 'POST') {
-        const body = {};
+        const body = {
+        };
+
+        return Observable.of(new HttpResponse({ status: 200, body: body }));
+      }
+
+      if (request.url.endsWith('/lk-form') && request.method === 'POST') {
+        const body = {
+          statementNumber: shortid.generate(),
+          form01Pdf: 'https://github.com/lastObserver',
+        };
 
         return Observable.of(new HttpResponse({ status: 200, body: body }));
       }

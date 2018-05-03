@@ -18,12 +18,13 @@ export class CaptchaDirective implements AfterViewInit {
   ) {
     this.element = el.nativeElement;
   }
-/**
- * Selects captcha elements and binds click event to update link
- *
- * @memberof CaptchaDirective
- */
-ngAfterViewInit() {
+
+  /**
+   * Selects captcha elements and binds click event to update link
+   *
+   * @memberof CaptchaDirective
+   */
+  ngAfterViewInit() {
     this.link = <HTMLLinkElement>this.element.querySelector('.npf-captcha-group__update')
     this.img = <HTMLImageElement>this.element.querySelector('.npf-captcha-group__image-group img')
     this.input = <HTMLInputElement>this.element.querySelector('.npf-captcha-group__image-group input')
@@ -34,11 +35,12 @@ ngAfterViewInit() {
       this.updateCaptcha();
     });
   }
-/**
- * Gets new captcha from api
- *
- * @memberof CaptchaDirective
- */
+
+  /**
+   * Gets new captcha from api
+   *
+   * @memberof CaptchaDirective
+   */
   updateCaptcha() {
 
     if (this.link.classList.contains('_loading')) {

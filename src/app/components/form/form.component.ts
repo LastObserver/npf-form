@@ -13,68 +13,130 @@ export class FormComponent implements OnInit, AfterViewChecked {
   steps: FormStepComponent[];
   private states: {
     progress: number,
-    complete: boolean;
+    isForm: boolean,
+    id: string,
   }[];
-  private currentStep: number;
+  public currentStep: number;
+  public currentStepId: string;
 
   constructor(private cd: ChangeDetectorRef) {
     this.steps = [];
     this.states = [];
-    this.currentStep = 1;
   }
 
   ngOnInit() {
   }
-/**
- * Goes to the next step (if present)
- *
- * @memberof FormComponent
- */
-  goForward() {
+
+  /**
+   * Adds form step
+   *
+   * @param {FormStepComponent} step
+   * @memberof FormComponent
+   */
+  public addStep(step: FormStepComponent) {
+    const { id } = step;
+    const index = step.index;
+
+    if (!this.steps.length) {
+      this.currentStep = 1;
+      this.currentStepId = id;
+    }
+
+    step.toggleVisibility(step.id === this.currentStepId);
+
+    this.steps.splice(index, 0, step);
+
+    this.states.splice(index, 0, {
+      progress: step.getProgressValue(),
+      isForm: step.isForm,
+      id: id,
+    });
+  }
+
+  /**
+   * Removes form step
+   *
+   * @param {FormStepComponent} step
+   * @memberof FormComponent
+   */
+  public removeStep(step: FormStepComponent) {
+    const { id } = step;
+
+    this.states.splice(this.states.findIndex(state => state.id === id), 1);
+    this.steps.splice(this.steps.findIndex(stepRef => stepRef.id === id), 1);
+
+  }
+
+  /**
+   * Goes to the next step (if present)
+   *
+   * @memberof FormComponent
+   */
+  public goForward() {
     if (this.currentStep < this.steps.length) {
+      const step = this.steps[this.currentStep];
+      const { id } = step;
+
+      this.currentStepId = id;
       this.currentStep++;
+
+      this.toggleSteps();
       this.scrollToTop();
     }
   }
 
-  addStep(step) {
-    this.steps.push(step);
-    this.states.push({
-      progress: step.getProgressValue(),
-      complete: step.complete,
-    });
-  }
-/**
- * Goes to the previous step (if present)
- *
- * @memberof FormComponent
- */
-  goBack() {
+  /**
+   * Goes to the previous step (if present)
+   *
+   * @memberof FormComponent
+   */
+  public goBack() {
     if (this.currentStep > 1) {
+      const step = this.steps[this.currentStep - 2];
+      const { id } = step;
+
+      this.currentStepId = id;
       this.currentStep--;
+
+      this.toggleSteps();
       this.scrollToTop();
     }
   }
-/**
- * Scrolls to the top of the window
- *
- * @memberof FormComponent
- */
-  scrollToTop() {
+
+  /**
+   * Scrolls to the top of the window
+   *
+   * @memberof FormComponent
+   */
+  private scrollToTop() {
     TweenLite.to(window, 0.5, { scrollTo: { y: 0 } });
   }
-/**
- * Updates progress values for every step
- *
- * @memberof FormComponent
- */
+
+  /**
+   * Updates progress values for every step
+   *
+   * @memberof FormComponent
+   */
   ngAfterViewChecked() {
     this.states.map((state, index) => {
-      const step = this.steps[index];
-      state.progress = step.getProgressValue();
-      state.complete = step.complete;
+      const stepRef = this.steps.find(step => step.id === state.id);
+      state.progress = stepRef.getProgressValue();
+      state.isForm = stepRef.isForm;
     });
+
     this.cd.detectChanges();
+  }
+
+  /**
+   * Changes visibility of steps
+   *
+   * @private
+   * @memberof FormComponent
+   */
+  private toggleSteps() {
+    this.steps.map((step, ind) => {
+      step.toggleVisibility(this.currentStepId === step.id);
+    });
   }
 
 }

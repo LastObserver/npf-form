@@ -1,6 +1,5 @@
 <div class="npf-form-bone _ipp-form">
   <div class="npf-form-bone__header">
-    <div class="npf-form-bone__header-top">Оформление индивидуального пенсионного плана</div>
 
     <div class="npf-form-bone__header-steps">
       <div class="npf-steps-line _centred">
@@ -8,7 +7,7 @@
           <div class="npf-steps-line__progress-bar"></div>
           <div class="npf-steps-line__steps">
             <step-symbol [index]="ind + 1" [progress]="state.progress"
-              [complete]='state.complete' *ngFor="let state of states; index as ind">
+              [isForm]='state.isForm' *ngFor="let state of states; index as ind">
             </step-symbol>
           </div>
         </div>
@@ -22,9 +21,6 @@
       </div>
     </div>
   </div>
-  <app-form-step-1 [hidden]="currentStep !== 1" [current]="currentStep === 1"></app-form-step-1>
-  <app-form-step-2 [hidden]="currentStep !== 2" [current]="currentStep === 2"></app-form-step-2>
-  <app-form-step-3 [hidden]="currentStep !== 3" [current]="currentStep === 3"></app-form-step-3>
-  <app-form-step-complete [hidden]="currentStep !== 4" [current]="currentStep === 4"></app-form-step-complete>
+  <ng-content></ng-content>
 
 </div>

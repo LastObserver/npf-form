@@ -1,3 +1,9 @@
-<p>
-  form-step works!
-</p>
+<form #stepForm="ngForm" (ngSubmit)="submitStep()" ngNativeValidate *ngIf="isForm">
+  <ng-containter *ngTemplateOutlet="myTemlpate"></ng-containter>
+</form>
+<div *ngIf="!isForm">
+  <ng-containter *ngTemplateOutlet="myTemlpate"></ng-containter>
+</div>
+<ng-template #myTemlpate>
+  <ng-content></ng-content>
+</ng-template>

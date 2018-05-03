@@ -11,7 +11,7 @@ import '../../../utils/draw-svg.js';
 export class StepSymbolComponent implements OnInit, OnChanges {
 
   @Input() index: string;
-  @Input() complete: boolean;
+  @Input() isForm: boolean;
   @Input() progress: number;
   private element: HTMLElement;
 

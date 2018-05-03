@@ -1,0 +1,7 @@
+<div class="npf-forms-navigation">
+  <a [routerLink]="path.url" routerLinkActive="npf-button_active" [routerLinkActiveOptions]="{exact: true}"
+    class="npf-button _theme_green _s_s" href="#" *ngFor="let path of paths"
+  >
+    <span class="npf-button__text">{{path.name}}</span>
+  </a>
+</div>

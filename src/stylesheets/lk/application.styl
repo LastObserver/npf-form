@@ -1,0 +1,2818 @@
+@require './_variables.styl'
+@require './_helpers.styl'
+
+@require './_fonts.styl'
+@require './_reset.styl'
+
+@require './checkbox.styl'
+
+@require './_scaffolding.styl'
+
+@require './container.styl'
+@require './input-container.styl'
+
+@require './decoration.styl'
+
+#kladr_autocomplete ul
+  z-index 99999
+
+body
+  &.locked
+    overflow hidden
+
+  &.theme-silver
+    background colorCatskillWhite
+
+@keyframes dialog
+  0%
+    opacity 0
+    transform translate3d(0, 50px, 0)
+
+  50%
+    opacity 1
+
+  100%
+    transform translate3d(0, 0, 0)
+
+@keyframes fadeInAndSlideLeft
+  0%
+    opacity 0
+    transform translateX(50%)
+
+  100%
+    opacity 1
+    transform translateX(0)
+
+.ngdialog
+
+  &-overlay
+    background rgba(#5b646e, .5)
+
+  &-content
+
+    ~/-theme-default &
+      width 100%
+      position relative
+      transform translate3d(0,0,0)
+      margin-bottom 96px
+
+      +above('sm')
+        width 768px
+        margin 96px auto
+        border-radius 6px
+
+    ~/-theme-aside &
+      width 635px
+      position fixed
+      right 0
+      top 0
+      bottom 0
+      animation fadeInAndSlideLeft 300ms cubic-bezier(.4, .2, 0, 1)
+
+      +mobile()
+        left 0
+        width 100%
+
+  &-close
+    cursor pointer
+    padding 0
+
+    ~/-theme-default &
+      position absolute
+      top 100%
+      right 50%
+      margin-right -24px
+      margin-top 24px
+      width 48px
+      height 48px
+      background-color transparent
+      border 0
+      outline 0
+      background-image url('./../assets/images/icons/48/ic-cross-silver.svg')
+      background-size 48px
+      background-position 0 0
+      background-repeat no-repeat
+      // animation dialog .35s $transition-timing-function
+      // -webkit-animation dialog .35s $transition-timing-function
+
+      +above('sm')
+        top -60px
+        right -60px
+        margin 0
+        background-image url('./../assets/images/icons/48/ic-cross-white.svg')
+
+      &::before
+        display none
+
+
+h1
+.ngx-h1
+  font-size 40px
+  line-height unit(48 / @font-size, '')
+  font-weight 100
+  letter-spacing -.01em
+
+  +mobile()
+    font-size 26px
+    line-height unit(34 / @font-size, '')
+
+
+h2
+.ngx-h2
+    font-size 26px
+    line-height unit(34 / @font-size, '')
+    font-weight 500
+    letter-spacing -.02em
+
+    +below('xs')
+        font-size 20px
+        line-height unit(30 / @font-size, '')
+        letter-spacing -.015em
+
+h3
+.ngx-h3
+  font-size 20px
+  line-height unit(30 / @font-size, '')
+  font-weight 500
+  letter-spacing -.015em
+  margin 32px 0
+
+h4
+.ngx-h4
+  {$typography-18}
+
+
+h1
+h2
+h3
+h4
+h5
+.ngx-h1
+.ngx-h2
+.ngx-h3
+.ngx-h4
+.ngx-h5
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+h6
+.ngx-h6
+  {$typography-12}
+  text-transform uppercase
+  margin 56px 0 32px
+  color colorShuttleGray
+  color rgba(colorShuttleGray, 3/4)
+  font-weight 300
+  text-align center
+
+
+.ngx-dialog
+  overflow hidden
+
+  +above('sm')
+    border-radius 6px
+
+  .npf-tabs
+    &__navigation-container
+      padding-left 60px
+
+      +below('xs')
+          padding-left 16px
+
+    &__content
+      padding-right 135px
+      padding-left 35px
+
+      +mobile()
+        padding 0 16px
+        max-width 600px
+
+  &__content
+    position absolute
+    top 100px
+    left 0
+    right 0
+    bottom 0
+
+  &__head
+    background colorCatskillWhite
+    padding 24px 0
+
+    +above('sm')
+      padding 32px 0
+
+  &__meta
+    {$typography-12}
+    border-bottom 1px solid rgba(colorIron, .5)
+    margin-bottom 16px
+    padding-bottom 7px
+    text-transform uppercase
+    color colorShuttleGray
+
+    +above('sm')
+      margin-bottom 24px
+
+  &__top
+    padding 46px 0 20px 65px
+
+    +below('xs')
+        padding-left 16px
+
+  &__close
+    position absolute
+    top 50px
+    right 30px
+    color #5b6065
+    opacity (1/3)
+    transition opacity
+
+    &:hover
+      opacity (2/3)
+
+.npf-information-list
+  {$typography-14}
+
+  a
+    border-bottom 1px dashed
+
+    &:hover
+      color colorForestGreen
+
+  li
+    position relative
+    padding 0 0 0 35px
+    margin 30px 0
+
+    &::before
+      content ''
+      position absolute
+      left 0
+      top 0
+      width 24px
+      height @width
+      background-image url('./../assets/images/icons/24/ic-information.svg')
+      background-size 24px
+      background-repeat no-repeat
+
+.ngx-columns
+  display flex
+  flex-wrap wrap
+
+  &_s_m
+    margin -16px
+
+    +below('sm')
+        margin -12px
+
+  &_s_s
+    margin -12px
+
+    +below('sm')
+        margin -8px
+
+  &_s_xs
+    margin -8px
+
+  &_j_c
+  &_justify_center
+    justify-content center
+
+  &_justify_right
+    justify-content flex-end
+
+  &_align_center
+    align-items center
+
+.ngx-column
+  min-height 1px
+
+  .ngx-columns_s_m > &
+    padding 16px
+
+    +below('sm')
+        padding 12px
+
+  .ngx-columns_s_s > &
+    padding 12px
+
+    +below('sm')
+        padding 8px
+
+  .ngx-columns_s_xs > &
+    padding 8px
+
+  &-right
+    margin-left auto
+
+  +below('xs')
+      &-xs-6
+        width percentage(1/2)
+
+      &-xs-2
+        width percentage(1/6)
+
+      &-xs-3
+        width percentage(1/4)
+
+      &-xs-9
+        width percentage(3/4)
+
+      &-xs-12
+        width 100%
+
+      &-xs-4
+        width percentage(1/3)
+
+      &-xs-7
+        width percentage(7/12)
+
+      &-xs-5
+        width percentage(5/12)
+
+  +above('sm')
+    &-sm-6
+      width percentage(1/2)
+
+    &-sm-4
+      width percentage(1/3)
+
+    &-sm-8
+      width percentage(2/3)
+
+    &-sm-12
+      width 100%
+
+  +above('md')
+    &-md-4
+      width percentage(4/12)
+
+    &-md-3
+      width percentage(3/12)
+
+    &-md-6
+        width percentage(1/2)
+
+    &-md-9
+        width percentage(3/4)
+
+.npf-tabs
+
+  &__navigation
+    padding 24px 0 12px
+    background #fff
+    overflow hidden
+    border-bottom 1px solid rgba(colorIron, .5)
+
+  &__navigation-container
+      margin-bottom -36px
+
+  &__progress
+    position absolute
+    height 8px
+    bottom -(@height / 2)
+    left 15px
+    width 0
+    border-radius (@height / 2)
+    background #fda50a
+
+  &__navigation-columns
+    position relative
+    align-items center
+    flex-wrap nowrap
+    padding-bottom 24px
+    overflow-x auto
+
+  &__navigation-column
+    position relative
+
+  &__content
+    position absolute
+    top 97px
+    left 0
+    right 0
+    bottom 0
+
+  &__navigation-link
+    cursor pointer
+    font-size 18px
+    font-weight 500
+    line-height unit(56 / @font-size, '')
+    display block
+    margin-bottom -12px
+    padding-bottom 16px
+    overflow hidden
+    position relative
+    white-space nowrap
+    // padding-right 4px
+    // padding-left @padding-right
+    
+    +above('sm')
+      margin-bottom -16px
+
+    &::after
+      display none
+      right 0
+      border-radius 4px
+
+    &_active::after
+      display block
+
+  &__navigation-progress
+  &__navigation-link::after
+      content ''
+      height 8px
+      position absolute
+      left 0
+      bottom -(@height / 2)
+      border-radius 4px
+      background #fda50a
+
+
+.npf-accordion-panels
+  margin -10px 0
+
+.npf-accordion-panel
+  margin 10px 0
+  padding 0 40px
+  box-shadow 0 3px 5px rgba(0, 0, 0, .1)
+  background #fff
+  border-radius 6px
+
+  &__tabs
+    border-bottom 2px solid colorCatskillWhite
+
+  &__h
+    padding 28px 0 28px
+
+    &-title
+      font-size 20px
+      font-weight 300
+      line-height unit(32 / @font-size, '')
+
+    &-datetime
+      color colorShuttleGray
+      font-size 14px
+      line-height 24px
+      font-weight 300
+      letter-spacing .02em
+
+
+  &__content
+    border-top 2px solid colorCatskillWhite
+    padding 28px 0
+
+
+  &__columns
+    display table
+
+  &__column
+    display table-cell
+    padding 0 15px
+
+    &:first-child
+      padding-left 0
+
+    &:last-child
+      padding-right 0
+
+    &:nth-child(1)
+      width 360px
+
+    &:nth-child(2)
+      width 300px
+
+    &:nth-child(3)
+      width 200px
+
+
+  &__property
+    {$typography-14}
+    font-weight 300
+
+    &-value
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 3/4)
+      margin-top 4px
+
+    & + &
+      margin-top 24px
+
+
+
+.npf-forms
+  &__actions
+    margin 45px 0
+
+  &__title
+    {$typography-12}
+    text-transform uppercase
+    margin 30px 0
+    text-align center
+    color colorShuttleGray
+    color rgba(colorShuttleGray, 3/4)
+
+
+  &__step-meta
+    margin 0 0 40px
+
+  &__step-title
+    {$typography-26}
+    text-align center
+    margin 30px 0 0
+
+
+  &__step-description
+    {$typography-18}
+    text-align center
+
+    a
+      border-bottom 1px dashed
+      transition color
+
+      &:hover
+        color $colors-ops
+
+
+.npf-form__step
+  width 40px
+  height 40px
+  background #fff
+  z-index 9
+  position relative
+  display flex
+  align-items center
+  justify-content center
+  color #cfd3d6
+
+  &-progress
+    position absolute
+    left 0
+    top 0
+
+  &-content
+    font-size 18px
+    font-weight 500
+    padding-top 2px
+
+    ~/_is_current &
+      color colorMako
+
+    ~/_is_current~/_is_complete &
+      color $colors-ops
+
+  &_is_current
+    color colorSun
+
+  &_is_current&_is_complete
+    color $colors-ops
+
+.ngx-icon
+  line-height 0
+  font-size 0
+
+.npf-link
+.ngx-link
+  transition color, opacity
+
+  &__icon + &__text
+  &__text + &__icon
+    margin-left 4px
+
+  &_theme_green
+    color $colors-ops
+
+  &_dashed
+    border-bottom 1px dashed
+
+  &__icon
+  &__text
+    vertical-align middle
+
+  &__icon
+    display inline-block
+    transition color, opacity
+
+    ~/_theme_silver &
+      color #cfd3d6
+
+    ~/_theme_silver:hover &
+      color colorForestGreen
+
+  &_theme_silver&_is_active &__icon
+    color colorForestGreen
+
+
+.npf-button
+.ngx-button
+  display inline-flex
+  align-items center
+  cursor pointer
+  background none
+  outline none
+  margin 0
+  transition border, box-shadow
+  font-family 'SeroPro', Arial, sans-serif
+
+  &_s_s
+    height 48px
+    padding 0 24px
+    border-radius 24px
+
+  &_s_s&_type_round
+    width 48px
+
+  &_s_m
+    height 56px
+    border-radius 28px
+    padding 0 @border-radius
+
+    +below('sm')
+        height 48px
+        border-radius 24px
+        padding 0 @border-radius
+
+  &_s_m&_type_round
+    width 56px
+
+    +below('sm')
+        width 48px
+
+  &__icon + &__text
+  &__text + &__icon
+    margin-left 8px
+
+  &__text
+    white-space nowrap
+
+    ~/_s_m &
+      font-size 18px
+      line-height unit(24 / @font-size, '')
+      font-weight 500
+
+      +below('sm')
+          font-size 16px
+          line-height 1.5
+
+    ~/_s_s &
+      {$typography-14}
+      font-weight 500
+
+    ~/_theme_pear &
+    ~/_theme_sushi &
+      color colorIron
+
+  &__icon
+    ~/_theme_transparent &
+    ~/_theme_silver &
+      color $colors-ops
+
+  &_theme_green
+    background $colors-ops
+    color white
+    border 0
+
+    &:hover
+      box-shadow 0px 5px 15px 0px rgba(black, 0.15)
+
+  &_theme_corporate
+    background colorFunGreen
+    color white
+    border 0
+
+    &:hover
+      box-shadow 0px 5px 15px 0px rgba(black, 0.15)
+
+  &_theme_white
+    color white
+
+  &_theme_silver
+    border 2px solid #dfe2e5
+
+    &:hover
+      border-color #cfd3d6
+
+    &:active
+      border-color colorForestGreen
+
+  &_theme_transparent
+    border 0
+    padding 0
+
+  &_theme_sushi
+  &_theme_pear
+  &_theme_white
+    border 1px solid
+
+  &_theme_pear
+    color colorPear
+
+  &_theme_sushi
+    color colorSushi
+
+  &_type_round
+    border-radius 50%
+    padding-right 0
+    padding-left @padding-right
+    justify-content center
+
+  &_xs_fit
+      width 100%
+      justify-content center
+
+
+.qtip
+  &-default
+    border 1px solid rgba(colorIron, .5)
+    background-color white
+    border-radius 4px
+    box-shadow 1px 3px 5px rgba(0, 0, 0, 0.05)
+
+  &-content
+    padding 12px 24px
+    font-weight 300
+    color colorShuttleGray
+    color rgba(colorShuttleGray, 3/4)
+    {$typography-12}
+
+    p
+      margin unit(10 / @font-size, 'em') 0
+
+      &:first-child
+        margin-top 0
+
+      &:last-child
+        margin-bottom 0
+
+.npf-qtip
+  cursor help
+
+
+.npf-infoblock
+  {$typography-14}
+
+  &-top
+    position relative
+    padding 23px 0 23px 35px
+    border-bottom 1px solid colorIron
+
+    &::before
+      content ''
+      position absolute
+      top 23px
+      left 0
+      background-image url('./../assets/images/icons/24/ic-information.svg')
+      width 24px
+      height 24px
+
+
+  &-bottom
+    padding 30px 0 0
+
+  &-description
+    position relative
+    padding 0 0 0 34px
+
+    margin 15px 0
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+    &-n
+      position absolute
+      left 0
+      top 0
+      font-weight normal
+      color $colors-ops
+
+    &-text
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 3/4)
+
+  &-notification
+    padding 0 0 0 34px
+
+
+hr
+  margin 56px 0
+  border 0
+  border-top 1px solid rgba(colorIron, .5)
+
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+.ngx-content
+  {$typography-18}
+  margin-top 32px
+  margin-bottom @margin-top
+
+  &_theme_warning
+    color colorWarning
+
+  &_theme_success
+    color $colors-ops
+
+  &_theme_note
+    color colorShuttleGray
+    color rgba(colorShuttleGray, 3 / 4)
+
+  +mobile()
+    {$typography-16}
+    margin-top 24px
+    margin-bottom @margin-top
+
+  p
+  ol
+  ul
+  hr
+    margin 32px 0
+
+  hr
+    border 0
+    border-top 1px solid rgba(colorIron, .5)
+
+  a
+  > label
+    border-bottom 1px dashed
+    transition color
+    cursor pointer
+
+    &:hover
+      color colorForestGreen
+
+  ol
+  ul
+    li
+      position relative
+      text-align left
+      padding-left 32px
+      margin 16px 0
+
+    ol
+    ul
+      padding-left 30px
+
+    ol
+      li::before
+        color #fda50a
+
+  ol
+    counter-reset counter
+
+    li::before
+      content counter(counter)'.'
+      counter-increment counter
+      position absolute
+      top 0
+      left 0
+      color colorForestGreen
+      font-weight normal
+
+  ul
+    ul
+      li::before
+        background-color #fda50a
+  
+    & > li::before
+      position absolute
+      margin-top -2px
+      left 7px
+      top 15px
+      display block
+      width 10px
+      height 4px
+      content ''
+      border-radius 2px
+      background-color colorForestGreen
+
+  &
+  p
+  ol
+  ol li
+  ul
+  ul li
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+  &_s_s
+    {$typography-14}
+    margin 24px 0
+
+    +mobile()
+        {$typography-14}
+        margin 24px 0
+
+
+    p
+    ol
+    ul
+    hr
+      margin 24px 0
+
+    ol li
+    ul li
+      margin 12px 0
+
+    ul li::before
+      top 12px
+
+  &_s_xs
+    {$typography-12}
+    margin 20px 0
+
+    +mobile()
+        {$typography-12}
+        margin 20px 0
+
+    p
+    ol
+    ul
+    hr
+      margin 20px 0
+
+    ol li
+    ul li
+      margin 10px 0
+
+    ul li::before
+      top 10px
+
+  &_s_m
+    {$typography-16}
+
+
+.npf-form
+  // margin 32px 0
+  // overflow hidden
+
+  &__steps
+    margin 60px 0 30px
+    user-select none
+    text-align center
+
+    &-columns
+      display inline-flex
+      margin 0 -12px
+      position relative
+
+      &::before
+        content ''
+        position absolute
+        left 12px
+        right 12px
+        top 50%
+        height 2px
+        background colorIron
+        transform translate3d(0, -50%, 0)
+
+    &-column
+      padding 0 12px
+
+  &__footer
+    margin 60px 0 0
+
+
+.npf-account-avatar
+  height 100px
+  width @height
+
+
+.npf-account-info
+  &__properties
+    display flex
+
+  &__property
+    &-name
+      {$typography-12}
+      text-transform uppercase
+
+    &-value
+      {$typography-18}
+
+  &__actions
+    border-top 1px solid #fff
+    border-top .5px solid #fff
+
+    margin-top 20px
+    padding-top @margin-top
+
+    &-columns
+      margin -5px
+
+    &-column
+      padding 5px
+
+
+.npf-table
+  display table
+  width 100%
+  user-select none
+  box-shadow 0 1px 0 rgba(colorIron, .5)
+
+  &__head
+  &__body
+    display table-row-group
+
+  &__value
+    &_type_meta
+      {$typography-14}
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 2/3)
+
+    &_type_default
+      {$typography-16}
+
+    &_type_note
+      {$typography-12}
+      text-transform uppercase
+      padding 4px 0
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 2/3)
+
+
+  &__cell
+    display table-cell
+    padding 32px 15px 28px
+    vertical-align middle
+
+    &:first-child
+      padding-left 0
+
+    &:last-child
+      padding-right 0
+
+  &__row
+    display table-row
+
+  &__row + &__row &__cell
+    border-top 1px solid rgba(colorIron, .5)
+
+.npf-account-layout
+  &__body
+    background colorCatskillWhite
+    padding 4px 0
+
+  &__head
+    position relative
+    padding 60px 0
+    color #fff
+    background-blend-mode multiply
+    background-color colorForestGreen
+    background-image linear-gradient(135deg, rgba(#FFFFFF, .15) 0%, rgba(#C3C3C3, .15) 64%, rgba(#C3C3C3, .15) 65%, rgba(#C2C2C2, .15) 65%, rgba(#C2C2C2, .15) 66%, rgba(#BDBDBD, .15) 71%, rgba(#B8B8B8, .15) 77%, rgba(#B7B7B7, .15) 77%, rgba(#B7B7B7, .15) 77%, rgba(#B7B7B7, .15) 77%, rgba(#AAAAAA, .15) 92%, rgba(#A2A2A2, .15) 100%);
+
+
+.ngx-contracts-card
+  {$card}
+  height 240px
+  padding 20px
+  position relative
+  overflow hidden
+
+  &__balance
+    &-bindings
+      font-size 40px
+      font-weight 100
+
+  &__title
+    line-height 24px
+    font-weight 500
+    padding-right 110px
+
+    +mobile()
+      {$typography-14}
+      font-weight 500
+
+  &__content
+    position absolute
+    bottom 0
+    left 20px
+    right 20px
+
+  &__footer
+    margin-top 8px
+
+    +above('sm')
+      border-top 1px solid rgba(colorIron, .5)
+
+  &__decoration
+    position absolute
+    top -40px
+    right -35px
+    width 150px
+    height 150px
+    border-radius 50%
+    color #fff
+
+    ~/_type_ops &
+      background colorForestGreen
+
+    ~/_type_npo_private &
+      background colorSun
+
+    ~/_type_npo_corporate &
+      background colorFunGreen
+
+    &-icon
+      position absolute
+      top 55px
+      right 50px
+
+
+
+.npf-meta
+.ngx-meta
+  {$typography-14}
+  color colorShuttleGray
+  font-weight 300
+  color rgba(colorShuttleGray, 3 / 4)
+
+  &_type_uppercase
+    {$typography-12}
+    text-transform uppercase
+
+  &_type_underline
+    border-bottom 1px solid rgba(colorIron, .5)
+    padding 5px 0 4px
+
+
+.ngx-statements
+  &__columns
+    margin-top -15px
+    margin-bottom @margin-top
+
+  &__column
+    padding-top 15px
+    padding-bottom @padding-top
+
+    width 100%
+
+    +above('sm')
+      width percentage(1/2)
+
+    +above('md')
+      width percentage(1/3)
+
+.ngx-article
+  {$card}
+  position relative
+  overflow hidden
+  padding 175px 0 24px
+  cursor pointer
+  user-select none
+
+  height 450px
+
+  +above('md')
+    padding 24px 0 24px 270px
+    height 330px
+
+  &_theme_of_the_month
+    padding 24px
+
+    +above('md')
+      padding 24px
+
+  &__name
+    {$typography-20}
+    font-weight 500
+    margin 16px 0
+
+    ~/_theme_of_the_month &
+      {$typography-26}
+      color white
+
+  &__meta
+    {$typography-12}
+    padding-bottom 7px
+    text-transform uppercase
+    border-bottom 1px solid rgba(colorIron, .5)
+    color rgba(colorShuttleGray, 3 / 4)
+
+    ~/_theme_of_the_month &
+      color white
+      border-color rgba(white, .5)
+
+  &__content
+    position relative
+    z-index 9
+    padding 0 32px
+
+  &__background
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 275px
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    background-blend-mode multiply
+    background-color rgba(colorMako, 1/3)
+
+    +above('md')
+      bottom 0
+      right 300px
+
+    ~/_theme_of_the_month &
+      right 0
+      bottom 0
+
+  &_theme_of_the_month
+    text-align center
+
+.ngx-faq
+  {$card}
+  position relative
+  overflow hidden
+  height 200px
+  padding 20px
+  cursor pointer
+  user-select none
+
+  &__meta
+    {$typography-12}
+    text-transform uppercase
+    color rgba(colorShuttleGray, 3 / 4)
+    padding 0 0 7px
+    border-bottom 1px solid rgba(colorIron, .5)
+    margin-bottom 16px
+
+  &__icon
+    margin 24px 0
+
+  &_type_feedback
+    color white
+    background-image linear-gradient(-180deg, rgba(#fff, .5) 0%, rgba(#a2a2a2, .5) 100%)
+    background-color colorForestGreen
+    background-blend-mode overlay
+    text-align center
+
+
+@keyframes ngxStatementBody
+  0%
+    opacity 0
+  100%
+    opacity 1
+
+.ngx-statement
+  {$card}
+  position relative
+  height 330px
+  text-align center
+  padding-top 130px
+
+  &__actions
+    position absolute
+    left 20px
+    right 20px
+    top 20px
+
+    &-columns
+      justify-content flex-end
+
+  &__icon
+    position absolute
+    left 50%
+    margin-left -30px
+    right 0
+    top 70px
+    transition transform, background-color
+    text-align center
+    border-radius 50%
+    background-color tranparent
+    transform translate3d(0, 0, 0)
+    width 60px
+    height 60px
+
+    svg
+      transition transform
+
+    ~/_is_active &
+      background-color colorForestGreen
+      transform translate3d(0, -100px, 0)
+
+      svg
+        transform scale(.5)
+        path
+          fill #fff
+          stroke #fff
+
+  &__content
+    position absolute
+    left 0
+    right 0
+    padding 0 20px
+    top 150px
+    transition transform
+    transform translate3d(0, 0, 0)
+
+    ~/_is_active &
+      transform translate3d(0, -90px, 0)
+
+  &__name
+    {$typography-18}
+    font-weight 500
+
+  &__available-actions
+    margin-top 20px
+    transition opacity
+    opacity 0
+
+    ~/_is_active &
+      display block
+      opacity 1
+
+
+.ngx-section
+  &_s_s
+    margin 15px 0
+
+    +mobile()
+        margin 10px 0
+
+.ngx-section
+  &_s_m
+    margin 32px 0
+
+    +mobile()
+        margin 24px 0
+
+  &_s_l
+    margin 56px 0
+
+    +mobile()
+        margin 48px 0
+
+  &_justify_center
+    text-align center
+
+
+.ngx-loading
+  position relative
+  min-height 60px
+
+  &::after
+    content ''
+    display none
+    width 60px
+    height @width
+    position absolute
+    top 50%
+    left 50%
+    margin-top -30px
+    margin-left -30px
+    background-image url('./../assets/images/preloader.gif')
+    background-size 60px
+    background-repeat no-repeat
+
+  &_is_active::after
+    display block
+
+  &_fullscreen
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+
+  &__content
+    ~/_is_active &
+      opacity (1/3)
+      pointer-events none
+
+.npf-loading
+  &__root
+    position relative
+    min-height 60px
+
+    &::after
+      content ''
+      display none
+      width 60px
+      height @width
+      position absolute
+      top 50%
+      left 50%
+      transform translate3d(-50%, -50%, 0)
+      background-image url('./../assets/images/preloader.gif')
+      background-size 60px
+      background-repeat no-repeat
+
+    &_is_loading::after
+      display block
+
+  &__content
+
+    ~/__root_is_loading &
+      opacity (1/3)
+      pointer-events none
+
+
+.npf-feature
+  &__description
+    {$typography-14}
+
+    margin 12px 0 24px
+
+.npf-upload-avatar
+  &__columns
+    align-items center
+
+  &__image
+    position relative
+    width 100px
+    height 100px
+
+    img
+      position absolute
+      object-fit contain
+      width 100%
+      height 100%
+      border-radius 50%
+
+
+  &__remove
+    position absolute
+    top -5px
+    right -5px
+    width 32px
+    height 32px
+    background-image url('./../assets/images/icons/32/ic-remove.svg')
+    background-size 32px
+    background-repeat no-repeat
+
+
+.npf-header
+  border-bottom 1px solid rgba(colorIron, .5)
+  background #fff
+
+  &__columns
+    align-items center
+    height 110px
+
+  &__column
+    &:nth-child(1)
+      margin-right auto
+
+      +above('sm')
+        margin-right 64px
+
+      +above('md')
+        margin-right 112px
+
+    &:nth-child(2)
+      margin-left auto
+      margin-right auto
+
+      +above('sm')
+        margin-left 0
+        margin-right 64px
+
+      +above('md')
+        margin-right 112px
+
+  &__contacts
+    &-title
+      {$typography-14}
+      color colorShuttleGray
+
+    &-numbers
+      {$typography-20}
+      font-weight 500
+
+
+.npf-information-toggle
+  text-align left
+
+  .ngx-card &
+    margin-top -24px
+    margin-bottom -24px
+
+  &__head
+    position relative
+    {$typography-14}
+
+    user-select none
+    cursor pointer
+
+    padding 24px 40px 24px 32px
+    box-shadow 0 1px 0 rgba(colorIron, .5)
+
+    &::after
+      content ''
+      position absolute
+      right 8px
+      top 24px
+      width 24px
+      height 24px
+      background-image url('./../assets/images/icons/24/ic-arrow-down-green.svg')
+      background-size 24px
+      background-position 0 0
+      background-repeat no-repeat
+      transition transform
+
+      ~/_is_active &
+        transform rotate(180deg)
+
+    &::before
+      content ''
+      position absolute
+      top 24px
+      left 0
+      width 24px
+      height 24px
+      background-image url('./../assets/images/icons/24/ic-information.svg')
+      background-repeat no-repeat
+      background-size 24px
+      background-position 0 0
+
+  &__body
+    display none
+    padding 24px 0 24px 32px
+
+    +mobile()
+        padding-left 0
+
+    ~/_is_active &
+      display block
+    
+    &_clear
+      padding-left 0
+
+
+.npf-layout
+  overflow hidden
+
+
+.ngx-autopayment-status
+  display block
+  position relative
+  padding-left 32px
+
+  &::before
+    content ''
+    position absolute
+    left 0
+    top 50%
+    margin-top -12px
+    width 24px
+    height 24px
+    background-size 24px
+    background-repeat no-repeat
+    background-image url('./../assets/images/icons/24/ic-state-active.svg')
+    background-position 0 0
+
+  &__name
+    {$typography-14}
+    font-weight 500
+
+  &_is_inactive::before
+    background-image url('./../assets/images/icons/24/ic-state-inactive.svg')
+
+.npf-state
+  display inline-flex
+  align-items center
+
+  &__icon + &__text
+  &__text + &__icon
+    margin-left 8px
+
+  &__text
+    {$typography-14}
+    font-weight 500
+
+
+.ngx-radio-group
+  margin 32px 0
+  text-align left
+  user-select none
+
+  &_type_inline
+    display -webkit-flex
+    display -ms-flex
+    display flex
+
+    +mobile()
+      flex-flow row wrap
+
+    .ngx-radio
+      margin 0 8px
+
+
+.ngx-radio
+  margin 32px 0
+  min-width 24px
+  min-height @min-width
+  position relative
+
+  input
+    position absolute
+    width 1px
+    height 1px
+    left 12px
+    top 15px
+    opacity 0
+
+    &[disabled]
+    &[readonly]
+
+      & + ^[0]__content
+        cursor not-allowed
+
+        &::after
+          background rgba(colorShuttleGray, 3 / 4)
+
+  input:checked + &__content::after
+    display block
+
+  &__content
+    font-size 16px
+    display block
+    line-height unit(30 / @font-size, '')
+    padding-left 40px
+    font-weight 300
+    position relative
+    cursor pointer
+    text-align left
+
+    .ngx-radio-group_type_inline &
+      padding-top 24px
+      padding-left 0
+      width @padding-top
+      text-align center
+
+    &::before
+      content ''
+      position absolute
+      left 0
+      top 0
+      border-radius 50%
+      width 24px
+      height @width
+      border 1px solid #cfd3d6
+
+    &::after
+      content ''
+      display none
+      position absolute
+      top 12px
+      left @top
+      width @top
+      height @top
+      border-radius 50%
+      transform translate3d(-50%, -50%, 0)
+      background colorForestGreen
+
+  a
+    border-bottom 1px dashed
+
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+
+.visible-md
+.ngx-visible-md
+  display none
+
+  +above('md')
+    display block
+
+.ngx-hidden-md
+  +desktop()
+    display none
+
+.ngx-hidden-sm
+  +tablet()
+    display none
+
+.hidden-xs
+.ngx-hidden-xs
+  +mobile()
+    display none
+
+.ngx-visible-sm
+  +below('xs')
+    display none
+
+  +above('md')
+    display none
+
+.ngx-visible-xs
+  +above('sm')
+    display none
+
+
+.ngx-interactive-form
+  &__steps
+    margin 60px 0 30px
+
+    &-columns
+      display inline-flex
+      justify-content center
+      margin 0 -12px
+      position relative
+
+      &::before
+        content ''
+        position absolute
+        left 12px
+        right 12px
+        top 50%
+        height 2px
+        background #dfe2e5
+
+    &-column
+      padding 0 12px
+
+    +mobile()
+      overflow-y auto
+
+.ngx-interactive-form-step
+  width 40px
+  height 40px
+
+  position relative
+
+  &__icon
+  &__value
+    position absolute
+    left 50%
+    top 50%
+    transform translate3d(-50%, -50%, 0)
+
+  &__value
+    padding-top 2px
+    font-weight 500
+    color #cfd3d6
+
+    ~/_is_current &
+      color colorMako
+
+    ~/_is_completed &
+      display none
+
+  &__progress
+    color #dfe2e5
+
+    ~/_is_current &
+      color colorSun
+
+    .ngx-interactive-form-step_is_current.ngx-interactive-form-step_is_completed &
+      color colorForestGreen
+
+  &__icon
+    display none
+    color #dfe2e5
+
+    ~/_is_completed &
+      display block
+
+    .ngx-interactive-form-step_is_current.ngx-interactive-form-step_is_completed &
+      color colorForestGreen
+
+
+.ngx-card
+  {$card}
+  padding 24px
+
+  +above('sm')
+    padding-left 32px
+    padding-right @padding-left
+
+  +above('md')
+    padding-left 40px
+    padding-right @padding-left
+
+  & + &
+    margin-top 16px
+
+table
+  &.ngx-table
+    width 100%
+
+    thead
+      background #f3f6f9
+
+    th
+      {$typography-14}
+      text-align left
+      padding 0 15px
+      height 60px
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 1/3)
+
+    td
+      padding 40px 15px
+
+    td
+    th
+      vertical-align middle
+
+    tr + tr
+      td
+        border-top 1px solid rgba(colorIron, .5)
+
+
+.ngx-transactions
+  &__top
+    margin 45px 0
+
+
+.ngx-status
+  position relative
+  padding-left 32px
+
+  &__text
+    {$typography-14}
+    font-weight 500
+
+  &__icon
+    position absolute
+    left 0
+    top 0
+
+.ngx-contract
+  overflow hidden
+
+  &__details
+    margin-top 24px
+    margin-bottom -24px
+    border-top 1px solid rgba(colorIron, .5)
+
+    &:not(:last-child)
+      margin-bottom 0
+
+    +mobile()
+        margin-top 12px
+
+  .ngx-table
+      +below('xs')
+          td
+              vertical-align top
+          td
+          th
+              padding 16px 4px
+
+          .ngx-value
+              text-transform none !important
+              font-size 12px
+
+
+.ngx-contract-property
+  margin 24px 0
+
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+  &__name
+  &__content
+    {$typography-14}
+
+  &__content
+    margin-top 4px
+    color rgba(colorShuttleGray, 3 / 4)
+
+    a
+      border-bottom 1px dashed
+
+
+.ngx-contracts-diagram
+    position relative
+
+    &__contents
+        position absolute
+        text-align center
+        left 50px
+        right 50px
+        top 50%
+        transform translate3d(0, -50%, 0)
+
+    &__meta
+        margin-bottom 8px
+        padding-bottom 8px
+        {$typography-12}
+        font-weight 300
+        color colorShuttleGray
+        color rgba(colorShuttleGray, 3 / 4)
+        position relative
+
+        &::after
+            content ''
+            position absolute
+            bottom 0
+            left 30px
+            right 30px
+            border-bottom 1px solid rgba(colorIron, .5)
+
+    &__balance
+        font-weight 100
+        font-size 32px
+        line-height unit(50 / @font-size, '')
+
+
+.ngx-contracts-legend
+  position relative
+  padding 8px 0 0 16px
+
+  &__content
+    {$typography-14}
+    color rgba(colorShuttleGray, 3 / 4)
+
+
+  &__icon
+    width 8px
+    height 8px
+    border-radius 50%
+    position absolute
+    top 16px
+    left 0
+
+
+.datepicker
+  &.dropdown-menu
+    {$card}
+    padding 30px
+    border 0
+
+    &::before
+    &::after
+      display none
+
+  .datepicker-switch
+    font-size 20px
+    line-height unit(30 / @font-size, '')
+    font-weight 500
+
+  table
+    width 100%
+
+    tr td.range
+    tr td.range:hover
+    tr td.range.disabled
+    tr td.range.disabled:hover
+    tr td.day:hover
+    tr td.day.focused
+      background none
+
+    tr td
+      position relative
+      border-radius 50%
+      font-size 14px
+      line-height unit(24 / @font-size, '')
+
+    tr td.active.active
+    tr td.active:hover.active
+    tr td.selected
+    tr td.selected:hover
+      background colorForestGreen
+      text-shadow none
+
+    tr td.range::before
+      content ''
+      position absolute
+      top 4px
+      bottom 4px
+      left -12px
+      right -12px
+      z-index -1
+      background #f3f6f9
+
+    tr td.range:last-child::before
+      border-top-right-radius 24px
+      border-bottom-right-radius 24px
+      right 0
+
+    tr td.range:first-child::before
+      border-top-left-radius 24px
+      border-bottom-left-radius 24px
+      left 0
+
+  table tr td.old
+    color rgba(colorShuttleGray, 1 / 2)
+
+  td
+  th
+      height 44px
+      width 44px
+      vertical-align middle
+      font-weight 300
+
+  th.dow
+    color colorShuttleGray
+    border-bottom 1px solid rgba(colorIron, .5)
+
+
+.ngx-uploader
+  background #f3f6f9
+  padding 10px
+  margin 30px 0
+
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+  &__inner
+    border 1px dashed #c3cbd0
+    padding 10px
+
+  &__title
+    {$typography-20}
+    font-weight 500
+    color #c3cbd0
+
+  &__content
+    margin-top 5px
+
+  &
+  &__inner
+    border-radius 6px
+
+
+.ngx-topbar
+  background colorForestGreen
+  padding 12px 0
+
+  &__link
+    color #fff
+    {$typography-14}
+    font-weight 500
+
+
+
+.ngx-value
+  {$typography-18}
+
+  &_se_lg
+    {$typography-20}
+
+  &_se_md
+    {$typography-16}
+
+  &_se_sm
+    {$typography-14}
+
+  &_se_xs
+    {$typography-12}
+
+  &_theme_meta
+  &_theme_silver
+    color rgba(colorShuttleGray, 3 / 4)
+
+  &_theme_meta
+    +below('sm')
+      {$typography-12}
+      text-transform uppercase
+      padding 0 0 9px
+      border-bottom 1px solid rgba(colorIron, .5)
+
+  &_theme_note
+    color rgba(colorShuttleGray, 1 / 2)
+
+
+.ngx-declaration
+  margin-top 15px
+
+.ngx-declaration-upload
+  display flex
+  flex-flow column nowrap
+  align-items center
+
+  &__controls
+    display flex
+    flex-flow column nowrap
+    align-items center
+
+  .ngx-files
+    margin-bottom 36px
+    width 100%
+
+  .ngx-loading
+    width 100%
+
+  .ngx-column
+    display flex
+
+  .ngx-content
+    text-align center
+
+  button
+    margin-top 24px
+
+.ngx-autopayment
+.ngx-declaration
+  & + &
+    margin-top 15px
+
+  &__card
+    overflow hidden
+    padding 20px
+    position relative
+
+    +above('sm')
+      padding 30px
+
+    +above('md')
+      padding 40px
+
+  &__card > .ngx-columns
+    align-items baseline
+
+.ngx-autopayment
+  &__card > .ngx-columns > .ngx-column
+    &:nth-child(1)
+      width 100%
+
+      +above('md')
+        width 20%
+
+    &:nth-child(2)
+      width 100%
+
+      +above('sm')
+        width 50%
+
+      +above('md')
+        width 30%
+
+    &:nth-child(3)
+      width 100%
+
+      +above('sm')
+        width 25%
+
+      +above('md')
+        width 20%
+
+    &:nth-child(4)
+      +tablet()
+        width 25%
+
+    &:nth-child(5)
+      margin-left auto
+      align-self flex-start
+
+      +tablet()
+        position absolute
+        top 10px
+        right 30px
+
+.ngx-declaration
+  &__card > .ngx-columns > .ngx-column
+    &:nth-child(1)
+      width 100%
+
+      +above('md')
+        width 20%
+
+    &:nth-child(2)
+      width 100%
+
+      +above('sm')
+        width 50%
+
+    &:nth-child(4)
+      margin-left auto
+
+      +above('md')
+        align-self flex-start
+
+.ngx-layout
+  &__body
+    display block
+
+  &__footer
+    overflow hidden
+    display block
+    background #fff
+    border-top 1px solid rgba(colorIron, .5)
+
+
+.ngx-footer
+  &__container
+    position relative
+
+  &__social
+    +above('sm')
+      position absolute
+      right 16px
+      bottom -8px
+
+  &__developers
+    &-link
+      display inline-flex
+      align-items center
+      {$typography-12}
+      color rgba(colorShuttleGray, 3 / 4)
+
+      & + &
+        margin-left 16px
+
+.ngx-footer-menu
+  text-align center
+
+  +above('sm')
+    text-align left
+
+  &__link
+    {$typography-14}
+    display block
+    margin 8px 0
+
+    .ngx-icon
+      color colorForestGreen
+
+    &_type_heading
+      {$typography-20}
+      font-weight 500
+      margin-bottom 16px
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+
+.ngx-declaration-stages
+  position relative
+
+
+  &__list
+    display flex
+    position relative
+    margin -15px
+
+    +mobile()
+      flex-direction column
+
+    &::before
+    ~/__progress
+      position absolute
+      left 15px
+      top 34px
+      max-width 80%
+      content ''
+
+      +above('sm')
+        height 2px
+
+    &::before
+      background #dfe2e5
+      right 0
+      z-index -2
+
+      +mobile()
+        width 2px
+        left 34px
+        top 15px
+        bottom 15px
+
+    ~/__progress
+      background colorForestGreen
+      z-index -1
+
+      &_type_horizontal
+        height 2px
+
+        +mobile()
+          display none
+
+      &_type_vertical
+        width 2px
+        left 34px
+        top 15px
+
+        +above('sm')
+          display none
+
+  &__item
+    padding 15px
+
+    +mobile()
+      display flex
+      align-items center
+
+    +above('sm')
+      width percentage(1/4)
+
+  &__icon
+    height 40px
+    width 40px
+    border-radius 50%
+    background white
+
+  &__text
+    {$typography-14}
+
+    +mobile()
+      margin-left 15px
+
+    +above('sm')
+      margin-top 15px
+
+    ~/__item_is_disabled &
+      color colorShuttleGray
+      color rgba(colorShuttleGray, 1 / 3)
+
+
+.ngx-contracts-menu
+  position absolute
+  right -64px
+  top 12px
+
+  +below('sm')
+    display none
+
+  &__item
+    margin 24px 0
+
+    &:first-child
+      margin-top 0
+
+    &:last-child
+      margin-bottom 0
+
+  &__link
+    display block
+    width 56px
+    position relative
+    height 56px
+    padding 8px
+    border 2px solid
+    border-radius 50%
+
+    &::after
+      content ''
+      position absolute
+      top 50%
+      left @top
+      width 40px
+      height @width
+      margin-top -20px
+      margin-left @margin-top
+      background-repeat no-repeat
+      background-size @width @height
+      background-position 0 0
+
+    svg
+      stroke currentcolor
+
+    ~/__item_type_ops &
+      border-color colorForestGreen
+
+      &::after
+        background-image url('./../assets/images/icons/40/ic-ops.svg')
+
+      &_current
+        background colorForestGreen
+
+        &::after
+          background-image url('./../assets/images/icons/40/ic-ops-white.svg')
+
+    ~/__item_type_npo_private &
+      border-color colorSun
+
+      &::after
+        background-image url('./../assets/images/icons/40/ic-npo-private.svg')
+
+      &_current
+        background colorSun
+
+        &::after
+          background-image url('./../assets/images/icons/40/ic-npo-private-white.svg')
+
+    ~/__item_type_npo_corporate &
+      border-color colorFunGreen
+
+      &::after
+        background-image url('./../assets/images/icons/40/ic-npo-corporate.svg')
+
+      &_current
+        background colorFunGreen
+
+        &::after
+          background-image url('./../assets/images/icons/40/ic-npo-corporate-white.svg')
+
+    &_current
+      box-shadow 1px 3px 10px rgba(0, 0, 0, 0.15)
+
+
+.ngx-contract__properties
+  &_value
+    &_xs
+    &_sm
+      color rgba(colorShuttleGray, 2 / 3)
+
+    &_xs
+      {$typography-12}
+      text-transform uppercase
+
+    &_sm
+      {$typography-14}
+
+    &_lg
+      {$typography-20}
+
+      +below('sm')
+        {$typography-18}
+
+  &_columns
+    position relative
+    justify-content space-between
+
+  & > &_columns
+    align-items center
+
+    & > ^[0]_column:first-child
+      flex 1 0 0
+
+    & > ^[0]_column:last-child
+      +mobile()
+        position absolute
+        right 0
+        bottom -2px
+
+    & ^[0]_columns
+      align-items baseline
+
+      +desktop()
+        & > ^[0]_column:nth-child(1)
+          width 30%
+
+        & > ^[0]_column:nth-child(2)
+        & > ^[0]_column:nth-child(3)
+          width 20%
+
+        & > ^[0]_column:nth-child(4)
+          width 30%
+
+      +tablet()
+        & > ^[0]_column:nth-child(1)
+          width 40%
+
+        & > ^[0]_column:nth-child(3)
+          width 25%
+
+        & > ^[0]_column:nth-child(4)
+          width 35%
+
+      +mobile()
+        & > ^[0]_column
+          width 100%
+
+        & > ^[0]_column:first-child
+          border-bottom 1px solid rgba(colorIron, .5)
+
+        & > ^[0]_column:nth-child(3)
+          padding-top 20px
+          padding-bottom 20px
+
+        & > ^[0]_column:last-child
+          border-top 1px solid rgba(colorIron, .5)
+
+      +below('sm')
+        & > ^[0]_column:nth-child(2)
+          display none
+
+
+.ngx-file-uploader
+  display block
+  background #f3f6f9
+  margin 32px 0
+
+  &:first-child
+    margin-top 0
+
+  &:last-child
+    margin-bottom 0
+
+  &
+  &__drop
+    padding 12px
+    border-radius 4px
+
+
+  &__drop
+    border 1px dashed #c3cbd0
+
+    &_error
+      border 1px dashed colorWarning
+
+  &__title
+    color #c3cbd0
+
+  label
+    color $colors-ops
+    transition .3s ease-out
+    cursor pointer
+
+    &:hover
+      color colorFunGreen
+
+  &__errors
+    display flex
+    flex-flow column nowrap
+    align-items center
+  &__error
+    padding 8px 0
+    color colorWarning
+    font-size 14px
+
+
+.ngx-files
+  margin -16px 0
+
+  &__item
+    padding 16px 0
+
+.ngx-statements-list
+    &__head
+        .ngx-column
+            +below('xs')
+                text-align center
+                width 100%
+
+.ngx-interactive-form
+  .ngx-question
+    &_is_mobile
+      +mobile()
+        text-align center
+
+  .table-responsive
+    table
+      +mobile()
+        white-space normal
+
+        thead
+          display none
+
+        tr
+          display flex
+          align-items flex-start
+          justify-content flex-start
+          flex-wrap wrap
+
+        td
+          flex 1 0 40px
+          max-width 40px
+          padding 40px 8px
+          border-top none !important
+
+          &:first-child
+            flex 1 0 100%
+            max-width 100%
+            border-top 1px solid rgba(223,226,229,0.5) !important
+
+            .ngx-radio
+              &::after
+                display none
+
+          .ngx-content
+            &_s_s
+              background #f3f6f9
+              padding 10px
+              margin 0 -8px
+
+          .ngx-radio
+            &::after
+              content attr(data-answer) ''
+              width 100%
+              text-align center
+              display inline-block
+
+
+
+.ngx-file-error
+  font-size 13px
+  line-height 1.2
+  vertical-align middle
+  text-align left
+  color colorWarning
+
+.ngx-calculated
+  text-align left
+  margin-bottom 26px
+
+  &__title
+    color #5B6065
+    font-size 14px
+    font-weight 300
+    line-height 25px
+    padding-bottom 16px
+    border-bottom 2px solid #CFD3D6
+    margin-bottom 12px
+
+  &__value
+    color #3D4349
+    font-size 40px
+    font-weight 200
+    line-height 50px
+
+.ngx-form-result
+  display flex
+  flex-flow column nowrap
+  align-items center
+
+  &:not(:only-child)
+    padding 44px 0
+
+    &:first-child
+      padding-top 0
+    &:last-child
+      padding-bottom 0
+
+  & + &
+    border-top 1px solid #F2F3F4
+
+  &__title
+    font-weight 700
+    font-size 14px
+    line-height 20px
+    max-width 460px
+    text-align center
+    margin-bottom 26px
+
+.table-responsive
+  +mobile()
+    overflow auto 
+
+  table
+    +mobile()
+      white-space nowrap
+
+.npf-faq-category
+  border-radius 4px
+  background-color #fff
+  overflow hidden
+  box-shadow 0 20px 50px rgba(0, 0, 0, .1)
+  position relative
+  min-height 112px
+
+  +above('sm')
+    text-align center
+    height 360px
+    
+  &__front
+    display flex
+    align-items center
+    animation .5s downUp ease
+    padding 20px
+    position relative
+    
+    ~/:hover &
+      display none
+      
+    +above('sm')
+      padding 170px 30px 30px
+
+  &__back
+    display none
+    animation .5s upDown ease
+    padding 32px
+    text-align left
+    ~/:hover &
+      display block
+      
+    +above('md')
+      padding 32px 48px 
+
+  &__title
+    font-size 20px
+    line-height unit(24 / @font-size, '')
+    letter-spacing -0.020em
+    font-weight 500
+    width 170px
+    
+    &._back
+      font-size 12px
+      line-height 24px
+      text-transform uppercase
+      font-weight 300
+      
+    &._offset_m
+      margin-bottom 32px
+
+    +above('sm')
+      font-size 24px
+      line-height unit(34 / @font-size, '')
+      display block
+      letter-spacing 0.02em
+      width 100%
+
+  &__label
+    padding 20px 0 0
+    text-transform uppercase
+    font-size 12px
+    border-top 1px solid $colors-line-lighter
+    color #dcdcdc
+    display block
+
+  &__icon
+    border-radius 50%
+    width 72px
+    height @width
+    display flex
+    align-items center
+    justify-content center
+    position absolute
+    right 20px
+    top 20px
+
+    img
+      width 30px
+      margin-left auto
+      margin-right auto
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%,-50%)
+
+      +above('sm')
+        width auto
+
+      +above('sm')
+        width auto
+
+    +above('sm')
+      width 200px
+      height 200px
+      top -36px
+      left 50%
+      transform translate3d(-50%, 0, 0)
+
+    &_theme_green
+      background-color #1ea71e
+
+    &_theme_orange
+      background-color #f8ae13
+
+    &_theme_gray
+      background-color #b2b6b7
+
+    &_theme_light-green
+      background-color #85c62a
+      
+
+.npf-faq-subcategories
+  font-size 16px
+  &__item
+    margin-bottom 12px
+
+.npf-faq-subcategory
+  position relative
+  font-weight 300
+  &:before
+    content ''
+    width 100%
+    height 1px
+    background-color #3d4349
+    transition all .3s ease
+    position absolute
+    left 0
+    bottom -2px
+
+  &:hover:before
+    width 0
+
+.ngx-category-title
+  display flex
+  flex-flow row wrap
+  justify-content space-between
+  align-items center
+
+@keyframes downUp
+  0% 
+    opacity 0
+    transform translate3d(0, 24px, 0)
+
+  100%
+    opacity 1
+    transform translate3d(0, 0, 0)
+
+@keyframes upDown
+  0% 
+    opacity 0
+    transform translate3d(0, -24px, 0)
+
+  100%
+    opacity 1
+    transform translate3d(0, 0, 0)

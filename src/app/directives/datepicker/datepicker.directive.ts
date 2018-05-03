@@ -8,14 +8,15 @@ import { NgControl } from '@angular/forms';
 })
 export class DatepickerDirective implements AfterViewInit {
   private element: HTMLInputElement;
-/**
- * Creates an instance of DatepickerDirective.
- * Sets names for datepicker
- * @param {ElementRef} el
- * @param {NgControl} control
- * @memberof DatepickerDirective
- */
-constructor(
+
+  /**
+   * Creates an instance of DatepickerDirective.
+   * Sets names for datepicker
+   * @param {ElementRef} el
+   * @param {NgControl} control
+   * @memberof DatepickerDirective
+   */
+  constructor(
     private el: ElementRef,
     @Optional() private control: NgControl
   ) {
@@ -33,11 +34,12 @@ constructor(
       weekStart: 1,
     };
   }
-/**
- * Initializes datepicker and binds onhide and onshow event handlers
- *
- * @memberof DatepickerDirective
- */
+
+  /**
+   * Initializes datepicker and binds onhide and onshow event handlers
+   *
+   * @memberof DatepickerDirective
+   */
   ngAfterViewInit() {
 
     $(this.element).datepicker({

@@ -40,6 +40,13 @@ $button = '.npf-button'
 
         @media screen and (min-width:$screen-sm-min)
           margin-left 14px
+      
+      ~/_active&
+        border 2px solid $colors-ops
+        color $colors-ops
+        background transparent
+        cursor default
+        pointer-events none
 
     &_dark-green
       background-color $colors-kpp

@@ -1,0 +1,41 @@
+.root
+.body
+.footer
+  position relative
+
+.header
+  position fixed
+
+
+.container
+  margin 0 auto
+  padding 0 15px
+
+.container_size_md
+  composes container
+  max-width 1200px
+
+
+.columns
+  display flex
+  flex-wrap wrap
+
+.columnsSizeSM
+  composes columns
+  margin-right -15px
+  margin-left -15px
+
+.column
+  min-height 1px
+
+  .columnsSizeSM > &
+    padding-right 15px
+    padding-left 15px
+
+
+.link
+  display inline-flex
+  justify-content center
+
+.icon
+  margin-left 4px
